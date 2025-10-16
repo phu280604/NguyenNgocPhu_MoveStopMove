@@ -20,7 +20,8 @@ public class FollowingObject : MonoBehaviour
 
     #region --- Methods ---
 
-    private bool CheckDistance()
+    // Check position of target and this object
+    private bool CheckPosition()
     {
         if (transform.position != _target.position + _offset)
             return true;
@@ -28,9 +29,10 @@ public class FollowingObject : MonoBehaviour
         return false;
     }
 
+    // Follow target with offset
     private void OnFollow(float time)
     {
-        bool canFollow = CheckDistance();
+        bool canFollow = CheckPosition();
 
         if (!canFollow && _isFollowing)
         {
