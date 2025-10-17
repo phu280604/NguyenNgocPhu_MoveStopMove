@@ -17,13 +17,17 @@ public class CharacterC<TStateM, TStatsM> : MonoBehaviour
     #endregion
 
     #region --- Properties ---
-
+    
+    public Animator Animator => _animator;
     public TStateM StateM => _stateM;
     public TStatsM StatsM => _statsM;
 
     #endregion
 
     #region --- Fields ---
+
+    [Header("Unity components")]
+    [SerializeField] private Animator _animator;
 
     [Header("Custom components")]
     [SerializeField] protected TStateM _stateM;

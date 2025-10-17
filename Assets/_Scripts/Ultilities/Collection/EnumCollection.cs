@@ -25,4 +25,16 @@ public enum EState
 
 #endregion
 
+#region -- Enum Animation Paremeters --
+public enum EAnim
+{
+    Idle,
+    Run,
+    Attack,
+    Dead,
+    Dance_Win,
+    Ulti,
+}
+#endregion
+
 #endregion

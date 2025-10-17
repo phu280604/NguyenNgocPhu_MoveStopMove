@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatsSO : MonoBehaviour
+[CreateAssetMenu(fileName = "PlayerStats", menuName = "CharacterStats/Player")]
+public class PlayerStatsSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float maxMovementSpeed;
+    public float acceleration;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float rotationSpeed;
+
+    public readonly float minAnimSpeed = 0.4f;
+    public readonly float maxAnimSpeed = 1f;
 }

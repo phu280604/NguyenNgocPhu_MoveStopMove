@@ -657,8 +657,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 50
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -684,13 +684,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 8, z: -8}
+  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalPosition: {x: 0, y: 10, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1336453451}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,9 +705,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _eTag: 0
-  _offset: {x: 0, y: 8, z: -8}
+  _offset: {x: 0, y: 10, z: -4}
   _isFollowing: 1
-  _moveSpeed: 2
+  _moveSpeed: 6
 --- !u!1 &1336453450
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1916492569}
   - component: {fileID: 1916492570}
+  - component: {fileID: 1916492571}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -889,6 +890,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f931fd8890e3a4e478415bc15b1b45cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1916492571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916492568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63fdf5b4a44f42244a7c35bcf8420c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statsSO: {fileID: 11400000, guid: 4badd36a4189a1d4eb6b01ab43e80f35, type: 2}
 --- !u!1 &2090475836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,8 +2977,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2df6e46937336549949dc989d23f2cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 3167427594312951513}
   _stateM: {fileID: 1916492570}
-  _statsM: {fileID: 0}
+  _statsM: {fileID: 1916492571}
   _controlH: {fileID: 876765628}
 --- !u!4 &7858097127485757908
 Transform:

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerC : CharacterC<PlayerStateM, PlayerStatsSO>
+public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
 {
     #region --- Overrides ---
 
@@ -62,6 +62,9 @@ public class PlayerC : CharacterC<PlayerStateM, PlayerStatsSO>
         _controlH.GetInput((newDir) =>
         {
             _stateM.Direction = newDir;
+
+            if(newDir != Vector3.zero)
+                _stateM.LastestDirection = newDir;
         });
     }
     #endregion
