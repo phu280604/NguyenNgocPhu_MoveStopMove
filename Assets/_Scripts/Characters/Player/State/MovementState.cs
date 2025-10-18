@@ -63,7 +63,14 @@ namespace FSM.Player
         private void OnRotate()
         {
             Vector3 direction = _controller.StateM.Direction;
-            _controller.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+            Quaternion lookRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+            _controller.transform.rotation = Quaternion.Slerp(
+                _controller.transform.rotation, 
+                lookRotation, 
+                Time.deltaTime * _controller.StatsM.StatsSO.rotationSpeed
+            );
         }
 
         // Change animation based on movement state.

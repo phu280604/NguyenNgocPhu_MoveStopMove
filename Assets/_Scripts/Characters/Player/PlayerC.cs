@@ -31,6 +31,7 @@ public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
     {
         OnActionState();
         OnActionHandler();
+        OnBuildRangeAttack();
     }
 
     #endregion
@@ -45,7 +46,10 @@ public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
         else if (_stateM.Direction != Vector3.zero)
             _keyState = EState.Movement;
 
-        if(_curState != _stateManager.GetState(_keyState))
+        if(_stateM.Target != null && _keyState == EState.Idle)
+            _keyState = EState.Attack;
+
+        if (_curState != _stateManager.GetState(_keyState))
             _stateManager.SwitchState(_keyState, ref _curState);
     }
 
@@ -67,6 +71,13 @@ public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
                 _stateM.LastestDirection = newDir;
         });
     }
+
+    private void OnBuildRangeAttack()
+    {
+        _physicH.BuildAttackRange(_statsM.CurrentRangeAttack, (target) => { 
+            _stateM.Target = target?.gameObject;
+        });
+    }
     #endregion
 
     #endregion
@@ -74,6 +85,7 @@ public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
     #region --- Fields ---
 
     [SerializeField] private PlayerInputH _controlH;
+    [SerializeField] private PlayerPhysicH _physicH;
 
     private PlayerStateManager _stateManager;
     private BaseState<PlayerC> _curState;

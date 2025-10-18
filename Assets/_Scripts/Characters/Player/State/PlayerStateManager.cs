@@ -13,6 +13,7 @@ public class PlayerStateManager : StateManager<PlayerC>
     {
         AddState(EState.Idle, new IdleState(_controller));
         AddState(EState.Movement, new MovementState(_controller));
+        AddState(EState.Attack, new AttackState(_controller));
     }
 
     #endregion

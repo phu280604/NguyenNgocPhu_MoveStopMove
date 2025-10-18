@@ -10,6 +10,8 @@ public class PlayerStatsSO : ScriptableObject
 
     public float rotationSpeed;
 
+    public float rangeAttack;
+
     public readonly float minAnimSpeed = 0.4f;
     public readonly float maxAnimSpeed = 1f;
 }

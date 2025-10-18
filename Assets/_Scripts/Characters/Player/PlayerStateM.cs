@@ -10,5 +10,7 @@ public class PlayerStateM : MonoBehaviour
 
     public Vector3 LastestDirection { get; set; } = Vector3.zero;
 
+    public GameObject Target { get; set; }
+
     #endregion
 }

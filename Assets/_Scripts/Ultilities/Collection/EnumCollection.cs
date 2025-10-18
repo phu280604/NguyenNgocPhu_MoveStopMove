@@ -13,6 +13,14 @@ public enum ETag
 }
 #endregion
 
+#region -- Enum Layers --
+public enum ELayer
+{
+    Player,
+    Bot,
+}
+#endregion
+
 #region -- Enum State --
 
 public enum EState
@@ -25,7 +33,7 @@ public enum EState
 
 #endregion
 
-#region -- Enum Animation Paremeters --
+#region -- Enum Animations --
 public enum EAnim
 {
     Idle,

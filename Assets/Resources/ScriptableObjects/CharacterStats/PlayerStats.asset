@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   maxMovementSpeed: 8
-  acceleration: 8
-  rotationSpeed: 8
+  acceleration: 24
+  rotationSpeed: 10
+  rangeAttack: 4
