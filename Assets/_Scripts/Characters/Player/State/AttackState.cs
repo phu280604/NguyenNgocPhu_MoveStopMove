@@ -6,7 +6,11 @@ namespace FSM.Player
 {
     public class AttackState : BaseState<PlayerC>
     {
-        public AttackState(PlayerC controller) : base(controller) { }
+        public AttackState(PlayerC controller) : base(controller) 
+        {
+            if (controller.StateM is PlayerStateM stateM)
+                _stateM = stateM;
+        }
 
         #region --- Overrides ---
 
@@ -47,7 +51,7 @@ namespace FSM.Player
                 _controller.StatsM.CurrentSpeed -= _acceleration * Time.deltaTime;
                 _controller.Animator.speed = Mathf.Abs(_controller.StatsM.CurrentSpeed / _maxSpeed);
 
-                Vector3 direction = _controller.StateM.LastestDirection.normalized;
+                Vector3 direction = _stateM.LastestDirection.normalized;
 
                 _controller.transform.position = Vector3.MoveTowards(
                     _controller.transform.position,
@@ -72,7 +76,7 @@ namespace FSM.Player
 
         private void OnRotateTowardsTarget()
         {
-            Vector3 direction = (_controller.StateM.Target.transform.position - _controller.transform.position).normalized;
+            Vector3 direction = (_stateM.TransTarget.position - _controller.transform.position).normalized;
             direction.y = 0f;
 
             if (direction == Vector3.zero)
@@ -107,6 +111,8 @@ namespace FSM.Player
         private float _maxSpeed;
 
         private bool _isStopping;
+
+        private PlayerStateM _stateM;
 
         #endregion
     }

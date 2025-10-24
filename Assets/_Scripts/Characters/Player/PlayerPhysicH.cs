@@ -27,11 +27,8 @@ public class PlayerPhysicH : MonoBehaviour
         
         if(hits.Count() >= 1)
             setTarget?.Invoke(hits[0]);
-        else 
-        { 
-            Debug.Log("No target found");
+        else
             setTarget?.Invoke(null);
-        }
     }
 
     #endregion

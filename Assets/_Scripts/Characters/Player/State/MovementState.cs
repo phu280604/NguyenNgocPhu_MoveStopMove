@@ -6,7 +6,11 @@ namespace FSM.Player
 {
     public class MovementState : BaseState<PlayerC>
     {
-        public MovementState(PlayerC controller) : base(controller) { }
+        public MovementState(PlayerC controller) : base(controller) 
+        {
+            if (controller.StateM is PlayerStateM stateM)
+                _stateM = stateM;
+        }
 
         #region --- Overrides ---
 
@@ -50,7 +54,7 @@ namespace FSM.Player
                 ChangeAnim();
             }
 
-            Vector3 direction = _controller.StateM.Direction.normalized;
+            Vector3 direction = _stateM.Direction.normalized;
 
             _controller.transform.position = Vector3.Lerp(
                 _controller.transform.position,
@@ -62,7 +66,7 @@ namespace FSM.Player
         // Rotate the player to face the movement direction.
         private void OnRotate()
         {
-            Vector3 direction = _controller.StateM.Direction;
+            Vector3 direction = _stateM.Direction;
 
             Quaternion lookRotation = Quaternion.LookRotation(direction, Vector3.up);
 
@@ -90,6 +94,8 @@ namespace FSM.Player
         private float _maxSpeed;
 
         private bool _isMoving;
+
+        private PlayerStateM _stateM;
 
         #endregion
     }

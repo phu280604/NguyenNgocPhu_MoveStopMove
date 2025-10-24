@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterC<TStateM, TStatsM> : MonoBehaviour
+public abstract class CharacterC : GameUnit
 {
     #region --- Unity Methods ---
 
@@ -12,15 +12,14 @@ public class CharacterC<TStateM, TStatsM> : MonoBehaviour
 
     #region --- Methods ---
 
-    public virtual void OnInit() { }
+    public abstract void OnInit();
 
     #endregion
 
     #region --- Properties ---
-    
+
+    public abstract ICharacterStateM StateM { get; }
     public Animator Animator => _animator;
-    public TStateM StateM => _stateM;
-    public TStatsM StatsM => _statsM;
 
     #endregion
 
@@ -28,10 +27,6 @@ public class CharacterC<TStateM, TStatsM> : MonoBehaviour
 
     [Header("Unity components")]
     [SerializeField] private Animator _animator;
-
-    [Header("Custom components")]
-    [SerializeField] protected TStateM _stateM;
-    [SerializeField] protected TStatsM _statsM;
 
     #endregion
 }

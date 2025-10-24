@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Control
   - Bot
+  - ItemHandle
+  - Manager
   layers:
   - Default
   - TransparentFX

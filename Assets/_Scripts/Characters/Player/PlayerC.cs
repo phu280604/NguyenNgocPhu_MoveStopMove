@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
+public class PlayerC : CharacterC
 {
     #region --- Overrides ---
 
     public override void OnInit()
     {
-        base.OnInit();
-
         _stateManager = new PlayerStateManager(this);
 
         _curState = _stateManager.GetState(EState.Idle);
@@ -17,6 +16,8 @@ public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
 
         _keyState = EState.Idle;
     }
+
+    public override ICharacterStateM StateM => _stateM;
 
     #endregion
 
@@ -41,12 +42,12 @@ public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
     #region -- State machine --
     private void CheckState()
     {
-        if(_stateM.Direction == Vector3.zero)
+        if (_stateM.Direction == Vector3.zero)
             _keyState = EState.Idle;
         else if (_stateM.Direction != Vector3.zero)
             _keyState = EState.Movement;
 
-        if(_stateM.Target != null && _keyState == EState.Idle)
+        if(_stateM.TransTarget != null && _keyState == EState.Idle)
             _keyState = EState.Attack;
 
         if (_curState != _stateManager.GetState(_keyState))
@@ -74,22 +75,37 @@ public class PlayerC : CharacterC<PlayerStateM, PlayerStatsM>
 
     private void OnBuildRangeAttack()
     {
-        _physicH.BuildAttackRange(_statsM.CurrentRangeAttack, (target) => { 
-            _stateM.Target = target?.gameObject;
+        _physicH.BuildAttackRange(_statsM.CurrentRangeAttack, (target) => {
+            _stateM.TransTarget = target?.gameObject.transform;
         });
     }
     #endregion
 
     #endregion
 
+    #region --- Properties ---
+
+    public PlayerStatsM StatsM => _statsM;
+
+    #endregion
+
     #region --- Fields ---
 
+    #region -- Components --
+    [Header("Handler")]
     [SerializeField] private PlayerInputH _controlH;
     [SerializeField] private PlayerPhysicH _physicH;
 
+    [Header("Model")]
+    [SerializeField] private PlayerStatsM _statsM;
+    [SerializeField] private PlayerStateM _stateM;
+    #endregion
+
+    #region -- State machine --
     private PlayerStateManager _stateManager;
     private BaseState<PlayerC> _curState;
     private EState _keyState;
+    #endregion
 
     #endregion
 }

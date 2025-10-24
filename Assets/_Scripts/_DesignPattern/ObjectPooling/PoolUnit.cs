@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PoolUnit
+{
+    public PoolUnit(GameObject prefab, int amount, Transform parent)
+    {
+        _parent = parent;
+        _prefab = prefab;
+        _unitInactive = new Queue<GameUnit>(amount);
+        _unitActive = new List<GameUnit>();
+    }
+
+    #region --- Methods ---
+
+    public GameUnit Spawn(Vector3 position, Quaternion rotation)
+    {
+        GameUnit unit;
+
+        if (_unitInactive.Count <= 0)
+        {
+            
+            unit = GameObject.Instantiate(_prefab, _parent).GetComponent<GameUnit>();
+        }
+        else
+        {
+            unit = _unitInactive.Dequeue();
+        }
+
+        unit.Parent.SetPositionAndRotation(position, rotation);
+        unit.gameObject.SetActive(true);
+
+        return unit;
+    }
+
+    public void Despawn(GameUnit unit)
+    {
+        if(unit != null && unit.gameObject.activeSelf)
+        {
+            unit.gameObject.SetActive(false);
+            _unitInactive.Enqueue(unit);
+        }
+
+        _unitActive.Remove(unit);
+    }
+
+    public void Collect()
+    {
+        while (_unitActive.Count > 0)
+        {
+            Despawn(_unitActive[0]);
+        }
+    }
+
+    #endregion
+
+    #region --- Properties ---
+
+    public List<GameUnit> UnitActive => _unitActive;
+    public int Count => _unitInactive.Count + _unitActive.Count;
+    public Transform Parent => _parent;
+
+    #endregion
+
+    #region --- Fields ---
+
+    private Transform _parent;
+    private GameObject _prefab;
+
+    private Queue<GameUnit> _unitInactive;
+    private List<GameUnit> _unitActive;
+
+    #endregion
+}

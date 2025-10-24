@@ -7,6 +7,7 @@ using UnityEngine;
 #region -- Enum Tags ---
 public enum ETag
 {
+    Manager,
     Player,
     Enemy,
     Control,
@@ -42,6 +43,24 @@ public enum EAnim
     Dead,
     Dance_Win,
     Ulti,
+}
+#endregion
+
+#region -- Enum Pool --
+public enum EPoolType
+{
+    Player,
+    Bot,
+    AxeProjectile,
+}
+#endregion
+
+#region -- Enum Bonus Stats --
+public enum EBonusStats
+{
+    None,
+    Speed,
+    Shield,
 }
 #endregion
 
