@@ -14,4 +14,6 @@ public class PlayerStatsSO : ScriptableObject
 
     public readonly float minAnimSpeed = 0.4f;
     public readonly float maxAnimSpeed = 1f;
+
+    public readonly float triggeredAnimAttack = 0.5f;
 }

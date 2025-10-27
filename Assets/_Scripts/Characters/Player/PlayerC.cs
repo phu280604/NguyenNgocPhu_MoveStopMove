@@ -47,7 +47,7 @@ public class PlayerC : CharacterC
         else if (_stateM.Direction != Vector3.zero)
             _keyState = EState.Movement;
 
-        if(_stateM.TransTarget != null && _keyState == EState.Idle)
+        if(_stateM.Target != null && _keyState == EState.Idle)
             _keyState = EState.Attack;
 
         if (_curState != _stateManager.GetState(_keyState))
@@ -76,7 +76,7 @@ public class PlayerC : CharacterC
     private void OnBuildRangeAttack()
     {
         _physicH.BuildAttackRange(_statsM.CurrentRangeAttack, (target) => {
-            _stateM.TransTarget = target?.gameObject.transform;
+            _stateM.Target = target?.gameObject.transform;
         });
     }
     #endregion

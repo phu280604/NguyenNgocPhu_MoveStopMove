@@ -6,19 +6,20 @@ public class FollowingObject : MonoBehaviour
 {
     #region --- Unity Methods ---
 
-    private void Start()
-    {
-        _target = GameObject.FindGameObjectWithTag(_eTag.ToString()).transform;
-    }
-
     private void Update()
     {
-        OnFollow(Time.deltaTime);
+        if (_target != null)
+            OnFollow(Time.deltaTime);
     }
 
     #endregion
 
     #region --- Methods ---
+
+    public void OnInit()
+    {
+        _target = GameObject.FindGameObjectWithTag(_eTag.ToString()).transform;
+    }
 
     // Check position of target and this object
     private bool CheckPosition()

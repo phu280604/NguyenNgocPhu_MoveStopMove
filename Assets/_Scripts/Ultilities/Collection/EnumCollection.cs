@@ -11,6 +11,7 @@ public enum ETag
     Player,
     Enemy,
     Control,
+    MainCamera,
 }
 #endregion
 
