@@ -35,7 +35,6 @@ namespace FSM.Player
             OnRotateTowardsTarget();
 
             _spawnWeapon.OnCountDown(Time.deltaTime);
-            _attackDelay.OnCountDown(Time.deltaTime, true);
         }
 
         public override void ExitState()
