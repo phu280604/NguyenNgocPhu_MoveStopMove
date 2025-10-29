@@ -10,6 +10,7 @@ public class PlayerStateM : MonoBehaviour, ICharacterStateM
     public Vector3 LastestDirection { get; set; } = Vector3.zero;
     public Transform Target {  get; set; }
     public Transform SpawnWeaponPos { get { return _spawnPos; } }
+    public bool IsDelayAttack { get; set; } = false;
 
     #endregion
 

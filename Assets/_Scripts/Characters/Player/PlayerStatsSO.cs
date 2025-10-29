@@ -12,6 +12,8 @@ public class PlayerStatsSO : ScriptableObject
 
     public float rangeAttack;
 
+    public float attackDelay;
+
     public readonly float minAnimSpeed = 0.4f;
     public readonly float maxAnimSpeed = 1f;
 

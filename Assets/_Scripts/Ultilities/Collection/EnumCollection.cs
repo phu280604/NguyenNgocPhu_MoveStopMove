@@ -9,9 +9,10 @@ public enum ETag
 {
     Manager,
     Player,
-    Enemy,
+    Bot,
     Control,
     MainCamera,
+    Character,
 }
 #endregion
 
@@ -44,6 +45,11 @@ public enum EAnim
     Dead,
     Dance_Win,
     Ulti,
+}
+
+public enum EAnimParams
+{
+    IsDelayAttack,
 }
 #endregion
 

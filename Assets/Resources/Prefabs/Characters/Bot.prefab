@@ -2264,6 +2264,7 @@ GameObject:
   - component: {fileID: 622868280642121476}
   - component: {fileID: 839199696898434750}
   - component: {fileID: 4309527650869607650}
+  - component: {fileID: -2588154495877027790}
   m_Layer: 8
   m_Name: Bot
   m_TagString: Bot
@@ -2339,6 +2340,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-2588154495877027790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527998934883304635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd223fa524ea06c44a524c628d8f09e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolType: 1
+  _animator: {fileID: 0}
 --- !u!1 &8548443460943620182
 GameObject:
   m_ObjectHideFlags: 0

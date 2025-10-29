@@ -9,7 +9,21 @@ public class LevelManager : Singleton<LevelManager>
 
     private void Start()
     {
-        PoolManager.Instance.Spawn<PlayerC>(EPoolType.Player, Vector3.zero, Quaternion.identity);
+        PoolManager.Instance.Spawn<PlayerC>(
+            EPoolType.Player, 
+            Vector3.zero, 
+            Quaternion.identity
+        );
+
+        for(int i = 0; i < PoolManager.Instance.PoolAmount(EPoolType.Bot); i++)
+        {
+            PoolManager.Instance.Spawn<BotC>(
+                EPoolType.Bot,
+                new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)),
+                Quaternion.identity
+            );
+        }
+        
 
         if(_cameraH == null)
         {

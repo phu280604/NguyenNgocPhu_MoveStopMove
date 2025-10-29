@@ -15,4 +15,5 @@ MonoBehaviour:
   maxMovementSpeed: 8
   acceleration: 24
   rotationSpeed: 10
-  rangeAttack: 8
+  rangeAttack: 4
+  attackDelay: 2

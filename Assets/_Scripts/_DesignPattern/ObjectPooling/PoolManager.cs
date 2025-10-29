@@ -35,6 +35,12 @@ public class PoolManager : Singleton<PoolManager>
 
     #endregion
 
+    #region --- Properties ---
+
+    public int PoolAmount(EPoolType type) => _poolInstance[type].BaseCount;
+
+    #endregion
+
     #region --- Fields ---
 
     private Dictionary<EPoolType, PoolUnit> _poolInstance = new Dictionary<EPoolType, PoolUnit>();

@@ -31,6 +31,7 @@ public class PlayerC : CharacterC
     private void Update()
     {
         OnActionState();
+
         OnActionHandler();
         OnBuildRangeAttack();
     }
@@ -79,6 +80,7 @@ public class PlayerC : CharacterC
             _stateM.Target = target?.gameObject.transform;
         });
     }
+
     #endregion
 
     #endregion

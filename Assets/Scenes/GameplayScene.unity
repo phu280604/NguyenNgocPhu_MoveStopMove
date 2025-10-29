@@ -871,6 +871,10 @@ MonoBehaviour:
     prefab: {fileID: 3015350059235646545, guid: f02cb13d6a7b7b54fa21da6dc3396861, type: 3}
     poolType: 2
     amount: 2
+  - parent: {fileID: 1965359326}
+    prefab: {fileID: 8527998934883304635, guid: f98eea2d6cacd7547a0b459448aefbee, type: 3}
+    poolType: 1
+    amount: 10
 --- !u!1 &1336453450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1160,10 @@ PrefabInstance:
     - target: {fileID: 8527998934883304635, guid: f98eea2d6cacd7547a0b459448aefbee, type: 3}
       propertyPath: m_Name
       value: Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527998934883304635, guid: f98eea2d6cacd7547a0b459448aefbee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -23,7 +23,7 @@ namespace FSM.Player
             _acceleration = _controller.StatsM.StatsSO.acceleration;
             _maxSpeed = _controller.StatsM.StatsSO.maxMovementSpeed;
 
-            if(_spawnWeapon == null)
+            if (_spawnWeapon == null)
                 _spawnWeapon = new Timer(_controller.StatsM.StatsSO.triggeredAnimAttack, OnSpawnWeapon);
             else
                 _spawnWeapon.OnReset();
@@ -39,7 +39,7 @@ namespace FSM.Player
 
         public override void ExitState()
         {
-
+            _controller.StateM.IsDelayAttack = true;
         }
 
         #endregion
@@ -51,7 +51,6 @@ namespace FSM.Player
         {
             if (_isStopping)
                 return;
-
 
             if (_controller.StatsM.CurrentSpeed > 0f)
             {
@@ -88,7 +87,8 @@ namespace FSM.Player
                 Quaternion.LookRotation(lookPos)
             );
 
-            newWeapon.TargetPos = _controller.StateM.Target.position;
+            newWeapon.StateM.TargetPos = _controller.StateM.Target.position;
+            newWeapon.StateM.TargetTag = ETag.Bot;
             newWeapon.OnInit(_controller);
         }
 

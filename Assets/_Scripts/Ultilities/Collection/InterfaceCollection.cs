@@ -8,6 +8,7 @@ public interface ICharacterStateM
     #region --- Properties ---
     public Transform Target { get; set; }
     public Transform SpawnWeaponPos { get; }
+    public bool IsDelayAttack { get; set; }
     #endregion
 }
 #endregion
