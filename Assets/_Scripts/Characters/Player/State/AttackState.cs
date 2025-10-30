@@ -82,7 +82,7 @@ namespace FSM.Player
             Vector3 lookPos = _controller.StateM.Target.position - _controller.transform.position;
 
             WeaponC newWeapon = PoolManager.Instance.Spawn<WeaponC>(
-                EPoolType.AxeProjectile,
+                _controller.StateM.WeaponType,
                 _controller.StateM.SpawnWeaponPos.position,
                 Quaternion.LookRotation(lookPos)
             );

@@ -13,18 +13,6 @@ public class AxeC : WeaponC
         StateM = _stateM;
     }
 
-    private void OnEnable()
-    {
-        OnDespawn(5f);
-    }
-
-    private void OnDisable()
-    {
-        _stateM.HasTarget = false;
-
-        CancelInvoke();
-    }
-
     private void Update()
     {
         if(charCtrl != null)

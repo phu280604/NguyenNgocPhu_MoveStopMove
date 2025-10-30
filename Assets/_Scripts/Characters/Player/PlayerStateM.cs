@@ -11,6 +11,7 @@ public class PlayerStateM : MonoBehaviour, ICharacterStateM
     public Transform Target {  get; set; }
     public Transform SpawnWeaponPos { get { return _spawnPos; } }
     public bool IsDelayAttack { get; set; } = false;
+    public EPoolType WeaponType { get; set; } = EPoolType.BoomerangProjectile;
 
     #endregion
 

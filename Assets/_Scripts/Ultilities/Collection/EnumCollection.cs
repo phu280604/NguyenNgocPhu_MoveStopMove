@@ -59,6 +59,7 @@ public enum EPoolType
     Player,
     Bot,
     AxeProjectile,
+    BoomerangProjectile,
 }
 #endregion
 

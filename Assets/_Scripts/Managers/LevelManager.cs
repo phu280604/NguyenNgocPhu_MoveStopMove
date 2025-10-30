@@ -6,16 +6,24 @@ public class LevelManager : Singleton<LevelManager>
 {
     #region --- Unity methods ---
 
-
     private void Start()
     {
+        OnInit();
+    }
+
+    #endregion
+
+    #region --- Methods ---
+
+    public void OnInit()
+    {
         PoolManager.Instance.Spawn<PlayerC>(
-            EPoolType.Player, 
-            Vector3.zero, 
+            EPoolType.Player,
+            Vector3.zero,
             Quaternion.identity
         );
 
-        for(int i = 0; i < PoolManager.Instance.PoolAmount(EPoolType.Bot); i++)
+        for (int i = 0; i < PoolManager.Instance.PoolAmount(EPoolType.Bot); i++)
         {
             PoolManager.Instance.Spawn<BotC>(
                 EPoolType.Bot,
@@ -23,9 +31,9 @@ public class LevelManager : Singleton<LevelManager>
                 Quaternion.identity
             );
         }
-        
 
-        if(_cameraH == null)
+
+        if (_cameraH == null)
         {
             _cameraH = GameObject
                 .FindGameObjectWithTag(ETag.MainCamera.ToString())

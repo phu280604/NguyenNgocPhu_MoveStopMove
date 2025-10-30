@@ -6,6 +6,18 @@ public class WeaponC : GameUnit
 {
     #region --- Unity methods ---
 
+    protected virtual void OnEnable()
+    {
+        OnDespawn(StatsSO.disableTime);
+    }
+
+    protected virtual void OnDisable()
+    {
+        StateM.HasTarget = false;
+
+        CancelInvoke();
+    }
+
     protected void OnTriggerEnter(Collider other)
     {
         if (StateM.HasHit) return;
@@ -37,6 +49,7 @@ public class WeaponC : GameUnit
     #region --- Properties ---
 
     public WeaponStateM StateM { get; protected set; }
+    public WeaponStatsSO StatsSO { get; protected set; }
 
     #endregion
 

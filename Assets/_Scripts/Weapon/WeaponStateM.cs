@@ -8,6 +8,7 @@ public class WeaponStateM : MonoBehaviour
 
     public Vector3 TargetPos { get; set; }
     public ETag TargetTag { get; set; }
+    public bool HasTarget { get; set; } = false;
     public bool HasHit { get; set; }
 
     #endregion
