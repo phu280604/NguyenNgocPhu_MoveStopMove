@@ -11,7 +11,7 @@ public class GameUnit : MonoBehaviour
         Invoke(nameof(OnDespawn), time);
     }
 
-    private void OnDespawn()
+    public void OnDespawn()
     {
         PoolManager.Instance.Despawn(this);
     }

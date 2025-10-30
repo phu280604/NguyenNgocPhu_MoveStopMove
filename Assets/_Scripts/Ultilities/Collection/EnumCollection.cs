@@ -9,8 +9,10 @@ public enum ETag
 {
     Manager,
     Player,
-    Enemy,
+    Bot,
     Control,
+    MainCamera,
+    Character,
 }
 #endregion
 
@@ -44,6 +46,11 @@ public enum EAnim
     Dance_Win,
     Ulti,
 }
+
+public enum EAnimParams
+{
+    IsDelayAttack,
+}
 #endregion
 
 #region -- Enum Pool --
@@ -52,6 +59,7 @@ public enum EPoolType
     Player,
     Bot,
     AxeProjectile,
+    BoomerangProjectile,
 }
 #endregion
 

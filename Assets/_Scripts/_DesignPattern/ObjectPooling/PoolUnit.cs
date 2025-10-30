@@ -8,6 +8,9 @@ public class PoolUnit
     {
         _parent = parent;
         _prefab = prefab;
+
+        BaseCount = amount;
+
         _unitInactive = new Queue<GameUnit>(amount);
         _unitActive = new List<GameUnit>();
     }
@@ -59,6 +62,7 @@ public class PoolUnit
 
     public List<GameUnit> UnitActive => _unitActive;
     public int Count => _unitInactive.Count + _unitActive.Count;
+    public int BaseCount { get; private set; }
     public Transform Parent => _parent;
 
     #endregion

@@ -26,7 +26,7 @@ public abstract class CharacterC : GameUnit
     #region --- Fields ---
 
     [Header("Unity components")]
-    [SerializeField] private Animator _animator;
+    [SerializeField] protected Animator _animator;
 
     #endregion
 }

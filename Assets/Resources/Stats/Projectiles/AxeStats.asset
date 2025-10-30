@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 945d6dee3ffd6ca40ba9dfd7eb9d8832, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: 9e23eac9e6431c04dabce69c53ec0b09, type: 3}
+  m_Name: AxeStats
   m_EditorClassIdentifier: 
-  maxMovementSpeed: 8
-  acceleration: 24
-  rotationSpeed: 10
-  rangeAttack: 8
-  attackDelay: 2
+  speed: 5
+  rotateSpeed: 1.5
+  disableTime: 5

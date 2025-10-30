@@ -22,17 +22,24 @@ namespace FSM.Player
 
             _acceleration = _controller.StatsM.StatsSO.acceleration;
             _maxSpeed = _controller.StatsM.StatsSO.maxMovementSpeed;
+
+            if (_spawnWeapon == null)
+                _spawnWeapon = new Timer(_controller.StatsM.StatsSO.triggeredAnimAttack, OnSpawnWeapon);
+            else
+                _spawnWeapon.OnReset();
         }
 
         public override void UpdateState()
         {
             OnStopMove();
             OnRotateTowardsTarget();
+
+            _spawnWeapon.OnCountDown(Time.deltaTime);
         }
 
         public override void ExitState()
         {
-
+            _controller.StateM.IsDelayAttack = true;
         }
 
         #endregion
@@ -44,7 +51,6 @@ namespace FSM.Player
         {
             if (_isStopping)
                 return;
-
 
             if (_controller.StatsM.CurrentSpeed > 0f)
             {
@@ -69,14 +75,26 @@ namespace FSM.Player
             }
         }
 
-        private void OnAttack()
+        private void OnSpawnWeapon()
         {
+            PlayerStateM stateM = _stateM;
 
+            Vector3 lookPos = _controller.StateM.Target.position - _controller.transform.position;
+
+            WeaponC newWeapon = PoolManager.Instance.Spawn<WeaponC>(
+                _controller.StateM.WeaponType,
+                _controller.StateM.SpawnWeaponPos.position,
+                Quaternion.LookRotation(lookPos)
+            );
+
+            newWeapon.StateM.TargetPos = _controller.StateM.Target.position;
+            newWeapon.StateM.TargetTag = ETag.Bot;
+            newWeapon.OnInit(_controller);
         }
 
         private void OnRotateTowardsTarget()
         {
-            Vector3 direction = (_stateM.TransTarget.position - _controller.transform.position).normalized;
+            Vector3 direction = (_stateM.Target.position - _controller.transform.position).normalized;
             direction.y = 0f;
 
             if (direction == Vector3.zero)
@@ -111,6 +129,8 @@ namespace FSM.Player
         private float _maxSpeed;
 
         private bool _isStopping;
+
+        private Timer _spawnWeapon;
 
         private PlayerStateM _stateM;
 
