@@ -33,6 +33,7 @@ public class PoolUnit
 
         unit.Parent.SetPositionAndRotation(position, rotation);
         unit.gameObject.SetActive(true);
+        _unitActive.Add(unit);
 
         return unit;
     }

@@ -2,17 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    #region --- Unity methods ---
+
+    private void Awake()
     {
-        
+        UIManager.Instance.OpenUI<MenuUICanvas>();
+
+        ChangeState(EGameStates.Menu);
     }
 
-    // Update is called once per frame
-    void Update()
+    #endregion
+
+    #region --- Methods ---
+
+    public void ChangeState(EGameStates newState)
     {
-        
+        if(_gameState != newState)
+            TriggeredState(newState);
+
+        _gameState = newState;
     }
+
+    private void TriggeredState(EGameStates newState)
+    {
+        switch (newState)
+        {
+            case EGameStates.Menu:
+                MenuStateTriggered();
+                break;
+            case EGameStates.Shop:
+                ShopStateTriggered();
+                break;
+            case EGameStates.GamePlay:
+                GamePlayStateTriggered();
+                break;
+        }
+    }
+
+    private void MenuStateTriggered()
+    {
+        _camGamePlay.SetActive(true);
+        _camShop.SetActive(false);
+    }
+
+    private void ShopStateTriggered()
+    {
+        _camGamePlay.SetActive(false);
+        _camShop.SetActive(true);
+
+        PoolManager.Instance.Spawn<CharacterVisualC>(
+            EPoolType.VisualObject, 
+            _visualOffet, 
+            Quaternion.LookRotation(Vector3.back)
+        );
+    }
+
+    private void GamePlayStateTriggered()
+    {
+        _camGamePlay.SetActive(true);
+        _camShop.SetActive(false);
+
+        LevelManager.Instance.OnInit();
+    }
+
+    #endregion
+
+    #region --- Fields ---
+
+    private EGameStates _gameState = EGameStates.Menu;
+
+    [Header("Unity components")]
+    [SerializeField] private GameObject _camGamePlay;
+    [SerializeField] private GameObject _camShop;
+
+    [Header("Visual fields")]
+    [SerializeField] private Vector3 _visualOffet;
+    [SerializeField] private Vector3 _visualRotaion;
+
+    #endregion
 }

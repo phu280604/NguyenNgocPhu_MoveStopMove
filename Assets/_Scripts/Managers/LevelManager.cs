@@ -8,7 +8,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private void Start()
     {
-        OnInit();
+        //OnInit();
     }
 
     #endregion

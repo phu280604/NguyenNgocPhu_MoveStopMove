@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624e931137b7fb54b806850445810764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolType: 3
+  _poolType: 5
   _state: {fileID: 968580412700415456}
   _stats: {fileID: 11400000, guid: ccf83061732cc38439233a7448e1b422, type: 2}
 --- !u!1 &8698671752355652872

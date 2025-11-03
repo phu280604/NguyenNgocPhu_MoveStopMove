@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cf67063b0cf86489b9cd1e7b33efb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolType: 2
+  _poolType: 4
   _stateM: {fileID: 6762800193325190547}
   _stats: {fileID: 11400000, guid: ca102637dc15a6b459a8e76215ca0667, type: 2}
 --- !u!1 &6614456218060820168

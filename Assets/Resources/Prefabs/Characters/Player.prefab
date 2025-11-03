@@ -1802,7 +1802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2df6e46937336549949dc989d23f2cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolType: 0
+  _poolType: 2
   _animator: {fileID: 1021755460440541142}
   _controlH: {fileID: 1700419762717547772}
   _physicH: {fileID: 5044102222517826142}

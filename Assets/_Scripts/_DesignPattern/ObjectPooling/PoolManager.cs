@@ -20,6 +20,14 @@ public class PoolManager : Singleton<PoolManager>
         return _poolInstance[poolType].Spawn(position, rotation) as T;
     }
 
+    public void Despawn(EPoolType poolType)
+    {
+        if(_poolInstance.ContainsKey(poolType))
+        {
+            _poolInstance[poolType].Collect();
+        }
+    }
+
     public void Despawn(GameUnit unit)
     {
         _poolInstance[unit.PoolType].Despawn(unit);

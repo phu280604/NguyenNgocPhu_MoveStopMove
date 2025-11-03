@@ -2352,7 +2352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd223fa524ea06c44a524c628d8f09e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolType: 1
+  _poolType: 3
   _animator: {fileID: 0}
 --- !u!1 &8548443460943620182
 GameObject:

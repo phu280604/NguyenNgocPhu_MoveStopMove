@@ -4,6 +4,13 @@ using UnityEngine;
 
 #region --- Enums ---
 
+public enum EGameStates
+{
+    Menu,
+    Shop,
+    GamePlay,
+}
+
 #region -- Enum Tags ---
 public enum ETag
 {
@@ -56,11 +63,14 @@ public enum EAnimParams
 #region -- Enum Pool --
 public enum EPoolType
 {
+    VisualObject,
+    UIShopItem,
     Player,
     Bot,
     AxeProjectile,
     BoomerangProjectile,
 }
+
 #endregion
 
 #region -- Enum Bonus Stats --
