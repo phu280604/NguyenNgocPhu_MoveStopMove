@@ -8,7 +8,6 @@ public class Subject<TKey, TData> : MonoBehaviour
 
     public void AddObserver(TKey key, IObserver<TData> newObs)
     {
-        Debug.Log("hello");
         if (!_observers.ContainsKey(key))
             _observers.Add(key, new List<IObserver<TData>>());
         

@@ -12,7 +12,7 @@ public class ShopTabSpawnerH : MonoBehaviour, IObserver<int>
 
         foreach(ItemSO itemSO in _shopItemSOs[data].itemSOs) 
         {
-            ShopItem item = PoolManager.Instance.Spawn<ShopItem>(EPoolType.Item, Vector3.zero, Quaternion.identity);
+            ShopItemC item = PoolManager.Instance.Spawn<ShopItemC>(EPoolType.Item, Vector3.zero, Quaternion.identity);
 
             item.transform.SetParent(_itemTransform);
             item.OnInit(itemSO);
