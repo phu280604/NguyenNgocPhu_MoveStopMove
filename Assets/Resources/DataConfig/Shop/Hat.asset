@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaaae3be59ab5a48b0bda5073f8882b, type: 3}
+  m_Name: Hat
+  m_EditorClassIdentifier: 
+  itemSOs:
+  - type: 1
+    isLock: 0
+    isDefault: 1
+    icon: {fileID: 21300000, guid: d244857e15941064bbe03a93b5292bce, type: 3}
+    albedo: {fileID: 0}
+    materials: []
+    mesh: {fileID: 0}
+  - type: 1
+    isLock: 1
+    isDefault: 0
+    icon: {fileID: 21300000, guid: 87a5a88205aebec45918744daa6c5227, type: 3}
+    albedo: {fileID: 0}
+    materials:
+    - {fileID: 2100000, guid: d896693e2f9e7ce4ba6608b357a5ae74, type: 2}
+    - {fileID: 2100000, guid: 4a488c5d6b0a6544188ce4432527ee98, type: 2}
+    mesh: {fileID: -4003752490646737634, guid: c1c5ce61f93679c4fb788a3adf1c9064, type: 3}
+  - type: 1
+    isLock: 1
+    isDefault: 0
+    icon: {fileID: 21300000, guid: 52b79944ab819b5409109f8356d05fed, type: 3}
+    albedo: {fileID: 0}
+    materials:
+    - {fileID: 2100000, guid: a810e30606a52044b808fe4390e68748, type: 2}
+    mesh: {fileID: -539633534336874057, guid: 98b5be968415fe14b9697b19d0009414, type: 3}
+  - type: 1
+    isLock: 1
+    isDefault: 0
+    icon: {fileID: 21300000, guid: c84c6d73c042a794da09aaa0c4d9be6a, type: 3}
+    albedo: {fileID: 0}
+    materials:
+    - {fileID: 2100000, guid: 762ababd0bc78844da9207ea5042c1d3, type: 2}
+    - {fileID: 2100000, guid: 38596a02423c9f14e872880b8d0fc0d7, type: 2}
+    mesh: {fileID: 9076575260180489833, guid: 48a7273928aaa034aae9a26c3080a167, type: 3}

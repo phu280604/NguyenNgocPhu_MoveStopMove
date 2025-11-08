@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PoolManager : Singleton<PoolManager>
@@ -16,8 +17,12 @@ public class PoolManager : Singleton<PoolManager>
 
     public T Spawn<T>(EPoolType poolType, Vector3 position, Quaternion rotation) where T : GameUnit
     {
-        //Debug.Log(_poolInstance.Count);
         return _poolInstance[poolType].Spawn(position, rotation) as T;
+    }
+
+    public T SpawnWithTransform<T>(EPoolType poolType, Transform parent, Vector3 position, Quaternion rotation) where T : GameUnit
+    {
+        return _poolInstance[poolType].Spawn(parent, position, rotation) as T;
     }
 
     public void Despawn(EPoolType poolType)

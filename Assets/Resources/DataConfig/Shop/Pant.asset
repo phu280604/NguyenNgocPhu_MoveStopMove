@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaaae3be59ab5a48b0bda5073f8882b, type: 3}
+  m_Name: Pant
+  m_EditorClassIdentifier: 
+  itemSOs:
+  - type: 2
+    isLock: 0
+    isDefault: 1
+    icon: {fileID: 21300000, guid: d244857e15941064bbe03a93b5292bce, type: 3}
+    albedo: {fileID: 0}
+    materials:
+    - {fileID: 2100000, guid: 5dab0ffa3a418bf4386e3b2443991464, type: 2}
+    mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  - type: 2
+    isLock: 1
+    isDefault: 0
+    icon: {fileID: 21300000, guid: 077614b08ff6c7e469945e6b27568ab8, type: 3}
+    albedo: {fileID: 21300000, guid: 47c8d5358d60d474388d6a7e89a221aa, type: 3}
+    materials:
+    - {fileID: 2100000, guid: fea5977d5ed6b994f9e846570e715204, type: 2}
+    mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  - type: 2
+    isLock: 1
+    isDefault: 0
+    icon: {fileID: 21300000, guid: cc34401b92b11b34bb55795ab63606a8, type: 3}
+    albedo: {fileID: 21300000, guid: f5d61e52e0c02c7499cc3e23eb8c7f3f, type: 3}
+    materials:
+    - {fileID: 2100000, guid: fea5977d5ed6b994f9e846570e715204, type: 2}
+    mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  - type: 2
+    isLock: 1
+    isDefault: 0
+    icon: {fileID: 21300000, guid: 66469d2435270484cb2a669c5438d50a, type: 3}
+    albedo: {fileID: 21300000, guid: e97fa78b135de6144a5983996978204a, type: 3}
+    materials:
+    - {fileID: 2100000, guid: fea5977d5ed6b994f9e846570e715204, type: 2}
+    mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}

@@ -32,7 +32,10 @@ public class ShopUICanvas : UICanvas
 
     #region --- Fields ---
 
-    [SerializeField] private List<TabItem> _tabItems = new List<TabItem>();
+    [SerializeField] private List<ShopTabItem> _tabItems = new List<ShopTabItem>();
+    [SerializeField] private List<ShopItemSO> _shopItems = new List<ShopItemSO>();
+
+    [SerializeField] private Transform _itemTrans;
 
     #endregion
 }

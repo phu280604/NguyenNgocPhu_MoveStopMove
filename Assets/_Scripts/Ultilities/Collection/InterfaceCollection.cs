@@ -23,3 +23,19 @@ public interface IWeaponHandler
     public void OnRotation(ref Transform weaponRot, float speed);
 }
 #endregion
+
+#region --- Observer ---
+
+public interface IObserver<T>
+{
+    public void Notify(T data);
+}
+
+public interface ISubject<T>
+{
+    public void AddObserver(IObserver<T> observer);
+    public void RemoveObserver(IObserver<T> observer);
+    public void NotifyObservers(T data);
+}
+
+#endregion

@@ -4,12 +4,14 @@ using UnityEngine;
 
 #region --- Enums ---
 
+#region -- Enum GameStates --
 public enum EGameStates
 {
     Menu,
     Shop,
     GamePlay,
 }
+#endregion
 
 #region -- Enum Tags ---
 public enum ETag
@@ -69,6 +71,7 @@ public enum EPoolType
     Bot,
     AxeProjectile,
     BoomerangProjectile,
+    Item,
 }
 
 #endregion
@@ -79,6 +82,16 @@ public enum EBonusStats
     None,
     Speed,
     Shield,
+}
+#endregion
+
+#region -- Enum ShopItems --
+public enum EItemType
+{
+    Weapon,
+    Hat,
+    Pant,
+    Set,
 }
 #endregion
 
