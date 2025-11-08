@@ -6,12 +6,6 @@ using UnityEngine.UI;
 
 public class ShopTabItem : MonoBehaviour
 {
-    #region --- Overrides ---
-
-
-
-    #endregion
-
     #region --- Methods ---
 
     public void OnInit(bool isToggled)
@@ -38,16 +32,10 @@ public class ShopTabItem : MonoBehaviour
     {
         if (_toggle.isOn && !_isToggled)
         {
-
+            //NotifyObservers((int)_type);
         }
         else if(!_toggle.isOn)
-            OnDisableTab();
-    }
-
-    private void OnDisableTab()
-    {
-        PoolManager.Instance.Despawn(EPoolType.Item);
-        _isToggled = false;
+            _isToggled = false;
     }
 
     #endregion
@@ -56,20 +44,17 @@ public class ShopTabItem : MonoBehaviour
 
     [Header("UI components")]
     [SerializeField] private Toggle _toggle;
-
     [SerializeField] private Image _background;
     [SerializeField] private Image _icon;
 
-    [Header("Off colors")]
+    [Header("Colors")]
     [SerializeField] private Color _offBackground;
     [SerializeField] private Color _offIcon;
-
-    [Header("On colors")]
     [SerializeField] private Color _onBackground;
     [SerializeField] private Color _onIcon;
 
     [Header("ScriptableObjects")]
-    [SerializeField] private ShopItemSO _itemInfo;
+    [SerializeField] private EItemType _type;
 
     private bool _isToggled = false;
 

@@ -88,11 +88,21 @@ public enum EBonusStats
 #region -- Enum ShopItems --
 public enum EItemType
 {
-    Weapon,
-    Hat,
-    Pant,
-    Set,
+    Weapon = 0,
+    Hat = 1,
+    Pant = 2,
+    Set = 3,
 }
+#endregion
+
+#region -- Enum KeyObserver --
+
+public enum EUIKey
+{
+    Tab = 0,
+    Button = 1,
+}
+
 #endregion
 
 #endregion

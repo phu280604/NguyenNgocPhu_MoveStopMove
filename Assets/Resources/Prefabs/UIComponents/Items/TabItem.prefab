@@ -87,7 +87,8 @@ GameObject:
   - component: {fileID: 951410247759444984}
   - component: {fileID: 9034443683190317254}
   - component: {fileID: 8847351880725821725}
-  - component: {fileID: 6972455604564683647}
+  - component: {fileID: 6527579839518449187}
+  - component: {fileID: 1411782745911414975}
   m_Layer: 0
   m_Name: TabItem
   m_TagString: Untagged
@@ -200,8 +201,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6972455604564683647}
-        m_TargetAssemblyTypeName: TabItem, Assembly-CSharp
+      - m_Target: {fileID: 6527579839518449187}
+        m_TargetAssemblyTypeName: TabColorC, Assembly-CSharp
         m_MethodName: OnTabChange
         m_Mode: 0
         m_Arguments:
@@ -212,10 +213,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6972455604564683647}
-        m_TargetAssemblyTypeName: TabItem, Assembly-CSharp
-        m_MethodName: OnActionChange
-        m_Mode: 1
+      - m_Target: {fileID: 1411782745911414975}
+        m_TargetAssemblyTypeName: ShopTabC, Assembly-CSharp
+        m_MethodName: NotifyObserversByKey
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -225,7 +226,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
---- !u!114 &6972455604564683647
+--- !u!114 &6527579839518449187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,14 +235,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2151840364972799708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fddc72b5e28faca4ba3bbc6c4bfa230c, type: 3}
+  m_Script: {fileID: 11500000, guid: 80c926d5bbae8544fa1032803f432370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _toggle: {fileID: 8847351880725821725}
   _background: {fileID: 9034443683190317254}
   _icon: {fileID: 5540300593561367588}
-  _offBackground: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
-  _offIcon: {r: 0.6528301, g: 0.6528301, b: 0.6528301, a: 1}
+  _offBackground: {r: 0.24705882, g: 0.24705882, b: 0.24705882, a: 1}
+  _offIcon: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
   _onBackground: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
   _onIcon: {r: 1, g: 1, b: 1, a: 1}
-  _itemInfo: {fileID: 11400000, guid: 36c3c7ce83c26a24e84b2e8713311351, type: 2}
+--- !u!114 &1411782745911414975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151840364972799708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43da39bd7ce8d9a46b0bad04fe7f3fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _subject: {fileID: 0}
+  _itemType: 0
