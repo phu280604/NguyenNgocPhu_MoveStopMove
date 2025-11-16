@@ -19,11 +19,11 @@ public class PlayerPhysicH : MonoBehaviour
 
     #region --- Methods ---
 
-    public void BuildAttackRange(float radius, Action<Collider> setTarget)
+    public void BuildAttackRange(float radius, Vector3 position, Action<Collider> setTarget)
     {
         _radius = radius;
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask(ELayer.Bot.ToString()));
+        Collider[] hits = Physics.OverlapSphere(position, radius, LayerMask.GetMask(ELayer.Bot.ToString()));
         
         if(hits.Count() >= 1)
             setTarget?.Invoke(hits[0]);

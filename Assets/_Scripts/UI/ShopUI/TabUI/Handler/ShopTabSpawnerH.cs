@@ -1,22 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
-public class ShopTabSpawnerH : MonoBehaviour, IObserver<int>
+public class ShopTabSpawnerH : MonoBehaviour, IObserver<object>
 {
     #region --- Overrides ---
 
-    public void OnNotify(int data)
+    public void OnNotify(object data)
     {
         PoolManager.Instance.Despawn(EPoolType.Item);
 
-        foreach(ItemSO itemSO in _shopItemSOs[data].itemSOs) 
+        if(data is int d)
         {
-            ShopItemC item = PoolManager.Instance.Spawn<ShopItemC>(EPoolType.Item, Vector3.zero, Quaternion.identity);
+            List<GenericItem> items = new List<GenericItem>();
 
-            item.transform.SetParent(_itemTransform);
-            item.OnInit(itemSO);
+            switch ((EItemType)d)
+            {
+                case EItemType.Weapon:
+                    items.AddRange(_subject.ItemDataConfig.GetItemsByType<ItemWeapon>(EItemType.Weapon));
+                    break;
+                case EItemType.Hat:
+                    items.AddRange(_subject.ItemDataConfig.GetItemsByType<ItemHat>(EItemType.Hat));
+                    break;
+                case EItemType.Pant:
+                    items.AddRange(_subject.ItemDataConfig.GetItemsByType<ItemPant>(EItemType.Pant));
+                    break;
+                case EItemType.Set:
+                    items.AddRange(_subject.ItemDataConfig.GetItemsByType<ItemSetSkin>(EItemType.Set));
+                    break;
+            }
+
+            SpawnItem(items);
         }
+    }
+
+    private void SpawnItem(List<GenericItem> items)
+    {
+        foreach(GenericItem item in items)
+        {
+            ShopItemC itemUI = PoolManager.Instance.Spawn<ShopItemC>(EPoolType.Item, Vector3.zero, Quaternion.identity);
+
+            itemUI.transform.SetParent(_itemTransform);
+            itemUI.OnInit(item, _subject, _itemToggleGroup);
+            itemUI.ChooseItem(false);
+        }
+
+        PoolManager.Instance.GetPool<ShopItemC>(EPoolType.Item)[0].ChooseItem(true);
     }
 
     #endregion
@@ -34,10 +65,9 @@ public class ShopTabSpawnerH : MonoBehaviour, IObserver<int>
     #region --- Fields ---
 
     [SerializeField] private Transform _itemTransform;
+    [SerializeField] private ToggleGroup _itemToggleGroup;
 
-    [SerializeField] private Subject<EUIKey, int> _subject;
-
-    [SerializeField] private List<ShopItemSO> _shopItemSOs = new List<ShopItemSO>();
+    [SerializeField] private ShopSubject _subject;
 
     #endregion
 }

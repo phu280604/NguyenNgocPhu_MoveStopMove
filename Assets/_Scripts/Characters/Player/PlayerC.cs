@@ -76,7 +76,12 @@ public class PlayerC : CharacterC
 
     private void OnBuildRangeAttack()
     {
-        _physicH.BuildAttackRange(_statsM.CurrentRangeAttack, (target) => {
+        if (_isChangeRange)
+        {
+            _atkRangePos.localScale = Vector3.one * (_statsM.CurrentRangeAttack - 0.5f);
+            _isChangeRange = false;
+        }
+        _physicH.BuildAttackRange(_statsM.CurrentRangeAttack, _atkRangePos.position , (target) => {
             _stateM.Target = target?.gameObject.transform;
         });
     }
@@ -101,6 +106,8 @@ public class PlayerC : CharacterC
     [Header("Model")]
     [SerializeField] private PlayerStatsM _statsM;
     [SerializeField] private PlayerStateM _stateM;
+    [SerializeField] private Transform _atkRangePos;
+    private bool _isChangeRange = true;
     #endregion
 
     #region -- State machine --

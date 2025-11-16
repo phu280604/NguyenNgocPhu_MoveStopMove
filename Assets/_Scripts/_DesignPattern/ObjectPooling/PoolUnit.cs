@@ -23,7 +23,6 @@ public class PoolUnit
 
         if (_unitInactive.Count <= 0)
         {
-            
             unit = GameObject.Instantiate(_prefab, _parent).GetComponent<GameUnit>();
         }
         else

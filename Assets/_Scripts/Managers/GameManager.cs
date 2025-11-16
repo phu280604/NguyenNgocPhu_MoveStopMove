@@ -51,12 +51,6 @@ public class GameManager : Singleton<GameManager>
     {
         _camGamePlay.SetActive(false);
         _camShop.SetActive(true);
-
-        PoolManager.Instance.Spawn<CharacterVisualC>(
-            EPoolType.VisualObject, 
-            _visualOffet, 
-            Quaternion.LookRotation(Vector3.back)
-        );
     }
 
     private void GamePlayStateTriggered()
@@ -76,10 +70,6 @@ public class GameManager : Singleton<GameManager>
     [Header("Unity components")]
     [SerializeField] private GameObject _camGamePlay;
     [SerializeField] private GameObject _camShop;
-
-    [Header("Visual fields")]
-    [SerializeField] private Vector3 _visualOffet;
-    [SerializeField] private Vector3 _visualRotaion;
 
     #endregion
 }

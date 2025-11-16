@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,11 @@ public class PoolManager : Singleton<PoolManager>
         {
             _poolInstance.Add(unit.PoolType, new PoolUnit(prefab, amount, parent));
         }
+    }
+
+    public List<T> GetPool<T>(EPoolType poolType)
+    {
+        return _poolInstance[poolType].UnitActive.OfType<T>().ToList();
     }
 
     public T Spawn<T>(EPoolType poolType, Vector3 position, Quaternion rotation) where T : GameUnit
