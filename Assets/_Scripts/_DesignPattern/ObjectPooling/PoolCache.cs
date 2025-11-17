@@ -19,6 +19,16 @@ public class PoolCache : MonoBehaviour
         public int amount;
     }
 
+    [System.Serializable]
+    class PoolAmountWithoutRoot
+    {
+        [Header("Unity components")]
+        public GameObject prefab;
+
+        [Header("Enum components")]
+        public EPoolType poolType;
+    }
+
     #endregion
 
     #region --- Unity methods ---
@@ -34,6 +44,16 @@ public class PoolCache : MonoBehaviour
                 _poolAmountWithRoot[i].parent
             );
         }
+
+        for (int i = 0; i < _poolAmountWithoutRoot.Count; i++)
+        {
+            PoolManager.Instance.Preload(
+                _poolAmountWithoutRoot[i].prefab,
+                _poolAmountWithoutRoot[i].prefab.GetComponent<GameUnit>(),
+                0,
+                null
+            );
+        }
     }
 
     #endregion
@@ -41,6 +61,7 @@ public class PoolCache : MonoBehaviour
     #region --- Fields ---
 
     [SerializeField] private List<PoolAmountWithRoot> _poolAmountWithRoot;
+    [SerializeField] private List<PoolAmountWithoutRoot> _poolAmountWithoutRoot;
 
     #endregion
 }

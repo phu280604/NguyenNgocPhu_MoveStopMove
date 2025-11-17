@@ -9,6 +9,10 @@ TagManager:
   - ItemHandle
   - Manager
   - Character
+  - Locked
+  - Purchased
+  - Equipped
+  - VisualParent
   layers:
   - Default
   - TransparentFX

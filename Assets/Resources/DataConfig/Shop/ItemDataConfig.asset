@@ -1,0 +1,320 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c827975a780e7409fcc2a601aa06e3, type: 3}
+  m_Name: ItemDataConfig
+  m_EditorClassIdentifier: 
+  weapons:
+  - _id: 8714
+    cost: 0
+    itemState: 3
+    materials:
+    - {fileID: 2100000, guid: 36ff9b6f43a8b724ba2e7f548f61497e, type: 2}
+    - {fileID: 2100000, guid: 2d6c03e937b9d5543a4e08a91bd4306a, type: 2}
+    - {fileID: 2100000, guid: d676035755581e942866b0383b052604, type: 2}
+    mesh: {fileID: 4300000, guid: 6083ff9012eefa348b00b8c543f1a742, type: 3}
+    icon: {fileID: 21300000, guid: 2cc0f6d1c7933664f877675ec7992597, type: 3}
+    bulletType: 4
+    offset: {x: -0.01, y: 0.047, z: -0.072}
+    rotation: {x: 47, y: -11, z: -17}
+    scale: {x: 32, y: 32, z: 32}
+  - _id: 2335
+    cost: 45
+    itemState: 2
+    materials:
+    - {fileID: 2100000, guid: 2d6d5ee7295c28443ad1c6cfb6f20111, type: 2}
+    mesh: {fileID: 4300000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
+    icon: {fileID: 21300000, guid: 2a2bb7c037af78f41a0a19aeafcb3306, type: 3}
+    bulletType: 5
+    offset: {x: -0.216, y: 0.237, z: -0.049}
+    rotation: {x: 44, y: -29, z: -70}
+    scale: {x: 8, y: 8, z: 8}
+  - _id: 3045
+    cost: 80
+    itemState: 1
+    materials:
+    - {fileID: 2100000, guid: c017d5e2d3cd659488b9ea55d7d9fcba, type: 2}
+    - {fileID: 2100000, guid: 02b805848b914c542a1585ba88441869, type: 2}
+    mesh: {fileID: 4300000, guid: 90389cac50942cb4ca38583e6531094a, type: 3}
+    icon: {fileID: 21300000, guid: b6553b8f3495a9f4c8c17caf3cce489e, type: 3}
+    bulletType: 4
+    offset: {x: 0.025, y: 0.12, z: 0.025}
+    rotation: {x: 45, y: -19, z: -26}
+    scale: {x: 32, y: 32, z: 32}
+  - _id: 5972
+    cost: 124
+    itemState: 1
+    materials:
+    - {fileID: 2100000, guid: a323d79abbf34834b83ed7433875c1a7, type: 2}
+    - {fileID: 2100000, guid: 8078bbccff5e78f45b291ea76ca6cd48, type: 2}
+    mesh: {fileID: 4300000, guid: ecd6cb62ed8350e498f9e25d15d9caa3, type: 3}
+    icon: {fileID: 21300000, guid: bb263deeed073a64698ce52dfba30bbd, type: 3}
+    bulletType: 4
+    offset: {x: -0.014, y: 0, z: -0.121}
+    rotation: {x: 35, y: -25, z: -29}
+    scale: {x: 32, y: 32, z: 32}
+  hats:
+  - _id: 3132
+    cost: 0
+    itemState: 2
+    materials: []
+    mesh: {fileID: 0}
+    icon: {fileID: 21300000, guid: d244857e15941064bbe03a93b5292bce, type: 3}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    scale: {x: 0, y: 0, z: 0}
+  - _id: 3865
+    cost: 20
+    itemState: 2
+    materials:
+    - {fileID: 2100000, guid: d896693e2f9e7ce4ba6608b357a5ae74, type: 2}
+    - {fileID: 2100000, guid: 4a488c5d6b0a6544188ce4432527ee98, type: 2}
+    mesh: {fileID: -4003752490646737634, guid: c1c5ce61f93679c4fb788a3adf1c9064, type: 3}
+    icon: {fileID: 21300000, guid: 87a5a88205aebec45918744daa6c5227, type: 3}
+    offset: {x: 0.002, y: -0.035, z: 0.004}
+    rotation: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - _id: 6821
+    cost: 50
+    itemState: 1
+    materials:
+    - {fileID: 2100000, guid: a810e30606a52044b808fe4390e68748, type: 2}
+    mesh: {fileID: -539633534336874057, guid: 98b5be968415fe14b9697b19d0009414, type: 3}
+    icon: {fileID: 21300000, guid: 52b79944ab819b5409109f8356d05fed, type: 3}
+    offset: {x: -0.082, y: 0.012, z: 0.077}
+    rotation: {x: -75, y: -44, z: 0}
+    scale: {x: 24, y: 24, z: 24}
+  - _id: 1782
+    cost: 72
+    itemState: 1
+    materials:
+    - {fileID: 2100000, guid: 762ababd0bc78844da9207ea5042c1d3, type: 2}
+    - {fileID: 2100000, guid: 38596a02423c9f14e872880b8d0fc0d7, type: 2}
+    mesh: {fileID: 9076575260180489833, guid: 48a7273928aaa034aae9a26c3080a167, type: 3}
+    icon: {fileID: 21300000, guid: c84c6d73c042a794da09aaa0c4d9be6a, type: 3}
+    offset: {x: -0.034, y: -0.063, z: -0.197}
+    rotation: {x: 10, y: 2, z: 8}
+    scale: {x: 3, y: 3, z: 3}
+  pants:
+  - _id: 1769
+    cost: 0
+    itemState: 2
+    materials:
+    - {fileID: 2100000, guid: 5dab0ffa3a418bf4386e3b2443991464, type: 2}
+    mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+    icon: {fileID: 21300000, guid: d244857e15941064bbe03a93b5292bce, type: 3}
+    albedo: {fileID: 0}
+  - _id: 5548
+    cost: 26
+    itemState: 1
+    materials:
+    - {fileID: 2100000, guid: fea5977d5ed6b994f9e846570e715204, type: 2}
+    mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+    icon: {fileID: 21300000, guid: 077614b08ff6c7e469945e6b27568ab8, type: 3}
+    albedo: {fileID: 21300000, guid: 47c8d5358d60d474388d6a7e89a221aa, type: 3}
+  - _id: 8746
+    cost: 43
+    itemState: 1
+    materials:
+    - {fileID: 2100000, guid: fea5977d5ed6b994f9e846570e715204, type: 2}
+    mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+    icon: {fileID: 21300000, guid: cc34401b92b11b34bb55795ab63606a8, type: 3}
+    albedo: {fileID: 21300000, guid: f5d61e52e0c02c7499cc3e23eb8c7f3f, type: 3}
+  - _id: 1513
+    cost: 78
+    itemState: 2
+    materials:
+    - {fileID: 2100000, guid: fea5977d5ed6b994f9e846570e715204, type: 2}
+    mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+    icon: {fileID: 21300000, guid: 66469d2435270484cb2a669c5438d50a, type: 3}
+    albedo: {fileID: 21300000, guid: e97fa78b135de6144a5983996978204a, type: 3}
+  setSkins:
+  - _id: 9405
+    cost: 0
+    itemState: 2
+    materials:
+    - {fileID: 2100000, guid: b74fe5d82e187f243b268c0ff1bda3dc, type: 2}
+    mesh: {fileID: -4538140524563738714, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+    icon: {fileID: 21300000, guid: d244857e15941064bbe03a93b5292bce, type: 3}
+    weapon:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      bulletType: 0
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    hat:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    pant:
+      _id: 0
+      cost: 0
+      itemState: 3
+      materials:
+      - {fileID: 2100000, guid: 5dab0ffa3a418bf4386e3b2443991464, type: 2}
+      mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      icon: {fileID: 0}
+      albedo: {fileID: 0}
+    back:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    hip:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+  - _id: 9845
+    cost: 150
+    itemState: 3
+    materials:
+    - {fileID: 2100000, guid: c3ef55b2da12f9d4f93ddbb22c5f8fdd, type: 2}
+    - {fileID: 2100000, guid: c64682cff4f537348959568b35b5a15c, type: 2}
+    - {fileID: 2100000, guid: 489588ca575dc6a40b5838803fa762c0, type: 2}
+    mesh: {fileID: -4538140524563738714, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+    icon: {fileID: 21300000, guid: 916eb971e2dc28b419a242fa6950df78, type: 3}
+    weapon:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      bulletType: 0
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    hat:
+      _id: 0
+      cost: 0
+      itemState: 3
+      materials:
+      - {fileID: 2100000, guid: c3ef55b2da12f9d4f93ddbb22c5f8fdd, type: 2}
+      - {fileID: 2100000, guid: c64682cff4f537348959568b35b5a15c, type: 2}
+      - {fileID: 2100000, guid: 489588ca575dc6a40b5838803fa762c0, type: 2}
+      mesh: {fileID: -5423115921803302898, guid: d3651825d381f234b8c513b8555c3f15, type: 3}
+      icon: {fileID: 0}
+      offset: {x: 0, y: -0.041, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 32, y: 32, z: 32}
+    pant:
+      _id: 0
+      cost: 0
+      itemState: 3
+      materials:
+      - {fileID: 2100000, guid: 489588ca575dc6a40b5838803fa762c0, type: 2}
+      mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      icon: {fileID: 0}
+      albedo: {fileID: 0}
+    back:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    hip:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+  - _id: 2570
+    cost: 250
+    itemState: 2
+    materials:
+    - {fileID: 2100000, guid: 707809027c8189d40a6150a5d7b1304d, type: 2}
+    - {fileID: 2100000, guid: c46efedfd929e304ea232fa0511deb64, type: 2}
+    - {fileID: 2100000, guid: 8c588e27b1a744d4f902c9f5686ead31, type: 2}
+    mesh: {fileID: -4538140524563738714, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+    icon: {fileID: 21300000, guid: 591bf6bd34c3a3c4e9143ba55a6c7d7b, type: 3}
+    weapon:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      bulletType: 0
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    hat:
+      _id: 0
+      cost: 0
+      itemState: 0
+      materials: []
+      mesh: {fileID: 0}
+      icon: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 0, y: 0, z: 0}
+    pant:
+      _id: 0
+      cost: 0
+      itemState: 3
+      materials:
+      - {fileID: 2100000, guid: ab46a5c6c62e70b42a184a055d54a3db, type: 2}
+      mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      icon: {fileID: 0}
+      albedo: {fileID: 21300000, guid: 49de162ab1ab20c4d88ad87f70ad13af, type: 3}
+    back:
+      _id: 0
+      cost: 0
+      itemState: 3
+      materials:
+      - {fileID: 2100000, guid: c46efedfd929e304ea232fa0511deb64, type: 2}
+      - {fileID: 2100000, guid: 8c588e27b1a744d4f902c9f5686ead31, type: 2}
+      mesh: {fileID: -6065012968612619271, guid: cc2ae86e018354b429c84ac72b5db892, type: 3}
+      icon: {fileID: 0}
+      offset: {x: 0.023, y: 0.559, z: -0.125}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 64, y: 64, z: 64}
+    hip:
+      _id: 0
+      cost: 0
+      itemState: 3
+      materials:
+      - {fileID: 2100000, guid: 707809027c8189d40a6150a5d7b1304d, type: 2}
+      mesh: {fileID: 882776928807334550, guid: 11b8cec584ec01c4c90f33b4ee17a0c5, type: 3}
+      icon: {fileID: 0}
+      offset: {x: 0.005, y: 0.104, z: -0.174}
+      rotation: {x: 0, y: -90, z: -10}
+      scale: {x: 16, y: 16, z: 16}

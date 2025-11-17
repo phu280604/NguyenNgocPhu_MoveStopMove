@@ -23,8 +23,30 @@ public class PoolUnit
 
         if (_unitInactive.Count <= 0)
         {
-            
             unit = GameObject.Instantiate(_prefab, _parent).GetComponent<GameUnit>();
+        }
+        else
+        {
+            unit = _unitInactive.Dequeue();
+        }
+
+        unit.Parent.SetPositionAndRotation(position, rotation);
+        unit.gameObject.SetActive(true);
+        _unitActive.Add(unit);
+
+        return unit;
+    }
+
+    public GameUnit Spawn(Transform parent, Vector3 position, Quaternion rotation)
+    {
+        GameUnit unit;
+
+        if (_unitInactive.Count <= 0)
+        {
+            GameObject obj = GameObject.Instantiate(_prefab, _parent);
+            obj.transform.SetParent(parent);
+
+            unit = obj.GetComponent<GameUnit>();
         }
         else
         {

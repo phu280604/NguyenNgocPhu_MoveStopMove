@@ -11,6 +11,7 @@ public class AxeC : WeaponC
     {
         _handler = new AxeH();
         StateM = _stateM;
+        StatsSO = _stats;
     }
 
     private void Update()

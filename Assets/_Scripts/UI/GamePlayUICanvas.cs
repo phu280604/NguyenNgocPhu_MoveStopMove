@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,9 +21,27 @@ public class GamePlayUICanvas : UICanvas
 
     #endregion
 
+    #region --- Unity methods ---
+
+    private void OnEnable()
+    {
+        ChangeCoins();
+    }
+
+    #endregion
+
+    #region --- Methods ---
+
+    private void ChangeCoins()
+    {
+        _txtCoins.text = GameManager.Instance.LevelData.coins.ToString();
+    }
+
+    #endregion
+
     #region --- Fields ---
 
-
+    [SerializeField] private TextMeshProUGUI _txtCoins;
 
     #endregion
 }
