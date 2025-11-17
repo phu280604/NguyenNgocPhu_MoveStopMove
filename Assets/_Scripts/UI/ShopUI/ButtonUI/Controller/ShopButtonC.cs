@@ -9,8 +9,11 @@ public class ShopButtonC : MonoBehaviour, IObserver<object>
 
     public void OnNotify(object data)
     {
-        if (_text != null && data is int cost)
-            _text.text = cost.ToString();
+        if (_text != null && data is int coins)
+        {
+            _coins = coins;
+            _text.text = coins.ToString();
+        }
     }
 
     #endregion
@@ -28,7 +31,13 @@ public class ShopButtonC : MonoBehaviour, IObserver<object>
 
     public void OnClick()
     {
-        _subject.NotifyObservers(EUIKey.Button, (int)_itemState + 1);
+        if(_coins <= GameManager.Instance.LevelData.coins && GameManager.Instance.LevelData.coins != 0)
+        {
+            GameManager.Instance.LevelData.coins -= _coins;
+            GameManager.Instance.SetCoin(GameManager.Instance.LevelData.coins);
+
+            _subject.NotifyObservers(EUIKey.Button, (int)_itemState + 1);
+        }
     }
 
     #endregion
@@ -46,6 +55,8 @@ public class ShopButtonC : MonoBehaviour, IObserver<object>
     [SerializeField] private EItemState _itemState;
 
     [SerializeField] private ShopSubject _subject;
+
+    private int _coins;
 
     #endregion
 }

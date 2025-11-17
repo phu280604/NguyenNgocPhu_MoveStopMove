@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,7 @@ public class ShopUICanvas : UICanvas, IObserver<object>
 
         base.CloseDirectly();
     }
+
     public void OnNotify(object data)
     {
         if(data is int d)
@@ -41,6 +43,9 @@ public class ShopUICanvas : UICanvas, IObserver<object>
             }
 
             _buttonItems[(EItemState)d].gameObject.SetActive(true);
+
+            if((EItemState)d == EItemState.Purchased)
+                ChangeCoins();
         }
     }
 
@@ -52,11 +57,24 @@ public class ShopUICanvas : UICanvas, IObserver<object>
     {
         for (int i = 1; i < _tabItems.Count; i++)
             _tabItems[i].OnInit(false);
+
+        ChangeCoins();
+    }
+
+    #endregion
+
+    #region --- Methods ---
+
+    private void ChangeCoins()
+    {
+        _txtCoins.text = GameManager.Instance.LevelData.coins.ToString();
     }
 
     #endregion
 
     #region --- Fields ---
+
+    [SerializeField] private TextMeshProUGUI _txtCoins;
 
     [SerializeField] private List<TabColorC> _tabItems = new List<TabColorC>();
     private Dictionary<EItemState, ShopButtonC> _buttonItems = new Dictionary<EItemState, ShopButtonC>();

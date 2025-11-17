@@ -231,6 +231,7 @@ MonoBehaviour:
   IsHandlingRabbitEars: 0
   IsWidescreenProcessing: 0
   popups: []
+  _txtCoin: {fileID: 8858825364093707457}
 --- !u!1 &2072715497065390864
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +901,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6969863249313584536, guid: 00220a1252ff16f4ca388c116d86b019, type: 3}
   m_PrefabInstance: {fileID: 826713726972154855}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8858825364093707457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8181296124667885350, guid: 00220a1252ff16f4ca388c116d86b019, type: 3}
+  m_PrefabInstance: {fileID: 826713726972154855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2008411900809604801
 PrefabInstance:
   m_ObjectHideFlags: 0

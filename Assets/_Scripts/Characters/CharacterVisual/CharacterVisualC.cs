@@ -56,6 +56,9 @@ public class CharacterVisualC : GameUnit, IObserver<object>
     private void SaveBaseData()
     {
         if (_visualData != null) return;
+
+        _visualData = new VisualData();
+
         _visualData.itemData.Add(new ItemVisualData
         {
             id = _subject.ItemDataConfig.GetIdFirstItem(EItemType.Weapon),
