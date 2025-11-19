@@ -6,7 +6,7 @@ namespace FSM.Player
 {
     public class AttackState : BaseState<PlayerC>
     {
-        public AttackState(PlayerC controller) : base(controller) 
+        public AttackState(PlayerC controller, EState keyState) : base(controller, keyState) 
         {
             if (controller.StateM is PlayerStateM stateM)
                 _stateM = stateM;

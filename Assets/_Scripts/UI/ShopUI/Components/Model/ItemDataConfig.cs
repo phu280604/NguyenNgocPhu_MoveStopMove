@@ -101,6 +101,23 @@ public class ItemDataConfig : ScriptableObject
         return -1;
     }
 
+    public int GetRandomIdItemByType(EItemType type)
+    {
+        switch (type)
+        {
+            case EItemType.Weapon:
+                return weapons[Random.Range(0, weapons.Count)].id;
+            case EItemType.Hat:
+                return hats[Random.Range(0, hats.Count)].id;
+            case EItemType.Pant:
+                return pants[Random.Range(0, pants.Count)].id;
+            case EItemType.Set:
+                return setSkins[Random.Range(0, setSkins.Count)].id;
+        }
+
+        return -1;
+    }
+
     public void UpdateItemStateById(int id, EItemType type, EItemState state)
     {
         switch (type)

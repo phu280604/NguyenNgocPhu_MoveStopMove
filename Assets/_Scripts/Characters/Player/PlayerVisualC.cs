@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerVisualC : MonoBehaviour
+public class PlayerVisualC : CharacterVisualC
 {
     #region --- Unity methods ---
 
@@ -38,68 +38,14 @@ public class PlayerVisualC : MonoBehaviour
         }
     }
 
-    private void SetOnVisual(int id, EItemType itemType)
+    protected override void SetOnVisual(int id, EItemType itemType)
     {
         switch (itemType)
         {
             // Weapon.
             case EItemType.Weapon:
                 ItemWeapon weapon = _itemConfig.GetItemById<ItemWeapon>(id, itemType);
-                if (weapon != null)
-                {
-                    _weaponMesh.mesh = weapon.mesh;
-                    _weaponMeshRenderer.materials = weapon.materials.ToArray();
-                    _stateM.WeaponType = weapon.bulletType;
-                    SetTransform(_weaponMesh.transform, weapon.offset, weapon.rotation, weapon.scale);
-                }
-                break;
-
-            // Hat.
-            case EItemType.Hat:
-                ItemHat hat = _itemConfig.GetItemById<ItemHat>(id, itemType);
-                if (hat != null)
-                {
-                    _hatMesh.mesh = hat.mesh;
-                    _hatMeshRenderer.materials = hat.materials.ToArray();
-                    SetTransform(_hatMesh.transform, hat.offset, hat.rotation, hat.scale);
-                }
-                break;
-
-            // Pant.
-            case EItemType.Pant:
-                ItemPant pant = _itemConfig.GetItemById<ItemPant>(id, itemType);
-                if (pant != null)
-                {
-                    _pantMeshRenderer.materials = pant.materials.ToArray();
-                    foreach (Material mat in _pantMeshRenderer.materials)
-                    {
-                        if (pant.albedo == null) break;
-                        Texture2D texture = pant.albedo.texture;
-                        mat.SetTexture("_MainTex", texture);
-                    }
-                }
-                break;
-
-            // Back.
-            case EItemType.Back:
-                ItemBack back = _itemConfig.GetItemById<ItemBack>(id, itemType);
-                if (back != null)
-                {
-                    _backMesh.mesh = back.mesh;
-                    _backMeshRenderer.materials = back.materials.ToArray();
-                    SetTransform(_backMesh.transform, back.offset, back.rotation, back.scale);
-                }
-                break;
-
-            // Hip.
-            case EItemType.Hip:
-                ItemHip hip = _itemConfig.GetItemById<ItemHip>(id, itemType);
-                if (hip != null)
-                {
-                    _hipMesh.mesh = hip.mesh;
-                    _hipMeshRenderer.materials = hip.materials.ToArray();
-                    SetTransform(_hipMesh.transform, hip.offset, hip.rotation, hip.scale);
-                }
+                _stateM.WeaponType = weapon.bulletType;
                 break;
 
             // Set.
@@ -117,6 +63,8 @@ public class PlayerVisualC : MonoBehaviour
                 }
                 break;
         }
+
+        base.SetOnVisual(id, itemType);
     }
 
     private void SetSkin<T>(T itemInSet, EItemType itemType) where T : GenericItem
@@ -171,34 +119,11 @@ public class PlayerVisualC : MonoBehaviour
         }
     }
 
-    private void SetTransform(Transform transform, Vector3 offset, Vector3 rotation, Vector3 scale)
-    {
-        transform.localScale = scale;
-        transform.localEulerAngles = rotation;
-        transform.localPosition = offset;
-    }
-
     #endregion
 
     #region --- Fields ---
 
-    [Header("Skinned MeshRenderer components")]
-    [SerializeField] private SkinnedMeshRenderer _bodyMeshRenderer;
-    [SerializeField] private SkinnedMeshRenderer _pantMeshRenderer;
-
-    [Header("MeshRenderer components")]
-    [SerializeField] private MeshRenderer _hatMeshRenderer;
-    [SerializeField] private MeshRenderer _weaponMeshRenderer;
-    [SerializeField] private MeshRenderer _backMeshRenderer;
-    [SerializeField] private MeshRenderer _hipMeshRenderer;
-
-    [Header("MeshFilter components")]
-    [SerializeField] private MeshFilter _hatMesh;
-    [SerializeField] private MeshFilter _weaponMesh;
-    [SerializeField] private MeshFilter _backMesh;
-    [SerializeField] private MeshFilter _hipMesh;
-
-    [SerializeField] private ItemDataConfig _itemConfig;
+    
     [SerializeField] private VisualData _visualData = new VisualData();
 
     [SerializeField] private PlayerStateM _stateM;

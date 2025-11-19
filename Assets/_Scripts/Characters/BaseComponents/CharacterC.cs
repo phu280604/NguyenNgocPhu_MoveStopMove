@@ -13,6 +13,7 @@ public abstract class CharacterC : GameUnit
     #region --- Methods ---
 
     public abstract void OnInit();
+    protected abstract void CheckState();
 
     #endregion
 

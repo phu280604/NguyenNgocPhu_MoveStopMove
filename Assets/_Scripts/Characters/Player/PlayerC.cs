@@ -16,6 +16,19 @@ public class PlayerC : CharacterC
 
         _keyState = EState.Idle;
     }
+    protected override void CheckState()
+    {
+        if (_stateM.Direction == Vector3.zero)
+            _keyState = EState.Idle;
+        else if (_stateM.Direction != Vector3.zero)
+            _keyState = EState.Movement;
+
+        if (_stateM.Target != null && _keyState == EState.Idle)
+            _keyState = EState.Attack;
+
+        if (_curState.KeyState != _keyState)
+            _stateManager.SwitchState(_keyState, ref _curState);
+    }
 
     public override ICharacterStateM StateM => _stateM;
 
@@ -41,20 +54,6 @@ public class PlayerC : CharacterC
     #region --- Methods ---
 
     #region -- State machine --
-    private void CheckState()
-    {
-        if (_stateM.Direction == Vector3.zero)
-            _keyState = EState.Idle;
-        else if (_stateM.Direction != Vector3.zero)
-            _keyState = EState.Movement;
-
-        if(_stateM.Target != null && _keyState == EState.Idle)
-            _keyState = EState.Attack;
-
-        if (_curState != _stateManager.GetState(_keyState))
-            _stateManager.SwitchState(_keyState, ref _curState);
-    }
-
     private void OnActionState()
     {
         CheckState();
