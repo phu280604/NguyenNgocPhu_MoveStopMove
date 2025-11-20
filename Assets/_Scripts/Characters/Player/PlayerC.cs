@@ -7,15 +7,22 @@ public class PlayerC : CharacterC
 {
     #region --- Overrides ---
 
+    #region -- Methods --
     public override void OnInit()
     {
-        _stateManager = new PlayerStateManager(this);
+        // Configure state model.
+        _stateM.LayerTargets = new string[] {
+            ELayer.Bot.ToString()
+        };
 
+        // Configure state machine.
+        _stateManager = new PlayerStateManager(this);
         _curState = _stateManager.GetState(EState.Idle);
         _curState?.EnterState();
 
         _keyState = EState.Idle;
     }
+
     protected override void CheckState()
     {
         if (_stateM.Direction == Vector3.zero)
@@ -30,7 +37,37 @@ public class PlayerC : CharacterC
             _stateManager.SwitchState(_keyState, ref _curState);
     }
 
+    protected override void OnBuildRangeAttack()
+    {
+        // Change scale range attack.
+        if (_stateM.IsChangeRange)
+        {
+            _stateM.AtkRangePos.localScale = Vector3.one * (_statsM.CurrentRangeAttack - 0.5f);
+            _stateM.IsChangeRange = false;
+        }
+
+        // Build range attack.
+        _physicH.BuildAttackRange(
+            _statsM.CurrentRangeAttack,
+            _stateM.AtkRangePos.position,
+            _stateM.LayerTargets,
+            (target) => {
+
+                if (_stateM.Target != null)
+                    _stateM.Target.gameObject.GetComponent<BotC>()?.OnDeselected();
+
+                if (target != null)
+                    target.gameObject.GetComponent<BotC>()?.OnSelected();
+
+                _stateM.Target = target != null ? target.transform : null;
+            }
+        );
+    }
+    #endregion
+
+    #region -- Properties --
     public override ICharacterStateM StateM => _stateM;
+    #endregion
 
     #endregion
 
@@ -46,6 +83,10 @@ public class PlayerC : CharacterC
         OnActionState();
 
         OnActionHandler();
+    }
+
+    private void FixedUpdate()
+    {
         OnBuildRangeAttack();
     }
 
@@ -72,19 +113,6 @@ public class PlayerC : CharacterC
                 _stateM.LastestDirection = newDir;
         });
     }
-
-    private void OnBuildRangeAttack()
-    {
-        if (_isChangeRange)
-        {
-            _atkRangePos.localScale = Vector3.one * (_statsM.CurrentRangeAttack - 0.5f);
-            _isChangeRange = false;
-        }
-        _physicH.BuildAttackRange(_statsM.CurrentRangeAttack, _atkRangePos.position , (target) => {
-            _stateM.Target = target?.gameObject.transform;
-        });
-    }
-
     #endregion
 
     #endregion
@@ -100,13 +128,12 @@ public class PlayerC : CharacterC
     #region -- Components --
     [Header("Handler")]
     [SerializeField] private PlayerInputH _controlH;
-    [SerializeField] private PlayerPhysicH _physicH;
 
     [Header("Model")]
     [SerializeField] private PlayerStatsM _statsM;
     [SerializeField] private PlayerStateM _stateM;
-    [SerializeField] private Transform _atkRangePos;
-    private bool _isChangeRange = true;
+
+    private Timer _delayAttack;
     #endregion
 
     #region -- State machine --

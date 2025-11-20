@@ -7,14 +7,23 @@ public class BotC : CharacterC
 {
     #region --- Overrides ---
 
+    #region -- Methods --
     public override void OnInit()
     {
-        _stateManager = new BotStateManager(this);
+        // Config state model.
+        _stateM.LayerTargets = new string[] {
+            ELayer.Player.ToString(),
+            ELayer.Bot.ToString()
+        };
 
+        // Config state machine.
+        _stateManager = new BotStateManager(this);
         _curState = _stateManager.GetState(EState.Idle);
         _curState.EnterState();
 
         _keyState = EState.Idle;
+
+        OnDeselected();
     }
     protected override void CheckState()
     {
@@ -23,11 +32,37 @@ public class BotC : CharacterC
         else if (_stateM.IsMoving)
             _keyState = EState.Movement;
 
+        if (_stateM.Target != null && _statsM.VisualData != null)
+            _keyState = EState.Attack;
+
         if (_curState.KeyState != _keyState)
             _stateManager.SwitchState(_keyState, ref _curState);
     }
+    protected override void OnBuildRangeAttack()
+    {
+        if (_stateM.IsChangeRange)
+        {
+            _stateM.AtkRangePos.localScale = Vector3.one * (_statsM.CurrentRangeAttack - 0.5f);
+            _stateM.IsChangeRange = false;
+        }
 
+        _physicH.BuildAttackRange(
+            _statsM.CurrentRangeAttack,
+            _stateM.AtkRangePos.position,
+            _stateM.LayerTargets,
+            (target) => {
+                if(this != target?.gameObject.GetComponent<CharacterC>())
+                    _stateM.Target = target?.gameObject.transform;
+                else
+                    _stateM.Target = null;
+            }
+        );
+    }
+    #endregion
+
+    #region -- Properties --
     public override ICharacterStateM StateM => _stateM;
+    #endregion
 
     #endregion
 
@@ -43,6 +78,11 @@ public class BotC : CharacterC
         OnActionState();
     }
 
+    private void FixedUpdate()
+    {
+        OnBuildRangeAttack();
+    }
+
     private void OnEnable()
     {
         _stateM.NavMesh.avoidancePriority = Random.Range(50, 100);
@@ -51,11 +91,24 @@ public class BotC : CharacterC
     private void OnDisable()
     {
         _stateM.NavMesh.ResetPath();
+        OnDeselected();
     }
 
     #endregion
 
     #region --- Methods ---
+
+    #region -- Components --
+    public void OnSelected()
+    {
+        _stateM.SelectionRing.enabled = true;
+    }
+
+    public void OnDeselected()
+    {
+        _stateM.SelectionRing.enabled = false;
+    }
+    #endregion
 
     #region -- State machine --
     private void OnActionState()
@@ -76,6 +129,7 @@ public class BotC : CharacterC
     #region -- Fields ---
 
     #region -- Components --
+    [Header("Model components")]
     [SerializeField] private BotStateM _stateM;
     [SerializeField] private BotStatsM _statsM;
     #endregion

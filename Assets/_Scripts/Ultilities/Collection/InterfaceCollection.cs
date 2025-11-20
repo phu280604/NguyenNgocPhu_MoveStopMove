@@ -6,10 +6,15 @@ using UnityEngine;
 public interface ICharacterStateM
 {
     #region --- Properties ---
+
     public EPoolType WeaponType { get; set; }
     public Transform Target { get; set; }
+    public Transform AtkRangePos { get; }
     public Transform SpawnWeaponPos { get; }
+    public string[] LayerTargets { get; set; }
+    public bool IsChangeRange { get; set; }
     public bool IsDelayAttack { get; set; }
+
     #endregion
 }
 #endregion

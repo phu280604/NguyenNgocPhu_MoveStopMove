@@ -17,12 +17,11 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnInit()
     {
-        // TODO: Open spawn player from pool.
-        //PoolManager.Instance.Spawn<PlayerC>(
-        //    EPoolType.Player,
-        //    Vector3.zero,
-        //    Quaternion.identity
-        //);
+        PoolManager.Instance.Spawn<PlayerC>(
+            EPoolType.Player,
+            Vector3.zero,
+            Quaternion.identity
+        );
 
         int size = (int)_ground.localScale.x - GROUND_SIZE;
         for (int i = 0; i < PoolManager.Instance.PoolAmount(EPoolType.Bot); i++)

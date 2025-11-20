@@ -123,6 +123,11 @@ public enum EUIKey
     SaveItem = 5,
 }
 
+public enum EUIGamePlayKey
+{
+
+}
+
 #endregion
 
 #endregion

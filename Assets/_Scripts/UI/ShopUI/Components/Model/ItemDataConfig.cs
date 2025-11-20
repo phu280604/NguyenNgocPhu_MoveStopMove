@@ -213,7 +213,7 @@ public class GenericItem
 public class ItemWeapon : GenericItem
 {
     [Header("Bullet types")]
-    public EPoolType bulletType;
+    public EPoolType weaponType;
 
     [Header("Size & Offset")]
     public Vector3 offset;

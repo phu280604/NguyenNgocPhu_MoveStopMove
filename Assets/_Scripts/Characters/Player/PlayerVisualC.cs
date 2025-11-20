@@ -45,7 +45,7 @@ public class PlayerVisualC : CharacterVisualC
             // Weapon.
             case EItemType.Weapon:
                 ItemWeapon weapon = _itemConfig.GetItemById<ItemWeapon>(id, itemType);
-                _stateM.WeaponType = weapon.bulletType;
+                _stateM.WeaponType = weapon.weaponType;
                 break;
 
             // Set.
