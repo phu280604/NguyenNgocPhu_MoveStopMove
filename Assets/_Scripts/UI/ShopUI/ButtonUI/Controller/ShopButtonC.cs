@@ -31,12 +31,22 @@ public class ShopButtonC : MonoBehaviour, IObserver<object>
 
     public void OnClick()
     {
-        if(_coins <= GameManager.Instance.LevelData.coins && GameManager.Instance.LevelData.coins != 0)
+        switch (_itemState)
         {
-            GameManager.Instance.LevelData.coins -= _coins;
-            GameManager.Instance.SetCoin(GameManager.Instance.LevelData.coins);
+            case EItemState.Locked:
+                if (_coins <= GameManager.Instance.LevelData.coins && GameManager.Instance.LevelData.coins != 0)
+                {
+                    GameManager.Instance.LevelData.coins -= _coins;
+                    GameManager.Instance.SetCoin(GameManager.Instance.LevelData.coins);
 
-            _subject.NotifyObservers(EUIKey.Button, (int)_itemState + 1);
+                    _subject.NotifyObservers(EUIKey.Button, (int)_itemState + 1);
+                }
+                break;
+
+            case EItemState.Purchased:
+            case EItemState.Equipped:
+                _subject.NotifyObservers(EUIKey.Button, (int)_itemState + 1);
+                break;
         }
     }
 

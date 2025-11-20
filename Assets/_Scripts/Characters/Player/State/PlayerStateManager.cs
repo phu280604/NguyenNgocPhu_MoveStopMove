@@ -11,9 +11,9 @@ public class PlayerStateManager : StateManager<PlayerC>
 
     protected override void OnInit()
     {
-        AddState(EState.Idle, new IdleState(_controller));
-        AddState(EState.Movement, new MovementState(_controller));
-        AddState(EState.Attack, new AttackState(_controller));
+        AddState(EState.Idle, new IdleState(_controller, EState.Idle));
+        AddState(EState.Movement, new MovementState(_controller, EState.Movement));
+        AddState(EState.Attack, new AttackState(_controller, EState.Attack));
     }
 
     #endregion

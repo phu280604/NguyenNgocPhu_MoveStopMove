@@ -4,9 +4,10 @@ using UnityEngine;
 
 public abstract class BaseState<TCtrl>
 {
-    public BaseState(TCtrl controller)
+    public BaseState(TCtrl controller, EState keyState)
     {
         _controller = controller;
+        KeyState = keyState;
     }
 
     #region --- Methods ---
@@ -14,6 +15,12 @@ public abstract class BaseState<TCtrl>
     public abstract void EnterState(); 
     public abstract void UpdateState();
     public abstract void ExitState();
+
+    #endregion
+
+    #region --- Properties ---
+
+    public EState KeyState { get; private set; }
 
     #endregion
 

@@ -23,11 +23,12 @@ public class LevelManager : Singleton<LevelManager>
             Quaternion.identity
         );
 
+        int size = (int)_ground.localScale.x - GROUND_SIZE;
         for (int i = 0; i < PoolManager.Instance.PoolAmount(EPoolType.Bot); i++)
         {
             PoolManager.Instance.Spawn<BotC>(
                 EPoolType.Bot,
-                new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)),
+                new Vector3(Random.Range(-size, size), 0, Random.Range(-size, size)),
                 Quaternion.identity
             );
         }
@@ -47,6 +48,9 @@ public class LevelManager : Singleton<LevelManager>
     #region --- Fields ---
 
     [SerializeField] private FollowingObject _cameraH;
+
+    [SerializeField] private Transform _ground;
+    private const int GROUND_SIZE = 10;
 
     #endregion
 }

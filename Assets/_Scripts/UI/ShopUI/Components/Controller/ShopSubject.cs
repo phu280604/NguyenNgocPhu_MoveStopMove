@@ -28,7 +28,7 @@ public class ShopSubject : Subject<EUIKey, object>
     
     public void SpawnVisual()
     {
-        _characterVisual = PoolManager.Instance.Spawn<CharacterVisualC>(
+        _characterVisual = PoolManager.Instance.Spawn<ShopCharacterVisualC>(
             EPoolType.VisualObject,
             _visualOffet,
             Quaternion.LookRotation(Vector3.back)
@@ -41,7 +41,7 @@ public class ShopSubject : Subject<EUIKey, object>
 
     #region --- Properties ---
 
-    public CharacterVisualC CharacterVisual { get; private set; }
+    public ShopCharacterVisualC CharacterVisual { get; private set; }
     public ItemDataConfig ItemDataConfig => _itemDataConfig;
     public int CurrentIdItem { get; set; }
     public EItemType CurrentItemType { get; set; }
@@ -53,7 +53,7 @@ public class ShopSubject : Subject<EUIKey, object>
     [SerializeField] private ItemDataConfig _itemDataConfig;
 
     [SerializeField] private Vector3 _visualOffet;
-    [SerializeField] private CharacterVisualC _characterVisual;
+    [SerializeField] private ShopCharacterVisualC _characterVisual;
 
     #endregion
 }

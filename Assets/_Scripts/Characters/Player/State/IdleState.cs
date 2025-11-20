@@ -6,7 +6,7 @@ namespace FSM.Player
 {
     public class IdleState : BaseState<PlayerC>
     {
-        public IdleState(PlayerC controller) : base(controller) 
+        public IdleState(PlayerC controller, EState keyState) : base(controller, keyState) 
         { 
             if(controller.StateM is PlayerStateM stateM)
                 _stateM = stateM;

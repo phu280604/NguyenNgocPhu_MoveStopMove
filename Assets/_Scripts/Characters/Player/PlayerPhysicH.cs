@@ -4,38 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerPhysicH : MonoBehaviour
+public class PlayerPhysicH : CharacterPhysicH
 {
 
-    #region --- Unity methods ---
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, _radius);
-    }
-
-    #endregion
-
-    #region --- Methods ---
-
-    public void BuildAttackRange(float radius, Vector3 position, Action<Collider> setTarget)
-    {
-        _radius = radius;
-
-        Collider[] hits = Physics.OverlapSphere(position, radius, LayerMask.GetMask(ELayer.Bot.ToString()));
-        
-        if(hits.Count() >= 1)
-            setTarget?.Invoke(hits[0]);
-        else
-            setTarget?.Invoke(null);
-    }
-
-    #endregion
-
-    #region --- Fields ---
-
-    private float _radius;
-
-    #endregion
 }

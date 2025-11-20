@@ -22,7 +22,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: d676035755581e942866b0383b052604, type: 2}
     mesh: {fileID: 4300000, guid: 6083ff9012eefa348b00b8c543f1a742, type: 3}
     icon: {fileID: 21300000, guid: 2cc0f6d1c7933664f877675ec7992597, type: 3}
-    bulletType: 4
+    weaponType: 4
     offset: {x: -0.01, y: 0.047, z: -0.072}
     rotation: {x: 47, y: -11, z: -17}
     scale: {x: 32, y: 32, z: 32}
@@ -33,7 +33,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 2d6d5ee7295c28443ad1c6cfb6f20111, type: 2}
     mesh: {fileID: 4300000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
     icon: {fileID: 21300000, guid: 2a2bb7c037af78f41a0a19aeafcb3306, type: 3}
-    bulletType: 5
+    weaponType: 5
     offset: {x: -0.216, y: 0.237, z: -0.049}
     rotation: {x: 44, y: -29, z: -70}
     scale: {x: 8, y: 8, z: 8}
@@ -45,7 +45,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 02b805848b914c542a1585ba88441869, type: 2}
     mesh: {fileID: 4300000, guid: 90389cac50942cb4ca38583e6531094a, type: 3}
     icon: {fileID: 21300000, guid: b6553b8f3495a9f4c8c17caf3cce489e, type: 3}
-    bulletType: 4
+    weaponType: 4
     offset: {x: 0.025, y: 0.12, z: 0.025}
     rotation: {x: 45, y: -19, z: -26}
     scale: {x: 32, y: 32, z: 32}
@@ -57,7 +57,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 8078bbccff5e78f45b291ea76ca6cd48, type: 2}
     mesh: {fileID: 4300000, guid: ecd6cb62ed8350e498f9e25d15d9caa3, type: 3}
     icon: {fileID: 21300000, guid: bb263deeed073a64698ce52dfba30bbd, type: 3}
-    bulletType: 4
+    weaponType: 4
     offset: {x: -0.014, y: 0, z: -0.121}
     rotation: {x: 35, y: -25, z: -29}
     scale: {x: 32, y: 32, z: 32}
@@ -151,7 +151,7 @@ MonoBehaviour:
       materials: []
       mesh: {fileID: 0}
       icon: {fileID: 0}
-      bulletType: 0
+      weaponType: 0
       offset: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
       scale: {x: 1, y: 1, z: 1}
@@ -210,7 +210,7 @@ MonoBehaviour:
       materials: []
       mesh: {fileID: 0}
       icon: {fileID: 0}
-      bulletType: 0
+      weaponType: 0
       offset: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
       scale: {x: 1, y: 1, z: 1}
@@ -272,7 +272,7 @@ MonoBehaviour:
       materials: []
       mesh: {fileID: 0}
       icon: {fileID: 0}
-      bulletType: 0
+      weaponType: 0
       offset: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
       scale: {x: 1, y: 1, z: 1}

@@ -6,10 +6,13 @@ namespace FSM.Player
 {
     public class AttackState : BaseState<PlayerC>
     {
-        public AttackState(PlayerC controller) : base(controller) 
+        public AttackState(PlayerC controller, EState keyState) : base(controller, keyState) 
         {
             if (controller.StateM is PlayerStateM stateM)
                 _stateM = stateM;
+
+            if (_spawnWeapon == null)
+                _spawnWeapon = new Timer(_controller.StatsM.StatsSO.triggeredAnimAttack, OnSpawnWeapon);
         }
 
         #region --- Overrides ---
@@ -23,10 +26,7 @@ namespace FSM.Player
             _acceleration = _controller.StatsM.StatsSO.acceleration;
             _maxSpeed = _controller.StatsM.StatsSO.maxMovementSpeed;
 
-            if (_spawnWeapon == null)
-                _spawnWeapon = new Timer(_controller.StatsM.StatsSO.triggeredAnimAttack, OnSpawnWeapon);
-            else
-                _spawnWeapon.OnReset();
+            _spawnWeapon.OnReset();
         }
 
         public override void UpdateState()
@@ -35,11 +35,13 @@ namespace FSM.Player
             OnRotateTowardsTarget();
 
             _spawnWeapon.OnCountDown(Time.deltaTime);
+
+            SetDelayAttack();
         }
 
         public override void ExitState()
         {
-            _controller.StateM.IsDelayAttack = true;
+
         }
 
         #endregion
@@ -77,8 +79,6 @@ namespace FSM.Player
 
         private void OnSpawnWeapon()
         {
-            PlayerStateM stateM = _stateM;
-
             Vector3 lookPos = _controller.StateM.Target.position - _controller.transform.position;
 
             WeaponC newWeapon = PoolManager.Instance.Spawn<WeaponC>(
@@ -107,6 +107,15 @@ namespace FSM.Player
                 lookRotation, 
                 Time.deltaTime * _controller.StatsM.StatsSO.rotationSpeed
             );
+        }
+
+        private void SetDelayAttack()
+        {
+            if (_controller.Animator.GetBool(EAnimParams.IsDelayAttack.ToString())) {
+                ChangeAnim();
+
+                _spawnWeapon.OnReset();
+            }
         }
 
         // Change animation based on stopping state.
