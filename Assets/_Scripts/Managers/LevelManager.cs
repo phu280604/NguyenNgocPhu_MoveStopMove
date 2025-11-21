@@ -25,11 +25,13 @@ public class LevelManager : Singleton<LevelManager>
 
         for (int i = 0; i < PoolManager.Instance.PoolAmount(EPoolType.Bot); i++)
         {
-            PoolManager.Instance.Spawn<BotC>(
+            BotC bot = PoolManager.Instance.Spawn<BotC>(
                 EPoolType.Bot,
                 new Vector3(Random.Range(-_groundSize, _groundSize), 0, Random.Range(-_groundSize, _groundSize)),
                 Quaternion.identity
             );
+
+            bot.gameObject.name = $"Bot #{count++}";
         }
 
 
@@ -52,6 +54,8 @@ public class LevelManager : Singleton<LevelManager>
 
     private const int GROUND_SIZE = 3;
     private int _groundSize;
+
+    private int count = 0;
 
     #endregion
 }

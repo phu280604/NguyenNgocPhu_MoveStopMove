@@ -9,7 +9,17 @@ namespace FSM.Bot
         public AttackState(BotC controller, EState keyState) : base(controller, keyState) 
         {
             if (controller.StateM is BotStateM stateM)
+            {
                 _stateM = stateM;
+
+                _delayAttack = new Timer(controller.StatsM.StatsSO.attackDelay, () =>
+                {
+                    ChangeAnim();
+                    _spawnWeapon.OnReset();
+                });
+
+                _spawnWeapon = new Timer(_controller.StatsM.StatsSO.triggeredAnimAttack, OnSpawnWeapon);
+            }
         }
 
         #region --- Overrides ---
@@ -20,10 +30,8 @@ namespace FSM.Bot
 
             ChangeAnim();
 
-            if (_spawnWeapon == null)
-                _spawnWeapon = new Timer(_controller.StatsM.StatsSO.triggeredAnimAttack, OnSpawnWeapon);
-            else
-                _spawnWeapon.OnReset();
+            _spawnWeapon.OnReset();
+            _delayAttack.OnReset();
         }
 
         public override void UpdateState()
@@ -31,6 +39,8 @@ namespace FSM.Bot
             OnRotateTowardsTarget();
 
             _spawnWeapon.OnCountDown(Time.deltaTime);
+
+            _delayAttack.OnCountDown(Time.deltaTime, true);
         }
 
         public override void ExitState()
@@ -45,8 +55,6 @@ namespace FSM.Bot
 
         private void OnSpawnWeapon()
         {
-           // BotStateM stateM = _stateM;
-
             Vector3 lookPos = _controller.StateM.Target.position - _controller.transform.position;
 
             WeaponC newWeapon = PoolManager.Instance.Spawn<WeaponC>(
@@ -94,6 +102,8 @@ namespace FSM.Bot
         #region --- Fields ---
 
         private Timer _spawnWeapon;
+
+        private Timer _delayAttack;
 
         private BotStateM _stateM;
 

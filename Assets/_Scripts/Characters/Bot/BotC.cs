@@ -54,12 +54,7 @@ public class BotC : CharacterC
             _statsM.CurrentRangeAttack,
             _stateM.AtkRangePos.position,
             _stateM.LayerTargets,
-            (target) => {
-                if(this != target?.gameObject.GetComponent<CharacterC>())
-                    _stateM.Target = target?.gameObject.transform;
-                else
-                    _stateM.Target = null;
-            }
+            this
         );
     }
     #endregion
