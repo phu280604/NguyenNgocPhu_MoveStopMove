@@ -51,16 +51,7 @@ public class PlayerC : CharacterC
             _statsM.CurrentRangeAttack,
             _stateM.AtkRangePos.position,
             _stateM.LayerTargets,
-            (target) => {
-
-                if (_stateM.Target != null)
-                    _stateM.Target.gameObject.GetComponent<BotC>()?.OnDeselected();
-
-                if (target != null)
-                    target.gameObject.GetComponent<BotC>()?.OnSelected();
-
-                _stateM.Target = target != null ? target.transform : null;
-            }
+            this
         );
     }
     #endregion
