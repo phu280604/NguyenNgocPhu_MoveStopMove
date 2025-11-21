@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
@@ -10,65 +11,73 @@ public class BotVisualC : CharacterVisualC
 
     private void OnEnable()
     {
-        SetNewVisualData();
-        SetItemOnVisual();
+        if(_statsM is BotStatsM stats)
+        {
+            SetNewVisualData(stats);
+            SetItemOnVisual(stats);
 
-        OnconfigureState();
+            OnconfigureState(stats);
+
+            _stateM.NavMesh.speed = stats.MaxSpeed;
+            _stateM.NavMesh.angularSpeed = stats.StatsSO.rotationSpeed;
+        }
     }
 
     #endregion
 
     #region --- Methods ---
 
-    private void OnconfigureState()
+    private void OnconfigureState(BotStatsM stats)
     {
-        int weaponId = _statsM.VisualData.GetIdByType(EItemType.Weapon);
+        int weaponId = stats.VisualData.GetIdByType(EItemType.Weapon);
         _stateM.WeaponType = _itemConfig.GetItemById<ItemWeapon>(weaponId, EItemType.Weapon).weaponType;
     }
-    private void SetNewVisualData()
+    private void SetNewVisualData(BotStatsM stats)
     {
         // Clear previous visual data if it is not null.
-        if (_statsM.VisualData != null)
-            _statsM.VisualData.itemData.Clear();
+        if (stats.VisualData != null)
+            stats.VisualData.itemData.Clear();
 
         // Create new visual data if it is null.
         else
         {
-            _statsM.VisualData = new VisualData()
+            stats.VisualData = new VisualData()
             {
                 itemData = new List<ItemVisualData>()
             };
         }
 
         // Add random items to visual data.
-        _statsM.VisualData.itemData.Add(new ItemVisualData {
+        stats.VisualData.itemData.Add(new ItemVisualData {
             id = _itemConfig.GetRandomIdItemByType(EItemType.Weapon),
             itemType = EItemType.Weapon,
         });
-        _statsM.VisualData.itemData.Add(new ItemVisualData {
+        stats.VisualData.itemData.Add(new ItemVisualData {
             id = _itemConfig.GetRandomIdItemByType(EItemType.Hat),
             itemType = EItemType.Hat,
         });
-        _statsM.VisualData.itemData.Add(new ItemVisualData {
+        stats.VisualData.itemData.Add(new ItemVisualData {
             id = _itemConfig.GetRandomIdItemByType(EItemType.Pant),
             itemType = EItemType.Pant,
         });
     }
 
-    private void SetItemOnVisual()
+    private void SetItemOnVisual(BotStatsM stats)
     {
-        foreach(ItemVisualData item in _statsM.VisualData.itemData)
+        foreach(ItemVisualData item in stats.VisualData.itemData)
         {
             SetOnVisual(item.id, item.itemType);
         }
 
-        SetColorSkin();
+        stats.AddBaseStats();
+
+        SetColorSkin(stats);
     }
 
-    private void SetColorSkin()
+    private void SetColorSkin(BotStatsM stats)
     {
-        _bodyMeshRenderer.materials = new Material[] { 
-            _statsM.StatsSO.GetRandomColorMats()
+        _bodyMeshRenderer.materials = new Material[] {
+            stats.StatsSO.GetRandomColorMats()
         };
     }
 
@@ -77,7 +86,6 @@ public class BotVisualC : CharacterVisualC
     #region --- Fields ---
 
     [SerializeField] private BotStateM _stateM;
-    [SerializeField] private BotStatsM _statsM;
 
     #endregion
 }

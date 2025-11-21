@@ -2162,6 +2162,7 @@ MonoBehaviour:
   _backMesh: {fileID: 4165594889536647755}
   _hipMesh: {fileID: 6686133204709219118}
   _itemConfig: {fileID: 11400000, guid: dd5eb9085fabf144e9e5790d7dbf1ef6, type: 2}
+  _statsM: {fileID: 5734720889150768986}
   _visualData:
     itemData: []
   _stateM: {fileID: 2081222384676717766}

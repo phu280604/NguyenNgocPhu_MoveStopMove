@@ -32,10 +32,15 @@ public class PlayerVisualC : CharacterVisualC
         _visualData = LoadDataManager.Instance.Load<VisualData>(StringCollection.VISUAL_DATA);
         if (_visualData == null) return;
 
+        if (_statsM is PlayerStatsM stats)
+            stats.AddBaseStats();
+
         for (int i = _visualData.itemData.Count - 1; i >= 0; i--)
         {
             SetOnVisual(_visualData.itemData[i].id, _visualData.itemData[i].itemType);
         }
+
+        
     }
 
     protected override void SetOnVisual(int id, EItemType itemType)
@@ -51,6 +56,7 @@ public class PlayerVisualC : CharacterVisualC
             // Set.
             case EItemType.Set:
                 ItemSetSkin setSkin = _itemConfig.GetItemById<ItemSetSkin>(id, itemType);
+                _itemData = setSkin;
                 if (setSkin != null)
                 {
                     _bodyMeshRenderer.materials = setSkin.materials.ToArray();

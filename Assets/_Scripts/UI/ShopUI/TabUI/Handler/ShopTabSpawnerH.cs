@@ -38,6 +38,7 @@ public class ShopTabSpawnerH : MonoBehaviour, IObserver<object>
 
     private void SpawnItem(List<GenericItem> items)
     {
+        ShopItemC chooseItem = null;
         foreach(GenericItem item in items)
         {
             ShopItemC itemUI = PoolManager.Instance.Spawn<ShopItemC>(EPoolType.Item, Vector3.zero, Quaternion.identity);
@@ -45,9 +46,13 @@ public class ShopTabSpawnerH : MonoBehaviour, IObserver<object>
             itemUI.transform.SetParent(_itemTransform);
             itemUI.OnInit(item, _subject, _itemToggleGroup);
             itemUI.ChooseItem(false);
+
+            if (item.itemState == EItemState.Equipped)
+                chooseItem = itemUI;
         }
 
-        PoolManager.Instance.GetPool<ShopItemC>(EPoolType.Item)[0].ChooseItem(true);
+        if(chooseItem != null)
+            chooseItem.ChooseItem(true);
     }
 
     #endregion

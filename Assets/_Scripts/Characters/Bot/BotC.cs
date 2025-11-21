@@ -11,19 +11,23 @@ public class BotC : CharacterC
     public override void OnInit()
     {
         // Config state model.
-        _stateM.LayerTargets = new string[] {
-            ELayer.Player.ToString(),
-            ELayer.Bot.ToString()
-        };
+        if(_stateM.LayerTargets == null)
+            _stateM.LayerTargets = new string[] {
+                ELayer.Player.ToString(),
+                ELayer.Bot.ToString()
+            };
 
         // Config state machine.
-        _stateManager = new BotStateManager(this);
+        if(_stateManager == null)
+            _stateManager = new BotStateManager(this);
+
         _curState = _stateManager.GetState(EState.Idle);
         _curState.EnterState();
 
         _keyState = EState.Idle;
 
         OnDeselected();
+        
     }
     protected override void CheckState()
     {
@@ -90,7 +94,9 @@ public class BotC : CharacterC
 
     private void OnDisable()
     {
-        _stateM.NavMesh.ResetPath();
+        _keyState = EState.Idle;
+        _stateManager.SwitchState(_keyState, ref _curState);
+
         OnDeselected();
     }
 

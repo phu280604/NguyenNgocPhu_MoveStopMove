@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerStateM : MonoBehaviour, ICharacterStateM
 {
     #region --- Overrides ---
 
     #region -- Properties --
-    public EPoolType WeaponType { get; set; } = EPoolType.BoomerangProjectile;
+    public EPoolType WeaponType { get; set; } = EPoolType.AxeProjectile;
     public Transform Target { get; set; }
     public Transform AtkRangePos => _atkRangePos;
     public Transform SpawnWeaponPos { get { return _spawnPos; } }
@@ -15,6 +16,23 @@ public class PlayerStateM : MonoBehaviour, ICharacterStateM
     public bool IsDelayAttack { get; set; } = false;
     public bool IsChangeRange { get; set; } = true;
     #endregion
+
+    #endregion
+
+    #region --- Unity methods ---
+
+    private void OnDisable()
+    {
+        WeaponType = EPoolType.AxeProjectile;
+
+        Target = null;
+
+        IsDelayAttack = false;
+        IsChangeRange = true;
+
+        Direction = Vector3.zero;
+        LastestDirection = Vector3.zero;
+    }
 
     #endregion
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class BotStatsM : MonoBehaviour
+public class BotStatsM : CharacterStatsM
 {
     #region --- Unity methods ---
 
@@ -11,8 +11,16 @@ public class BotStatsM : MonoBehaviour
     {
         WaitingTime = Random.Range(MIN_WAITING_TIME,MAX_WAITING_TIME);
         RangeMoving = Random.Range(MIN_RANGE_MOVING, MAX_RANGE_MOVING);
+    }
 
-        CurrentRangeAttack = _botStatsSO.rangeAttack;
+    #endregion
+
+    #region --- Methods ---
+
+    public void AddBaseStats()
+    {
+        CurrentRangeAttack += _botStatsSO.rangeAttack;
+        MaxSpeed += _botStatsSO.maxMovingSpeed;
     }
 
     #endregion
@@ -24,7 +32,6 @@ public class BotStatsM : MonoBehaviour
     public float WaitingTime { get; private set; }
     public float RangeMoving { get; private set; }
     public float DistanceStop => DISTANCE_STOP;
-    public float CurrentRangeAttack { get; set; }
 
     #endregion
 

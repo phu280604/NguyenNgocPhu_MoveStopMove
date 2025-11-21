@@ -24,7 +24,7 @@ namespace FSM.Player
             ChangeAnim();
 
             _acceleration = _controller.StatsM.StatsSO.acceleration;
-            _maxSpeed = _controller.StatsM.StatsSO.maxMovementSpeed;
+            _maxSpeed = _controller.StatsM.MaxSpeed;
 
             _spawnWeapon.OnReset();
         }
@@ -89,7 +89,11 @@ namespace FSM.Player
 
             newWeapon.StateM.TargetPos = _controller.StateM.Target.position;
             newWeapon.StateM.TargetTag = ETag.Bot;
-            newWeapon.OnInit(_controller);
+            newWeapon.OnInit(_controller, () => {
+                _controller.StatsM.OnUpdateStatsAfterEliminating();
+
+                _stateM.IsChangeRange = true;
+            });
         }
 
         private void OnRotateTowardsTarget()
@@ -121,6 +125,8 @@ namespace FSM.Player
         // Change animation based on stopping state.
         private void ChangeAnim()
         {
+            if (!_controller.gameObject.activeSelf) return;
+
             if (!_isStopping)
                 _controller.Animator.Play(EAnim.Run.ToString());
             else if(_isStopping)

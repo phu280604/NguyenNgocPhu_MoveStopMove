@@ -43,6 +43,13 @@ public class ShopItemC : GameUnit, IObserver<object>
 
             // Notify item state to ShopUIButton.
             _subject.NotifyObservers(EUIKey.Item, (int)_item.itemState);
+            _subject.NotifyObservers(
+                EUIKey.ItemEffect,
+                new KeyValuePair<EItemEffect, float>(
+                    _item.itemEffect,
+                    _item.effectValue
+                )
+            );
 
             // Notify item cost to ShopUIButtonCost.
             _subject.NotifyObservers(EUIKey.ItemCost, _item.cost);

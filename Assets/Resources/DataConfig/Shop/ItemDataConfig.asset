@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - _id: 8714
+    itemEffect: 0
+    effectValue: 0
     cost: 0
     itemState: 3
     materials:
@@ -27,8 +29,10 @@ MonoBehaviour:
     rotation: {x: 47, y: -11, z: -17}
     scale: {x: 32, y: 32, z: 32}
   - _id: 2335
+    itemEffect: 0
+    effectValue: 0
     cost: 45
-    itemState: 2
+    itemState: 1
     materials:
     - {fileID: 2100000, guid: 2d6d5ee7295c28443ad1c6cfb6f20111, type: 2}
     mesh: {fileID: 4300000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
@@ -38,6 +42,8 @@ MonoBehaviour:
     rotation: {x: 44, y: -29, z: -70}
     scale: {x: 8, y: 8, z: 8}
   - _id: 3045
+    itemEffect: 0
+    effectValue: 0
     cost: 80
     itemState: 1
     materials:
@@ -50,6 +56,8 @@ MonoBehaviour:
     rotation: {x: 45, y: -19, z: -26}
     scale: {x: 32, y: 32, z: 32}
   - _id: 5972
+    itemEffect: 0
+    effectValue: 0
     cost: 124
     itemState: 1
     materials:
@@ -63,8 +71,10 @@ MonoBehaviour:
     scale: {x: 32, y: 32, z: 32}
   hats:
   - _id: 3132
+    itemEffect: 0
+    effectValue: 0
     cost: 0
-    itemState: 2
+    itemState: 3
     materials: []
     mesh: {fileID: 0}
     icon: {fileID: 21300000, guid: d244857e15941064bbe03a93b5292bce, type: 3}
@@ -72,8 +82,10 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0}
     scale: {x: 0, y: 0, z: 0}
   - _id: 3865
+    itemEffect: 1
+    effectValue: 0.5
     cost: 20
-    itemState: 2
+    itemState: 1
     materials:
     - {fileID: 2100000, guid: d896693e2f9e7ce4ba6608b357a5ae74, type: 2}
     - {fileID: 2100000, guid: 4a488c5d6b0a6544188ce4432527ee98, type: 2}
@@ -83,6 +95,8 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0}
     scale: {x: 1, y: 1, z: 1}
   - _id: 6821
+    itemEffect: 1
+    effectValue: 1
     cost: 50
     itemState: 1
     materials:
@@ -93,6 +107,8 @@ MonoBehaviour:
     rotation: {x: -75, y: -44, z: 0}
     scale: {x: 24, y: 24, z: 24}
   - _id: 1782
+    itemEffect: 1
+    effectValue: 1.5
     cost: 72
     itemState: 1
     materials:
@@ -105,14 +121,18 @@ MonoBehaviour:
     scale: {x: 3, y: 3, z: 3}
   pants:
   - _id: 1769
+    itemEffect: 0
+    effectValue: 0
     cost: 0
-    itemState: 2
+    itemState: 3
     materials:
     - {fileID: 2100000, guid: 5dab0ffa3a418bf4386e3b2443991464, type: 2}
     mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
     icon: {fileID: 21300000, guid: d244857e15941064bbe03a93b5292bce, type: 3}
     albedo: {fileID: 0}
   - _id: 5548
+    itemEffect: 3
+    effectValue: 1.5
     cost: 26
     itemState: 1
     materials:
@@ -121,6 +141,8 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 077614b08ff6c7e469945e6b27568ab8, type: 3}
     albedo: {fileID: 21300000, guid: 47c8d5358d60d474388d6a7e89a221aa, type: 3}
   - _id: 8746
+    itemEffect: 3
+    effectValue: 2.5
     cost: 43
     itemState: 1
     materials:
@@ -129,8 +151,10 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: cc34401b92b11b34bb55795ab63606a8, type: 3}
     albedo: {fileID: 21300000, guid: f5d61e52e0c02c7499cc3e23eb8c7f3f, type: 3}
   - _id: 1513
+    itemEffect: 3
+    effectValue: 3.5
     cost: 78
-    itemState: 2
+    itemState: 1
     materials:
     - {fileID: 2100000, guid: fea5977d5ed6b994f9e846570e715204, type: 2}
     mesh: {fileID: 7666266049737368757, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
@@ -138,14 +162,18 @@ MonoBehaviour:
     albedo: {fileID: 21300000, guid: e97fa78b135de6144a5983996978204a, type: 3}
   setSkins:
   - _id: 9405
+    itemEffect: 0
+    effectValue: 0
     cost: 0
-    itemState: 2
+    itemState: 3
     materials:
     - {fileID: 2100000, guid: b74fe5d82e187f243b268c0ff1bda3dc, type: 2}
     mesh: {fileID: -4538140524563738714, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
     icon: {fileID: 21300000, guid: d244857e15941064bbe03a93b5292bce, type: 3}
     weapon:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -157,6 +185,8 @@ MonoBehaviour:
       scale: {x: 1, y: 1, z: 1}
     hat:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -167,6 +197,8 @@ MonoBehaviour:
       scale: {x: 1, y: 1, z: 1}
     pant:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 3
       materials:
@@ -176,6 +208,8 @@ MonoBehaviour:
       albedo: {fileID: 0}
     back:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -186,6 +220,8 @@ MonoBehaviour:
       scale: {x: 1, y: 1, z: 1}
     hip:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -195,8 +231,10 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       scale: {x: 1, y: 1, z: 1}
   - _id: 9845
+    itemEffect: 2
+    effectValue: 0.5
     cost: 150
-    itemState: 3
+    itemState: 1
     materials:
     - {fileID: 2100000, guid: c3ef55b2da12f9d4f93ddbb22c5f8fdd, type: 2}
     - {fileID: 2100000, guid: c64682cff4f537348959568b35b5a15c, type: 2}
@@ -205,6 +243,8 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 916eb971e2dc28b419a242fa6950df78, type: 3}
     weapon:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -216,6 +256,8 @@ MonoBehaviour:
       scale: {x: 1, y: 1, z: 1}
     hat:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 3
       materials:
@@ -229,6 +271,8 @@ MonoBehaviour:
       scale: {x: 32, y: 32, z: 32}
     pant:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 3
       materials:
@@ -238,6 +282,8 @@ MonoBehaviour:
       albedo: {fileID: 0}
     back:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -248,6 +294,8 @@ MonoBehaviour:
       scale: {x: 1, y: 1, z: 1}
     hip:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -257,8 +305,10 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
       scale: {x: 1, y: 1, z: 1}
   - _id: 2570
+    itemEffect: 4
+    effectValue: 1
     cost: 250
-    itemState: 2
+    itemState: 1
     materials:
     - {fileID: 2100000, guid: 707809027c8189d40a6150a5d7b1304d, type: 2}
     - {fileID: 2100000, guid: c46efedfd929e304ea232fa0511deb64, type: 2}
@@ -267,6 +317,8 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 591bf6bd34c3a3c4e9143ba55a6c7d7b, type: 3}
     weapon:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -278,6 +330,8 @@ MonoBehaviour:
       scale: {x: 1, y: 1, z: 1}
     hat:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 0
       materials: []
@@ -288,6 +342,8 @@ MonoBehaviour:
       scale: {x: 0, y: 0, z: 0}
     pant:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 3
       materials:
@@ -297,6 +353,8 @@ MonoBehaviour:
       albedo: {fileID: 21300000, guid: 49de162ab1ab20c4d88ad87f70ad13af, type: 3}
     back:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 3
       materials:
@@ -309,6 +367,8 @@ MonoBehaviour:
       scale: {x: 64, y: 64, z: 64}
     hip:
       _id: 0
+      itemEffect: 0
+      effectValue: 0
       cost: 0
       itemState: 3
       materials:

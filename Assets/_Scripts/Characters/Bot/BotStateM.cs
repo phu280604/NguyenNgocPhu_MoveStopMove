@@ -20,6 +20,17 @@ public class BotStateM : MonoBehaviour, ICharacterStateM
 
     #endregion
 
+    #region --- Unity methods ---
+
+    private void OnDisable()
+    {
+        IsChangeRange = true;
+        IsDelayAttack = false;
+        IsMoving = false;
+    }
+
+    #endregion
+
     #region --- Properties ---
 
     public NavMeshAgent NavMesh => _navMesh;

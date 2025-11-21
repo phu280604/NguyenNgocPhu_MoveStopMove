@@ -21,7 +21,7 @@ namespace FSM.Player
             ChangeAnim();
 
             _acceleration = _controller.StatsM.StatsSO.acceleration;
-            _maxSpeed = _controller.StatsM.StatsSO.maxMovementSpeed;
+            _maxSpeed = _controller.StatsM.MaxSpeed;
         }
 
         public override void UpdateState()
@@ -69,7 +69,9 @@ namespace FSM.Player
         // Change animation based on stopping state.
         private void ChangeAnim()
         {
-            if(!_isStopping)
+            if (!_controller.gameObject.activeSelf) return;
+
+            if (!_isStopping)
                 _controller.Animator.Play(EAnim.Run.ToString());
             else if(_isStopping)
             {

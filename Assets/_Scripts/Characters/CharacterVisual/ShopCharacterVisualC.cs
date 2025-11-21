@@ -24,8 +24,8 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
             if(item.itemType == EItemType.Set)
             {
                 ItemSetSkin setSkin = _subject.ItemDataConfig.GetItemById<ItemSetSkin>(item.id, EItemType.Set);
-                _visualData.SetNewIdByType(setSkin.hat.id, EItemType.Hat);
-                _visualData.SetNewIdByType(setSkin.pant.id, EItemType.Pant);
+                _visualData.SetNewIdByType(_subject.ItemDataConfig.GetIdFirstItem(EItemType.Hat), EItemType.Hat);
+                _visualData.SetNewIdByType(_subject.ItemDataConfig.GetIdFirstItem(EItemType.Pant), EItemType.Pant);
             }
             SaveDataManager.Instance.Save<VisualData>(_visualData, StringCollection.VISUAL_DATA);
         }
@@ -52,7 +52,6 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
         _subject.AddObserver(EUIKey.VisualItem, this);
         _subject.AddObserver(EUIKey.SaveItem, this);
     }
-    
     private void SaveBaseData()
     {
         if (_visualData != null) return;
@@ -82,7 +81,6 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
 
         SaveDataManager.Instance.Save<VisualData>(_visualData, StringCollection.VISUAL_DATA);
     }
-
     private void LoadFromFile()
     {
         _visualData = LoadDataManager.Instance.Load<VisualData>(StringCollection.VISUAL_DATA);
@@ -120,6 +118,9 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
                     _hatMesh.mesh = hat.mesh;
                     _hatMeshRenderer.materials = hat.materials.ToArray();
                     SetTransform(_hatMesh.transform, hat.offset, hat.rotation, hat.scale);
+
+                    if(id == _visualData.GetIdByType(EItemType.Hat))
+                        SetSkin<ItemHat>(hat, EItemType.Hat);
                 }
                 break;
 
@@ -135,6 +136,9 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
                         Texture2D texture = pant.albedo.texture;
                         mat.SetTexture("_MainTex", texture);
                     }
+
+                    if (id == _visualData.GetIdByType(EItemType.Pant))
+                        SetSkin<ItemPant>(pant, EItemType.Pant);
                 }
                 break;
 
@@ -175,7 +179,6 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
                 break;
         }
     }
-
     private void SetSkin<T>(T itemInSet, EItemType itemType) where T : GenericItem
     {
         switch (itemType)
@@ -190,7 +193,7 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
 
             // Hat.
             case EItemType.Hat:
-                _subject.ItemDataConfig.UpdateItemStateById(-1, itemType, EItemState.Equipped);
+                _subject.ItemDataConfig.UpdateItemStateById(itemInSet.id, itemType, EItemState.Equipped);
                 _hatMesh.mesh = itemInSet.mesh;
                 _hatMeshRenderer.materials = itemInSet.materials.ToArray();
                 if (itemInSet is ItemHat hat)
@@ -199,7 +202,7 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
 
             // Pant.
             case EItemType.Pant:
-                _subject.ItemDataConfig.UpdateItemStateById(-1, itemType, EItemState.Equipped);
+                _subject.ItemDataConfig.UpdateItemStateById(itemInSet.id, itemType, EItemState.Equipped);
                 _pantMeshRenderer.materials = itemInSet.materials.ToArray();
                 if (itemInSet is ItemPant pant)
                     foreach (Material mat in _pantMeshRenderer.materials)
@@ -227,7 +230,6 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
                 break;
         }
     }
-
     private void SetTransform(Transform transform, Vector3 offset, Vector3 rotation, Vector3 scale)
     {
         transform.localScale = scale;

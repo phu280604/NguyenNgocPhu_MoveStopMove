@@ -22,7 +22,6 @@ namespace FSM.Bot
         public override void EnterState()
         {
             _timer.OnReset();
-
             ChangeAnim();
         }
 
@@ -43,6 +42,8 @@ namespace FSM.Bot
         // Change animation based on stopping state.
         private void ChangeAnim()
         {
+            if (!_controller.gameObject.activeSelf) return;
+
             _controller.Animator.Play(EAnim.Idle.ToString());
         }
 

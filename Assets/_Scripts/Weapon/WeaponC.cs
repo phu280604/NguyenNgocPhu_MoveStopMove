@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class WeaponC : GameUnit
             StateM.HasHit = true;
 
             other.gameObject.GetComponent<GameUnit>().OnDespawn();
+            onAfterEliminating?.Invoke();
             OnDespawn();
 
             StateM.HasHit = false;
@@ -39,9 +41,11 @@ public class WeaponC : GameUnit
 
     #region --- Methods ---
 
-    public void OnInit(CharacterC ctrl)
+    public void OnInit(CharacterC ctrl, Action onAfterEliminating)
     {
         charCtrl = ctrl;
+
+        this.onAfterEliminating = onAfterEliminating;
     }
 
     #endregion
@@ -56,6 +60,8 @@ public class WeaponC : GameUnit
     #region --- Fields ---
 
     protected CharacterC charCtrl;
+
+    protected Action onAfterEliminating;
 
     #endregion
 }

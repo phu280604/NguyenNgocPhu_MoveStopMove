@@ -31,6 +31,9 @@ namespace FSM.Bot
         public override void ExitState()
         {
             _canMoving = false;
+
+            if(_stateM.NavMesh.hasPath)
+                _stateM.NavMesh.ResetPath();
         }
 
         #endregion
@@ -40,8 +43,6 @@ namespace FSM.Bot
         // Accelerate to move the player smoothly.
         private void OnMove()
         {
-            
-
             NavMeshHit hit;
 
             for(int i = 0; i < 10; i++)
@@ -84,10 +85,9 @@ namespace FSM.Bot
         // Change animation based on movement state.
         private void ChangeAnim()
         {
-            _controller.Animator.Play(EAnim.Run.ToString());
+            if (!_controller.gameObject.activeSelf) return;
 
-            //if (_isMoving)
-            //    _controller.Animator.speed = _controller.StatsM.StatsSO.maxAnimSpeed;
+            _controller.Animator.Play(EAnim.Run.ToString());
         }
 
         #endregion

@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: dd1827520cba05c49a45088fd27d0abb, type: 2}
   - {fileID: 2100000, guid: 9e33cd2bf8270f542a1beb348ec76983, type: 2}
   - {fileID: 2100000, guid: cd3715316ac78244596838b5f70b90a8, type: 2}
-  rotationSpeed: 10
-  rangeAttack: 3.5
+  maxMovingSpeed: 8
+  rotationSpeed: 400
+  rangeAttack: 4
   attackDelay: 2

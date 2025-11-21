@@ -1135,6 +1135,7 @@ MonoBehaviour:
   IsWidescreenProcessing: 0
   popups: []
   _txtCoins: {fileID: 227751933491761152}
+  _txtEffect: {fileID: 3480528603276167890}
   _tabItems:
   - {fileID: 6414070969231070322}
   - {fileID: 9032818878004301762}

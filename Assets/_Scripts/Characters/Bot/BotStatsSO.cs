@@ -15,6 +15,8 @@ public class BotStatsSO : ScriptableObject
 
     public List<Material> color_Materials = new List<Material>();
 
+    public float maxMovingSpeed;
+
     public float rotationSpeed;
 
     public float rangeAttack;

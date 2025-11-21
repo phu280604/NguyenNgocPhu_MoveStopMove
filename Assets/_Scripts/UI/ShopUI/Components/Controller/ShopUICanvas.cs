@@ -14,6 +14,7 @@ public class ShopUICanvas : UICanvas, IObserver<object>
         base.OnInit();
 
         _subject.AddObserver(EUIKey.Item, this);
+        _subject.AddObserver(EUIKey.ItemEffect, this);
 
         List<ShopButtonC> buttonItems = GameObject.FindObjectsByType<ShopButtonC>(FindObjectsSortMode.None).ToList();
 
@@ -47,6 +48,31 @@ public class ShopUICanvas : UICanvas, IObserver<object>
             if((EItemState)d == EItemState.Purchased)
                 ChangeCoins();
         }
+        else if(data is KeyValuePair<EItemEffect, float> effect)
+        {
+            string nameEffect = "";
+            switch (effect.Key)
+            {
+                case EItemEffect.None:
+                    nameEffect = StringCollection.BONUS_NONE;
+                    _txtEffect.text = nameEffect;
+                    return;
+                case EItemEffect.BaseRange:
+                    nameEffect = StringCollection.BONUS_RANGE;
+                    break;
+                case EItemEffect.RangeAfterEliminating:
+                    nameEffect = StringCollection.BONUS_RANGE_AFTER_ELIMINATING;
+                    break;
+                case EItemEffect.MovementSpeed:
+                    nameEffect = StringCollection.BONUS_MAX_SPEED;
+                    break;
+                case EItemEffect.MovementSpeedAfterEliminating:
+                    nameEffect = StringCollection.BONUS_MAX_SPEED_AFTER_ELIMINATING;
+                    break;
+            }
+
+            _txtEffect.text = $"+ {effect.Value} " + nameEffect;
+        }
     }
 
     #endregion
@@ -75,6 +101,7 @@ public class ShopUICanvas : UICanvas, IObserver<object>
     #region --- Fields ---
 
     [SerializeField] private TextMeshProUGUI _txtCoins;
+    [SerializeField] private TextMeshProUGUI _txtEffect;
 
     [SerializeField] private List<TabColorC> _tabItems = new List<TabColorC>();
     private Dictionary<EItemState, ShopButtonC> _buttonItems = new Dictionary<EItemState, ShopButtonC>();

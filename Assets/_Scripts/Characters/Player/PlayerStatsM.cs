@@ -2,13 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatsM : MonoBehaviour
+public class PlayerStatsM : CharacterStatsM
 {
-    #region --- Unity Methods ---
+    #region --- Overrides ---
 
-    private void Awake()
+    public override void OnInitItemEffect(float bonusStats, EItemEffect effectType)
     {
-        CurrentRangeAttack = _statsSO.rangeAttack;
+        base.OnInitItemEffect(bonusStats, effectType);
+    }
+
+    #endregion
+
+    #region --- Methods ---
+
+    public void AddBaseStats()
+    {
+        CurrentRangeAttack += _statsSO.rangeAttack;
+        MaxSpeed += _statsSO.maxMovementSpeed;
     }
 
     #endregion
@@ -16,9 +26,6 @@ public class PlayerStatsM : MonoBehaviour
     #region --- Properties ---
 
     public float CurrentSpeed { get; set; } = 0;
-
-    public float CurrentRangeAttack { get; set; }
-
     public PlayerStatsSO StatsSO => _statsSO;
 
     #endregion

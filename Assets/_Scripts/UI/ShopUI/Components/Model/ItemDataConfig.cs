@@ -120,6 +120,7 @@ public class ItemDataConfig : ScriptableObject
 
     public void UpdateItemStateById(int id, EItemType type, EItemState state)
     {
+        bool isFound = true;
         switch (type)
         {
             case EItemType.Weapon:
@@ -129,16 +130,18 @@ public class ItemDataConfig : ScriptableObject
                     GetItemById<ItemWeapon>(id, type).itemState = state;
                 break;
             case EItemType.Hat:
+                isFound = GetItemById<ItemHat>(id, type) != null;
                 if (state == EItemState.Equipped)
                     RemoveEquippedState<ItemHat>(hats);
-                if (id != -1)
-                    GetItemById<ItemHat>(id, type).itemState = state;
+
+                GetItemById<ItemHat>(isFound ? id : GetIdFirstItem(type), type).itemState = state;
                 break;
             case EItemType.Pant:
+                isFound = GetItemById<ItemPant>(id, type) != null;
                 if (state == EItemState.Equipped)
                     RemoveEquippedState<ItemPant>(pants);
-                if (id != -1)
-                    GetItemById<ItemPant>(id, type).itemState = state;
+
+                GetItemById<ItemPant>(isFound ? id : GetIdFirstItem(type), type).itemState = state;
                 break;
             case EItemType.Set:
                 if (state == EItemState.Equipped)
@@ -192,6 +195,10 @@ public class GenericItem
 
     [SerializeField] private int _id;
     public int id => _id;
+
+    [Header("Item effect")]
+    public EItemEffect itemEffect;
+    public float effectValue;
 
     [Header("Cost")]
     public int cost;

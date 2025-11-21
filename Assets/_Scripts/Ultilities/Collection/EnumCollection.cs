@@ -78,12 +78,14 @@ public enum EPoolType
 
 #endregion
 
-#region -- Enum Bonus Stats --
-public enum EBonusStats
+#region -- Enum Effect Stats --
+public enum EItemEffect
 {
-    None,
-    Speed,
-    Shield,
+    None = 0,
+    BaseRange = 1,
+    RangeAfterEliminating = 2,
+    MovementSpeed = 3,
+    MovementSpeedAfterEliminating = 4,
 }
 #endregion
 
@@ -121,6 +123,7 @@ public enum EUIKey
     VisualItem = 3,
     ItemCost = 4,
     SaveItem = 5,
+    ItemEffect = 6,
 }
 
 public enum EUIGamePlayKey

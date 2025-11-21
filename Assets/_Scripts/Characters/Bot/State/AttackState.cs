@@ -57,7 +57,11 @@ namespace FSM.Bot
 
             newWeapon.StateM.TargetPos = _controller.StateM.Target.position;
             newWeapon.StateM.TargetTag = ETag.Bot;
-            newWeapon.OnInit(_controller);
+            newWeapon.OnInit(_controller, () => {
+                _controller.StatsM.OnUpdateStatsAfterEliminating();
+
+                _stateM.IsChangeRange = true;
+            });
         }
 
         private void OnRotateTowardsTarget()
@@ -80,6 +84,8 @@ namespace FSM.Bot
         // Change animation based on stopping state.
         private void ChangeAnim()
         {
+            if (!_controller.gameObject.activeSelf) return;
+
             _controller.Animator.Play(EAnim.Attack.ToString());
         }
 
