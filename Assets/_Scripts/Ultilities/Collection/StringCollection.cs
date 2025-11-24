@@ -20,5 +20,10 @@ public static class StringCollection
     public static readonly string BONUS_MAX_SPEED_AFTER_ELIMINATING = "max speed after eliminating enemy";
     #endregion
 
+    #region -- Name unit --
+    public static readonly string PLAYER_NAME = "Player";
+    public static readonly string BOT_NAME = "Bot";
+    #endregion
+
     #endregion
 }

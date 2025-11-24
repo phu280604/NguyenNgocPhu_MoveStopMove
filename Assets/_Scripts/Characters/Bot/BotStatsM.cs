@@ -11,6 +11,7 @@ public class BotStatsM : CharacterStatsM
     {
         WaitingTime = Random.Range(MIN_WAITING_TIME,MAX_WAITING_TIME);
         RangeMoving = Random.Range(MIN_RANGE_MOVING, MAX_RANGE_MOVING);
+        CoinDrops = Random.Range(_botStatsSO.minCoins, _botStatsSO.maxCoins);
     }
 
     #endregion
@@ -32,6 +33,7 @@ public class BotStatsM : CharacterStatsM
     public float WaitingTime { get; private set; }
     public float RangeMoving { get; private set; }
     public float DistanceStop => DISTANCE_STOP;
+    public int CoinDrops { get; private set; }
 
     #endregion
 

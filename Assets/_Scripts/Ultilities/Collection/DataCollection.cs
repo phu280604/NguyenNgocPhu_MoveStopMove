@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelData
+#region --- Level ---
+
+[System.Serializable]
+public class LevelSaveData
 {
     #region --- Fields ---
 
@@ -11,3 +14,13 @@ public class LevelData
 
     #endregion
 }
+
+[System.Serializable]
+public class LevelData
+{
+    public int levelId;
+    public int maxEnemiesGroundedInTime;
+    public int maxEnemiesCount;
+}
+
+#endregion

@@ -13,15 +13,18 @@ public class BotStatsSO : ScriptableObject
 
     #region --- Fields ---
 
+    [Header("Sprites & Materials")]
     public List<Material> color_Materials = new List<Material>();
 
+    [Header("Stats")]
     public float maxMovingSpeed;
-
     public float rotationSpeed;
-
     public float rangeAttack;
-
     public float attackDelay;
+
+    [Header("Rewards")]
+    public int minCoins;
+    public int maxCoins;
 
     public readonly float triggeredAnimAttack = 0.5f;
 

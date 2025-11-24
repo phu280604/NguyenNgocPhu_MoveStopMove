@@ -44,7 +44,7 @@ public class MenuUICanvas : UICanvas
 
     private void ChangeCoin()
     {
-        _txtCoin.text = GameManager.Instance.LevelData.coins.ToString();
+        _txtCoin.text = LevelManager.Instance.Coins.ToString();
     }
 
     #endregion
@@ -53,7 +53,7 @@ public class MenuUICanvas : UICanvas
 
     [SerializeField] private TextMeshProUGUI _txtCoin;
 
-    private LevelData _levelData;
+    private LevelSaveData _levelData;
 
     #endregion
 }

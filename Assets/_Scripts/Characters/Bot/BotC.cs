@@ -124,6 +124,7 @@ public class BotC : CharacterC
     #region --- Properties ---
 
     public BotStatsM StatsM => _statsM;
+    public Subject<ELevelEventKey, EMapKey> MapSubject { get; set; }
 
     #endregion
 

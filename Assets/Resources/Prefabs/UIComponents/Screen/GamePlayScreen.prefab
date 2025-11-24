@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 611310095072161893}
   - component: {fileID: 5404318042062240345}
   - component: {fileID: 1216838236829279910}
+  - component: {fileID: 7035780738165029039}
   m_Layer: 0
   m_Name: GamePlayScreen
   m_TagString: Untagged
@@ -156,7 +157,20 @@ MonoBehaviour:
   IsHandlingRabbitEars: 0
   IsWidescreenProcessing: 0
   popups: []
+  _subject: {fileID: 7035780738165029039}
   _txtCoins: {fileID: 2773153583131202158}
+--- !u!114 &7035780738165029039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5043480350697412836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd8ff18600dd824793b82860e67c31d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6893577782980602452
 GameObject:
   m_ObjectHideFlags: 0

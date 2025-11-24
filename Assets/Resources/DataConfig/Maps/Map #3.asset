@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9168bc916d3e4694ca8d5edb161778bd, type: 3}
-  m_Name: BoomerangStats
+  m_Script: {fileID: 11500000, guid: 5778b04521255824ea089325876b5cec, type: 3}
+  m_Name: Map #3
   m_EditorClassIdentifier: 
-  speed: 5
-  rotateSpeed: 5
-  disableTime: 2.5
-  moveBackTime: 1.5
+  _levelData:
+    levelId: 3
+    maxEnemiesGroundedInTime: 6
+    maxEnemiesCount: 30

@@ -8,21 +8,20 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        LevelData = LoadDataManager.Instance.Load<LevelData>(StringCollection.LEVEL_DATA);
-        if(LevelData == null)
-        {
-            LevelData = new LevelData();
-            SaveDataManager.Instance.Save<LevelData>(LevelData, StringCollection.LEVEL_DATA);
-        }
-
-        UIManager.Instance.OpenUI<MenuUICanvas>();
-
-        ChangeState(EGameStates.Menu);
+        OnInit();
     }
 
     #endregion
 
     #region --- Methods ---
+
+    public void OnInit()
+    {
+        LevelManager.Instance.OnInit(true);
+        UIManager.Instance.OpenUI<MenuUICanvas>();
+
+        ChangeState(EGameStates.Menu);
+    }
 
     public void ChangeState(EGameStates newState)
     {
@@ -67,24 +66,6 @@ public class GameManager : Singleton<GameManager>
 
         LevelManager.Instance.OnInit();
     }
-
-    public void SetCoin(int coin)
-    {
-        LevelData.coins = coin;
-        SaveDataManager.Instance.Save<LevelData>(LevelData, StringCollection.LEVEL_DATA);
-    }
-
-    public void SetLevel(int level)
-    {
-        LevelData.levelId = level;
-        SaveDataManager.Instance.Save<LevelData>(LevelData, StringCollection.LEVEL_DATA);
-    }
-
-    #endregion
-
-    #region --- Properties ---
-
-    public LevelData LevelData { get; private set; }
 
     #endregion
 

@@ -92,6 +92,9 @@ namespace FSM.Player
             newWeapon.OnInit(_controller, () => {
                 _controller.StatsM.OnUpdateStatsAfterEliminating();
 
+                _controller.MapSubject.NotifyObservers(ELevelEventKey.Map, EMapKey.NextLevel);
+                _controller.MapSubject.NotifyObservers(ELevelEventKey.Map, EMapKey.RespawnBot);
+
                 _stateM.IsChangeRange = true;
             });
         }

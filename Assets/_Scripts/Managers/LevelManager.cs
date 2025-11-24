@@ -4,37 +4,63 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    #region --- Unity methods ---
-
-    private void Start()
-    {
-        _groundSize = ((int)_ground.localScale.x / 2) - GROUND_SIZE;
-    }
-
-    #endregion
-
     #region --- Methods ---
 
-    public void OnInit()
+    #region -- Initialization --
+    public void OnInit(bool isJusLoadData = false)
     {
-        PoolManager.Instance.Spawn<PlayerC>(
-            EPoolType.Player,
-            Vector3.zero,
-            Quaternion.identity
-        );
-
-        for (int i = 0; i < PoolManager.Instance.PoolAmount(EPoolType.Bot); i++)
+        #region - Check conditions -
+        if (isJusLoadData)
         {
-            BotC bot = PoolManager.Instance.Spawn<BotC>(
-                EPoolType.Bot,
-                new Vector3(Random.Range(-_groundSize, _groundSize), 0, Random.Range(-_groundSize, _groundSize)),
-                Quaternion.identity
-            );
-
-            bot.gameObject.name = $"Bot #{count++}";
+            OnLoadData();
+            return;
         }
 
+        if(_levelData == null)
+        {
+            Debug.LogError("Level data can not be null!");
+            return;
+        }
+        #endregion
 
+        #region -- Handle --
+        OnSpawnUnit();
+        OnSetUpCamera();
+        #endregion
+    }
+    #endregion
+
+    #region -- Handle data --
+    private void OnLoadData()
+    {
+        _levelData = LoadDataManager.Instance.Load<LevelSaveData>(StringCollection.LEVEL_DATA);
+        if (_levelData == null)
+        {
+            _levelData = new LevelSaveData();
+            SaveDataManager.Instance.Save<LevelSaveData>(_levelData, StringCollection.LEVEL_DATA);
+        }
+    }
+
+    public void OnNextLevel()
+    {
+        // TODO: Next level.
+    }
+    #endregion
+
+    #region -- Spawn handler --
+    private void OnSpawnUnit()
+    {
+        PoolManager.Instance.Spawn<MapC>(
+            EPoolType.Maps,
+            Vector3.zero,
+            Quaternion.identity
+        ).OnInit(_levelData.levelId);
+    }
+    #endregion
+
+    #region -- Camera handler --
+    private void OnSetUpCamera()
+    {
         if (_cameraH == null)
         {
             _cameraH = GameObject
@@ -43,6 +69,27 @@ public class LevelManager : Singleton<LevelManager>
         }
         _cameraH.OnInit();
     }
+    #endregion
+
+    #region -- Level data handler --
+    public void SetCoin(int coin)
+    {
+        _levelData.coins += coin;
+        SaveDataManager.Instance.Save<LevelSaveData>(_levelData, StringCollection.LEVEL_DATA);
+    }
+
+    public void SetLevel(int level)
+    {
+        _levelData.levelId = level;
+        SaveDataManager.Instance.Save<LevelSaveData>(_levelData, StringCollection.LEVEL_DATA);
+    }
+    #endregion
+
+    #endregion
+
+    #region --- Properties ---
+
+    public int Coins => _levelData.coins;
 
     #endregion
 
@@ -52,10 +99,7 @@ public class LevelManager : Singleton<LevelManager>
 
     [SerializeField] private Transform _ground;
 
-    private const int GROUND_SIZE = 3;
-    private int _groundSize;
-
-    private int count = 0;
+    [SerializeField] private LevelSaveData _levelData;
 
     #endregion
 }

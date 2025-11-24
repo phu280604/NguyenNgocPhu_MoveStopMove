@@ -57,6 +57,7 @@ public class PoolManager : Singleton<PoolManager>
     #region --- Properties ---
 
     public int PoolAmount(EPoolType type) => _poolInstance[type].BaseCount;
+    public int PoolActiveAmount(EPoolType type) => _poolInstance[type].UnitActiveCount;
 
     #endregion
 

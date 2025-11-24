@@ -23,14 +23,19 @@ public class WeaponC : GameUnit
     {
         if (StateM.HasHit) return;
 
+        CharacterC charC = other.GetComponent<CharacterC>();
+
         if (other.gameObject.CompareTag(ETag.Player.ToString()) || other.gameObject.CompareTag(ETag.Bot.ToString()))
         {
-            if (charCtrl == other.gameObject.GetComponent<CharacterC>()) return;
+            if (charCtrl == charC) return;
 
             StateM.HasHit = true;
 
             other.gameObject.GetComponent<GameUnit>().OnDespawn();
+
             onAfterEliminating?.Invoke();
+            AfterGetHit(charC);
+
             OnDespawn();
 
             StateM.HasHit = false;
@@ -46,6 +51,16 @@ public class WeaponC : GameUnit
         charCtrl = ctrl;
 
         this.onAfterEliminating = onAfterEliminating;
+    }
+
+    private void AfterGetHit(CharacterC charC)
+    {
+        if (charCtrl is PlayerC playerCtrl && charC != charCtrl)
+        {
+            //TODO: Triggered coin drops.
+            if (charC is BotC botCtrl)
+                playerCtrl.GetCoinDrop(botCtrl.StatsM.CoinDrops);
+        }
     }
 
     #endregion

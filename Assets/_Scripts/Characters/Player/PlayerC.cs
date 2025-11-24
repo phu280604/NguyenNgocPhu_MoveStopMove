@@ -93,7 +93,7 @@ public class PlayerC : CharacterC
     }
     #endregion
 
-    #region -- Handler --
+    #region -- Handle physics --
     private void OnActionHandler()
     {
         _controlH.GetInput((newDir) =>
@@ -104,6 +104,15 @@ public class PlayerC : CharacterC
                 _stateM.LastestDirection = newDir;
         });
     }
+
+    public void GetCoinDrop(int coins)
+    {
+        LevelManager.Instance.SetCoin(coins);
+        if(UIManager.Instance.BackTopUI is GamePlayUICanvas ui)
+        {
+            ui.Subject.NotifyObservers(EUIGamePlayKey.TextCoins, LevelManager.Instance.Coins);
+        }
+    }
     #endregion
 
     #endregion
@@ -111,6 +120,8 @@ public class PlayerC : CharacterC
     #region --- Properties ---
 
     public PlayerStatsM StatsM => _statsM;
+
+    public Subject<ELevelEventKey, EMapKey> MapSubject { get; set; }
 
     #endregion
 

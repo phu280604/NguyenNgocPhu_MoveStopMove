@@ -21,3 +21,5 @@ MonoBehaviour:
   rotationSpeed: 400
   rangeAttack: 4
   attackDelay: 2
+  minCoins: 2
+  maxCoins: 6

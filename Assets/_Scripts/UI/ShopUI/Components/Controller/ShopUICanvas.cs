@@ -93,7 +93,7 @@ public class ShopUICanvas : UICanvas, IObserver<object>
 
     private void ChangeCoins()
     {
-        _txtCoins.text = GameManager.Instance.LevelData.coins.ToString();
+        _txtCoins.text = LevelManager.Instance.Coins.ToString();
     }
 
     #endregion

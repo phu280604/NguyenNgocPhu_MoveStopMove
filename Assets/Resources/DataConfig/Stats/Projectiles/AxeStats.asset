@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AxeStats
   m_EditorClassIdentifier: 
   speed: 5
-  rotateSpeed: 1.5
-  disableTime: 5
+  rotateSpeed: 3
+  disableTime: 1.5

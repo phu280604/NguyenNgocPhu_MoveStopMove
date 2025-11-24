@@ -74,6 +74,7 @@ public enum EPoolType
     AxeProjectile,
     BoomerangProjectile,
     Item,
+    Maps,
 }
 
 #endregion
@@ -128,7 +129,18 @@ public enum EUIKey
 
 public enum EUIGamePlayKey
 {
+    TextCoins,
+}
 
+public enum ELevelEventKey
+{
+    Map
+}
+
+public enum EMapKey
+{
+    RespawnBot,
+    NextLevel,
 }
 
 #endregion

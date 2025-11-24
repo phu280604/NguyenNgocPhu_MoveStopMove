@@ -84,6 +84,7 @@ public class PoolUnit
     #region --- Properties ---
 
     public List<GameUnit> UnitActive => _unitActive;
+    public int UnitActiveCount => _unitActive.Count;
     public int Count => _unitInactive.Count + _unitActive.Count;
     public int BaseCount { get; private set; }
     public Transform Parent => _parent;
