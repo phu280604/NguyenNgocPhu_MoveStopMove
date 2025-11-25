@@ -17,7 +17,7 @@ MonoBehaviour:
     itemEffect: 0
     effectValue: 0
     cost: 0
-    itemState: 2
+    itemState: 3
     materials:
     - {fileID: 2100000, guid: 36ff9b6f43a8b724ba2e7f548f61497e, type: 2}
     - {fileID: 2100000, guid: 2d6c03e937b9d5543a4e08a91bd4306a, type: 2}

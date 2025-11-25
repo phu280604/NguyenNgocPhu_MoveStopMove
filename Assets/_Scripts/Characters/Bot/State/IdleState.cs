@@ -22,6 +22,7 @@ namespace FSM.Bot
         public override void EnterState()
         {
             _timer.OnReset();
+
             ChangeAnim();
         }
 

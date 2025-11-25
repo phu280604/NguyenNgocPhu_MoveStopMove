@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class ShopTabSpawnerH : MonoBehaviour, IObserver<object>
 {
@@ -42,6 +41,8 @@ public class ShopTabSpawnerH : MonoBehaviour, IObserver<object>
         foreach(GenericItem item in items)
         {
             ShopItemC itemUI = PoolManager.Instance.Spawn<ShopItemC>(EPoolType.Item, Vector3.zero, Quaternion.identity);
+
+            if(itemUI == null) continue;
 
             itemUI.transform.SetParent(_itemTransform);
             itemUI.OnInit(item, _subject, _itemToggleGroup);

@@ -780,15 +780,15 @@ MonoBehaviour:
   - parent: {fileID: 1965359326}
     prefab: {fileID: 8527998934883304635, guid: f98eea2d6cacd7547a0b459448aefbee, type: 3}
     poolType: 3
-    amount: 20
+    amount: 6
   - parent: {fileID: 1704053479}
     prefab: {fileID: 3015350059235646545, guid: f02cb13d6a7b7b54fa21da6dc3396861, type: 3}
     poolType: 4
-    amount: 2
+    amount: 20
   - parent: {fileID: 654809782}
     prefab: {fileID: 7585878778972806560, guid: b82059a2ca28603469bc1f0cf247a08a, type: 3}
     poolType: 5
-    amount: 1
+    amount: 20
   - parent: {fileID: 2035069594}
     prefab: {fileID: 8447215160162303815, guid: 6410a0059928926499c37ef81415ddea, type: 3}
     poolType: 7

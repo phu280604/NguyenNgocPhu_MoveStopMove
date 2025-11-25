@@ -87,6 +87,8 @@ namespace FSM.Player
                 Quaternion.LookRotation(lookPos)
             );
 
+            if (newWeapon == null) return;
+
             newWeapon.StateM.TargetPos = _controller.StateM.Target.position;
             newWeapon.StateM.TargetTag = ETag.Bot;
             newWeapon.OnInit(_controller, (coins) => {

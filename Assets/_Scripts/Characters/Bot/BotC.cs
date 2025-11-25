@@ -10,24 +10,30 @@ public class BotC : CharacterC
     #region -- Methods --
     public override void OnInit()
     {
+        // Config state machine.
+        if (_stateManager == null)
+            _stateManager = new BotStateManager(this);
+
+        _keyState = EState.Idle;
+        _curState = null;
+        _stateManager.GetState(EState.Idle).EnterState();
+
+        _curState = _stateManager.GetState(EState.Idle);
+
+        // Config navMesh.
+        if (_stateM.NavMesh.hasPath)
+            _stateM.NavMesh.ResetPath();
+
         // Config state model.
-        if(_stateM.LayerTargets == null)
+        if (_stateM.LayerTargets == null)
             _stateM.LayerTargets = new string[] {
                 ELayer.Player.ToString(),
                 ELayer.Bot.ToString()
             };
 
-        // Config state machine.
-        if(_stateManager == null)
-            _stateManager = new BotStateManager(this);
-
-        _curState = _stateManager.GetState(EState.Idle);
-        _curState.EnterState();
-
-        _keyState = EState.Idle;
+        _animator.speed = 1f;
 
         OnDeselected();
-        
     }
     protected override void CheckState()
     {
@@ -36,8 +42,11 @@ public class BotC : CharacterC
         else if (_stateM.IsMoving)
             _keyState = EState.Movement;
 
-        //if (_stateM.Target != null && _statsM.VisualData != null)
-        //    _keyState = EState.Attack;
+        if (_stateM.Target != null && _statsM.VisualData != null)
+            _keyState = EState.Attack;
+
+        if(_stateM.IsDead)
+            _keyState = EState.Dead;
 
         if (_curState.KeyState != _keyState)
             _stateManager.SwitchState(_keyState, ref _curState);
@@ -57,6 +66,13 @@ public class BotC : CharacterC
             this
         );
     }
+
+    public override void OnDead()
+    {
+        _stateM.OnHideCollider();
+
+        base.OnDead();
+    }
     #endregion
 
     #region -- Properties --
@@ -67,11 +83,6 @@ public class BotC : CharacterC
 
     #region --- Unity methods ---
 
-    private void Start()
-    {
-        OnInit();
-    }
-
     private void Update()
     {
         OnActionState();
@@ -80,19 +91,6 @@ public class BotC : CharacterC
     private void FixedUpdate()
     {
         OnBuildRangeAttack();
-    }
-
-    private void OnEnable()
-    {
-        _stateM.NavMesh.avoidancePriority = Random.Range(50, 100);
-    }
-
-    private void OnDisable()
-    {
-        _keyState = EState.Idle;
-        _stateManager.SwitchState(_keyState, ref _curState);
-
-        OnDeselected();
     }
 
     #endregion
@@ -116,6 +114,15 @@ public class BotC : CharacterC
     {
         CheckState();
         _curState?.UpdateState();
+    }
+    #endregion
+
+    #region -- Handle reset --
+    public void OnHandleAfterDead()
+    {
+        _stateM.OnReset();
+
+        OnDeselected();
     }
     #endregion
 

@@ -22,13 +22,21 @@ public class BotStateM : MonoBehaviour, ICharacterStateM
 
     #endregion
 
-    #region --- Unity methods ---
+    #region --- Methods ---
 
-    private void OnDisable()
+    public void OnReset()
     {
+        _collider.enabled = true;
+
         IsChangeRange = true;
         IsDelayAttack = false;
         IsMoving = false;
+        IsDead = false;
+    }
+
+    public void OnHideCollider()
+    {
+        _collider.enabled = false;
     }
 
     #endregion
@@ -42,6 +50,8 @@ public class BotStateM : MonoBehaviour, ICharacterStateM
     #endregion
 
     #region --- Fields ---
+
+    [SerializeField] private Collider _collider;
 
     [SerializeField] private Transform _atkRangePos;
     [SerializeField] private Transform _weaponPos;

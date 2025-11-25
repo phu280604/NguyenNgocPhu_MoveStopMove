@@ -34,6 +34,8 @@ public class ShopSubject : Subject<EUIKey, object>
             Quaternion.LookRotation(Vector3.back)
         );
 
+        if (_characterVisual == null) return;
+
         _characterVisual.OnInit(this);
     }
 

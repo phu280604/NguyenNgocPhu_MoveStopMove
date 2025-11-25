@@ -19,6 +19,9 @@ public class PoolUnit
 
     public GameUnit Spawn(Vector3 position, Quaternion rotation)
     {
+        if (UnitActiveCount > BaseCount && BaseCount != 0)
+            return null;
+
         GameUnit unit;
 
         if (_unitInactive.Count <= 0)

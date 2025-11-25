@@ -2930,8 +2930,8 @@ MonoBehaviour:
   _backMesh: {fileID: 7343074732335003484}
   _hipMesh: {fileID: 3105908101705754882}
   _itemConfig: {fileID: 11400000, guid: dd5eb9085fabf144e9e5790d7dbf1ef6, type: 2}
-  _stateM: {fileID: 5420275805027833411}
   _statsM: {fileID: 2055402502626965258}
+  _stateM: {fileID: 5420275805027833411}
 --- !u!195 &4849075518381350128
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3031,6 +3031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a9048bc527c504b898aa4fa2349d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 839199696898434750}
   _atkRangePos: {fileID: 8827666730287072719}
   _weaponPos: {fileID: 4511577171635852241}
   _navMesh: {fileID: 4849075518381350128}

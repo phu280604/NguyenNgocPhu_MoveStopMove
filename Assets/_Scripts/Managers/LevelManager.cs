@@ -54,11 +54,19 @@ public class LevelManager : Singleton<LevelManager>
     #region -- Spawn handler --
     private void OnSpawnUnit()
     {
-        PoolManager.Instance.Spawn<MapC>(
+        MapC newMap = PoolManager.Instance.Spawn<MapC>(
             EPoolType.Maps,
             Vector3.zero,
             Quaternion.identity
-        ).OnInit(_levelData.levelId);
+        );
+
+        if (newMap == null)
+        {
+            Debug.Log("hi");
+            return;
+        }
+
+        newMap.OnInit(_levelData.levelId);
     }
     #endregion
 

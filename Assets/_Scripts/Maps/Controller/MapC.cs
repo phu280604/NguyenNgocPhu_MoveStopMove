@@ -12,8 +12,7 @@ public class MapC : GameUnit, IObserver<EMapKey>
         switch (data)
         {
             case EMapKey.RespawnBot:
-                if(this != null)
-                    RespawnBot();
+                RespawnBot();
                 break;
             case EMapKey.NextLevel:
                 if(CheckEnemiesCount())
@@ -68,10 +67,12 @@ public class MapC : GameUnit, IObserver<EMapKey>
     #region -- Spawn unit handler --
     private void OnHandleSpawnUnit()
     {
-        _handler.SpawnUnit<PlayerC>(
+        _handler?.SpawnUnit<PlayerC>(
             EPoolType.Player,
             _model.GetRandomSpawnPos(),
             (d) => {
+                if (d == null) return;
+
                 d.gameObject.name = StringCollection.PLAYER_NAME;
                 d.MapSubject = _subject;
             }
@@ -79,13 +80,17 @@ public class MapC : GameUnit, IObserver<EMapKey>
 
         for(int i = 0; i < _model.CurrentMapData.LevelMaxEnemiesOnGround; i++)
         {
-            _handler.SpawnUnit<BotC>(
+            _handler?.SpawnUnit<BotC>(
                 EPoolType.Bot,
                 _model.GetRandomSpawnPos(),
                 (d) => {
+                    if (d == null) return;
+
+                    d.OnInit();
+                    d.MapSubject = _subject;
+
                     _model.CurrentBotCount += 1;
                     d.gameObject.name = StringCollection.BOT_NAME + $" #{_model.CurrentBotCount}";
-                    d.MapSubject = _subject;
                 }
             );
         }
@@ -96,18 +101,19 @@ public class MapC : GameUnit, IObserver<EMapKey>
     #region -- Handle events --
     private void RespawnBot()
     {
-        if(_model.CurrentBotEliminatedCount >= _model.CurrentMapData.LevelMaxEnemiesCount)
-            return;
+        _handler?.SpawnUnit<BotC>(
+            EPoolType.Bot,
+            _model.GetRandomSpawnPos(),
+            (d) => {
+                if(d == null) return;
 
-        if(PoolManager.Instance.PoolActiveAmount(EPoolType.Bot) < _model.CurrentMapData.LevelMaxEnemiesOnGround)
-            _handler.SpawnUnit<BotC>(
-                EPoolType.Bot,
-                _model.GetRandomSpawnPos(),
-                (d) => {
-                    _model.CurrentBotCount += 1;
-                    d.gameObject.name = StringCollection.BOT_NAME + $" #{_model.CurrentBotCount}";
-                }
-            );
+                d.OnInit();
+                d.MapSubject = _subject;
+
+                _model.CurrentBotCount += 1;
+                d.gameObject.name = StringCollection.BOT_NAME + $" #{_model.CurrentBotCount}";
+            }
+        );
     }
 
     private void ResetEnemiesCount()
