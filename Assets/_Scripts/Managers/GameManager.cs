@@ -44,6 +44,12 @@ public class GameManager : Singleton<GameManager>
             case EGameStates.GamePlay:
                 GamePlayStateTriggered();
                 break;
+            case EGameStates.Losing:
+                LosingStateTriggered();
+                break;
+            case EGameStates.Victory:
+                VictoryStateTriggered();
+                break;
         }
     }
 
@@ -64,7 +70,18 @@ public class GameManager : Singleton<GameManager>
         _camGamePlay.SetActive(true);
         _camShop.SetActive(false);
 
+        UIManager.Instance.OpenUI<GamePlayUICanvas>();
         LevelManager.Instance.OnInit();
+    }
+
+    private void LosingStateTriggered()
+    {
+        UIManager.Instance.OpenUI<LosingUICanvas>();
+    }
+
+    private void VictoryStateTriggered()
+    {
+        UIManager.Instance.OpenUI<VictoryUICanvas>();
     }
 
     #endregion

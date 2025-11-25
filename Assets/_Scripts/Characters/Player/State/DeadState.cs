@@ -42,7 +42,11 @@ namespace FSM.Player
         private void OnHandleAfterAnimationDone()
         {
             if(_stateM.IsDead && !_controller.Animator.GetBool(EAnimParams.IsDead.ToString()))
+            {
+                _controller.OnHandleAfterDead();
+
                 _controller.OnDespawn();
+            }
         }
 
         #endregion

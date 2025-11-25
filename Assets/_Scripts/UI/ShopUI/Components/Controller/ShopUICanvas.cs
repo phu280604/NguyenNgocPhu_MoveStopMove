@@ -22,17 +22,6 @@ public class ShopUICanvas : UICanvas, IObserver<object>
             _buttonItems.Add(buttonItem.ItemState, buttonItem);
     }
 
-    public override void CloseDirectly()
-    {
-        PoolManager.Instance.Despawn(EPoolType.VisualObject);
-
-        UIManager.Instance.OpenUI<MenuUICanvas>();
-
-        GameManager.Instance.ChangeState(EGameStates.Menu);
-
-        base.CloseDirectly();
-    }
-
     public void OnNotify(object data)
     {
         if(data is int d)
@@ -90,6 +79,15 @@ public class ShopUICanvas : UICanvas, IObserver<object>
     #endregion
 
     #region --- Methods ---
+
+    public void OnBacktoHome()
+    {
+        PoolManager.Instance.Despawn(EPoolType.VisualObject);
+
+        GameManager.Instance.ChangeState(EGameStates.Menu);
+
+        UIManager.Instance.OpenUI<MenuUICanvas>();  
+    }
 
     private void ChangeCoins()
     {

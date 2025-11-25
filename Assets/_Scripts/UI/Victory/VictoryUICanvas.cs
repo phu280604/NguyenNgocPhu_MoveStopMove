@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LosingUICanvas : UICanvas
+public class VictoryUICanvas : UICanvas
 {
     #region --- Overrides ---
 
@@ -22,14 +22,14 @@ public class LosingUICanvas : UICanvas
         PoolManager.Instance.CollectAll();
     }
 
-    public void OnReset()
+    public void OnNextLevel()
     {
         GameManager.Instance.ChangeState(EGameStates.GamePlay);
 
-        UIManager.Instance.OpenUI<GamePlayUICanvas>();
+        UIManager.Instance.OpenUI<GamePlayUICanvas>(); 
     }
 
-    public void OnBacktoHome()
+    public void OnBacktoHone()
     {
         GameManager.Instance.ChangeState(EGameStates.Menu);
 

@@ -91,11 +91,6 @@ public class PlayerC : CharacterC
         OnBuildRangeAttack();
     }
 
-    private void OnDisable()
-    {
-        OnHandleAfterDead();
-    }
-
     #endregion
 
     #region --- Methods ---
@@ -132,9 +127,10 @@ public class PlayerC : CharacterC
 
     #region -- Handle reset --
 
-    private void OnHandleAfterDead()
+    public void OnHandleAfterDead()
     {
-        UIManager.Instance.OpenUI<LosingUICanvas>();
+        GameManager.Instance.ChangeState(EGameStates.Losing);
+
         _stateM.OnReset();
     }
 

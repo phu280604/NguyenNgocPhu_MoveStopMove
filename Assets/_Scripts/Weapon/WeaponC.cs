@@ -33,8 +33,7 @@ public class WeaponC : GameUnit
 
             charC.OnDead();
 
-            onAfterEliminating?.Invoke();
-            AfterGetHit(charC);
+            onAfterEliminating?.Invoke(AfterGetHit(charC));
 
             OnDespawn();
 
@@ -46,21 +45,18 @@ public class WeaponC : GameUnit
 
     #region --- Methods ---
 
-    public void OnInit(CharacterC ctrl, Action onAfterEliminating)
+    public void OnInit(CharacterC ctrl, Action<int> onAfterEliminating)
     {
         charCtrl = ctrl;
 
         this.onAfterEliminating = onAfterEliminating;
     }
 
-    private void AfterGetHit(CharacterC charC)
+    private int AfterGetHit(CharacterC charC)
     {
-        if (charCtrl is PlayerC playerCtrl && charC != charCtrl)
-        {
-            //TODO: Triggered coin drops.
-            if (charC is BotC botCtrl)
-                playerCtrl.GetCoinDrop(botCtrl.StatsM.CoinDrops);
-        }
+        if (!(charC is BotC botCtrl)) return -1;
+
+        return botCtrl.StatsM.CoinDrops;
     }
 
     #endregion
@@ -76,7 +72,7 @@ public class WeaponC : GameUnit
 
     protected CharacterC charCtrl;
 
-    protected Action onAfterEliminating;
+    protected Action<int> onAfterEliminating;
 
     #endregion
 }

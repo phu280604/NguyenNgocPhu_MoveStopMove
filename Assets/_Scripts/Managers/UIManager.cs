@@ -81,6 +81,14 @@ public class UIManager : Singleton<UIManager>
     {
         if (!_backCanvases.Contains(canvas))
         {
+            if(BackTopUI != null)
+                BackTopUI.CloseDirectly();
+
+            _backCanvases.Add(canvas);
+        }
+        else
+        {
+            RemoveBackUI(canvas);
             _backCanvases.Add(canvas);
         }
     }
@@ -135,7 +143,7 @@ public class UIManager : Singleton<UIManager>
 
     private Dictionary<UICanvas, UnityAction> _backActionEvents = new Dictionary<UICanvas, UnityAction>();
 
-    private List<UICanvas> _backCanvases = new List<UICanvas>();
+    [SerializeField] private List<UICanvas> _backCanvases = new List<UICanvas>();
 
     #endregion
 }

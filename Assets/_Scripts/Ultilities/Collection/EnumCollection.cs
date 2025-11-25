@@ -11,6 +11,8 @@ public enum EGameStates
     Menu,
     Shop,
     GamePlay,
+    Losing,
+    Victory,
 }
 #endregion
 
@@ -131,6 +133,7 @@ public enum EUIKey
 public enum EUIGamePlayKey
 {
     TextCoins,
+    EnemiesRemaining,
 }
 
 public enum ELevelEventKey
