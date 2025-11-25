@@ -9,7 +9,6 @@ public class SaveDataManager : Singleton<SaveDataManager>
     {
         string json = JsonUtility.ToJson(data, true); // true = format dễ đọc
         string path = StringCollection.ROOT_JSON_DATA + $"/{fileName}.json";
-        Debug.Log(json);
         File.WriteAllText(path, json);
         Debug.Log("Saved to: " + path);
     }

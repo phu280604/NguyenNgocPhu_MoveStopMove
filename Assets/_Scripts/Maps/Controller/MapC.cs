@@ -12,9 +12,12 @@ public class MapC : GameUnit, IObserver<EMapKey>
         switch (data)
         {
             case EMapKey.RespawnBot:
-                RespawnBot();
+                if(this != null)
+                    RespawnBot();
                 break;
             case EMapKey.NextLevel:
+                if(CheckEnemiesCount())
+                    NextLevel();
                 break;
         }
     }
@@ -38,6 +41,9 @@ public class MapC : GameUnit, IObserver<EMapKey>
     {
         // Handle level.
         OnHandleLevel(levelId);
+
+        // Set enemies count on UI.
+        ResetEnemiesCount();
 
         // Handle unit.
         OnHandleSpawnUnit();
@@ -68,11 +74,8 @@ public class MapC : GameUnit, IObserver<EMapKey>
             (d) => {
                 d.gameObject.name = StringCollection.PLAYER_NAME;
                 d.MapSubject = _subject;
-                Debug.Log("hello");
             }
         );
-
-        
 
         for(int i = 0; i < _model.CurrentMapData.LevelMaxEnemiesOnGround; i++)
         {
@@ -93,7 +96,7 @@ public class MapC : GameUnit, IObserver<EMapKey>
     #region -- Handle events --
     private void RespawnBot()
     {
-        if(_model.CurrentBotCount >= _model.CurrentMapData.LevelMaxEnemiesCount)
+        if(_model.CurrentBotEliminatedCount >= _model.CurrentMapData.LevelMaxEnemiesCount)
             return;
 
         if(PoolManager.Instance.PoolActiveAmount(EPoolType.Bot) < _model.CurrentMapData.LevelMaxEnemiesOnGround)
@@ -107,9 +110,51 @@ public class MapC : GameUnit, IObserver<EMapKey>
             );
     }
 
+    private void ResetEnemiesCount()
+    {
+        if(UIManager.Instance.BackTopUI is GamePlayUICanvas ui)
+        {
+            ui.Subject.NotifyObservers(
+                    EUIGamePlayKey.EnemiesRemaining,
+                    new KeyValuePair<int, int>(
+                        key: _model.CurrentMapData.LevelMaxEnemiesCount,
+                        value: 0
+                    )
+                );
+        }
+
+        _model.CurrentBotEliminatedCount = 0;
+    }
+
+    private bool CheckEnemiesCount()
+    {
+        _model.CurrentBotEliminatedCount += 1;
+
+        if (UIManager.Instance.BackTopUI is GamePlayUICanvas ui)
+            ui.Subject.NotifyObservers(
+                EUIGamePlayKey.EnemiesRemaining,
+                new KeyValuePair<int, int>(
+                    key: _model.CurrentMapData.LevelMaxEnemiesCount,
+                    value: _model.CurrentBotEliminatedCount
+                )
+            );
+
+        if(_model.CurrentBotEliminatedCount >= _model.CurrentMapData.LevelMaxEnemiesCount)
+            return true;
+
+        return false;
+    }
+
     private void NextLevel()
     {
-        LevelManager.Instance.OnNextLevel();
+        int newLevelId = _model.CurrentMapData.LevelId + 1;
+
+        if (newLevelId > _model.MapSOs.Count)
+        {
+            newLevelId = _model.MapSOs[0].LevelId;
+        }
+
+        LevelManager.Instance.OnNextLevel(newLevelId);
     }
     #endregion
 

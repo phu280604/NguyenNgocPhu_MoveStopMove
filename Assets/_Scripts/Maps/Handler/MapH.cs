@@ -15,7 +15,7 @@ public class MapH : MonoBehaviour
     /// <param name="grounds"></param>
     public void SetUpGroundByLevelId(int levelId, List<GameObject> grounds, Action<TerrainM> onAction)
     {
-        if(levelId >= grounds.Count)
+        if(levelId > grounds.Count)
         {
             Debug.LogError("Over range grounds");
             return;
@@ -39,7 +39,7 @@ public class MapH : MonoBehaviour
     /// <param name="onAction"></param>
     public void SetCurrentLevelDataByLevelId(int levelId, List<MapSO> maps, Action<MapSO> onAction)
     {
-        if (levelId >= maps.Count)
+        if (levelId > maps.Count)
         {
             Debug.LogError("Over range maps");
             return;

@@ -41,9 +41,13 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
-    public void OnNextLevel()
+
+
+    public void OnNextLevel(int nextLevelId)
     {
         // TODO: Next level.
+        SetLevel(nextLevelId);
+        GameManager.Instance.ChangeState(EGameStates.Victory);
     }
     #endregion
 

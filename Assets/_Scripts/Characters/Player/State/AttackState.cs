@@ -97,8 +97,9 @@ namespace FSM.Player
 
                 _controller.StatsM.OnUpdateStatsAfterEliminating();
 
-                _controller.MapSubject.NotifyObservers(ELevelEventKey.Map, EMapKey.NextLevel);
                 _controller.MapSubject.NotifyObservers(ELevelEventKey.Map, EMapKey.RespawnBot);
+
+                _controller.MapSubject.NotifyObservers(ELevelEventKey.Map, EMapKey.NextLevel);
 
                 _stateM.IsChangeRange = true;
             });

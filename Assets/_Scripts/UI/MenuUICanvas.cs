@@ -28,17 +28,13 @@ public class MenuUICanvas : UICanvas
 
     public void OpenShopUI()
     {
-        UIManager.Instance.BackTopUI?.CloseDirectly();
-        UIManager.Instance.OpenUI<ShopUICanvas>();
-
         GameManager.Instance.ChangeState(EGameStates.Shop);
+
+        UIManager.Instance.OpenUI<ShopUICanvas>();
     }
 
     public void OpenGamePlayUI()
     {
-        UIManager.Instance.BackTopUI?.CloseDirectly();
-        UIManager.Instance.OpenUI<GamePlayUICanvas>();
-
         GameManager.Instance.ChangeState(EGameStates.GamePlay);
     }
 

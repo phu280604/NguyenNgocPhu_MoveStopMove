@@ -25,6 +25,7 @@ public class MapM : MonoBehaviour
     #region --- Properties ---
 
     public int CurrentBotCount { get; set; } = 0;
+    public int CurrentBotEliminatedCount { get; set; } = 0;
     public MapSO CurrentMapData { get; set; }
     public List<MapSO> MapSOs => _maps;
     public List<GameObject> Grounds => _grounds;

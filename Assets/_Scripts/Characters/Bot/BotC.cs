@@ -36,8 +36,8 @@ public class BotC : CharacterC
         else if (_stateM.IsMoving)
             _keyState = EState.Movement;
 
-        if (_stateM.Target != null && _statsM.VisualData != null)
-            _keyState = EState.Attack;
+        //if (_stateM.Target != null && _statsM.VisualData != null)
+        //    _keyState = EState.Attack;
 
         if (_curState.KeyState != _keyState)
             _stateManager.SwitchState(_keyState, ref _curState);
