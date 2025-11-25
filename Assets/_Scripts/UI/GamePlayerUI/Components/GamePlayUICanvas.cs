@@ -10,12 +10,6 @@ public class GamePlayUICanvas : UICanvas, IObserver<object>
 
     public override void CloseDirectly()
     {
-        PoolManager.Instance.CollectAll();
-
-        UIManager.Instance.OpenUI<MenuUICanvas>();
-
-        GameManager.Instance.ChangeState(EGameStates.Menu);
-
         base.CloseDirectly();
     }
 
@@ -40,6 +34,19 @@ public class GamePlayUICanvas : UICanvas, IObserver<object>
     private void OnEnable()
     {
         OnNotify(LevelManager.Instance.Coins);
+    }
+
+    #endregion
+
+    #region --- Methods ---
+
+    public void OnBacktoHome()
+    {
+        PoolManager.Instance.CollectAll();
+
+        UIManager.Instance.OpenUI<MenuUICanvas>();
+
+        GameManager.Instance.ChangeState(EGameStates.Menu);
     }
 
     #endregion

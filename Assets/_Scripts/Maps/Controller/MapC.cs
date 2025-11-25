@@ -68,8 +68,11 @@ public class MapC : GameUnit, IObserver<EMapKey>
             (d) => {
                 d.gameObject.name = StringCollection.PLAYER_NAME;
                 d.MapSubject = _subject;
+                Debug.Log("hello");
             }
         );
+
+        
 
         for(int i = 0; i < _model.CurrentMapData.LevelMaxEnemiesOnGround; i++)
         {

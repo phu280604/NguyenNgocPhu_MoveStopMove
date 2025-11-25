@@ -89,7 +89,12 @@ namespace FSM.Player
 
             newWeapon.StateM.TargetPos = _controller.StateM.Target.position;
             newWeapon.StateM.TargetTag = ETag.Bot;
-            newWeapon.OnInit(_controller, () => {
+            newWeapon.OnInit(_controller, (coins) => {
+
+                if (_controller.StateM.IsDead || coins == -1) return;
+
+                _controller.GetCoinDrop(coins);
+
                 _controller.StatsM.OnUpdateStatsAfterEliminating();
 
                 _controller.MapSubject.NotifyObservers(ELevelEventKey.Map, EMapKey.NextLevel);

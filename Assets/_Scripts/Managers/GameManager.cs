@@ -44,6 +44,8 @@ public class GameManager : Singleton<GameManager>
             case EGameStates.GamePlay:
                 GamePlayStateTriggered();
                 break;
+            case EGameStates.Losing:
+                break;
         }
     }
 

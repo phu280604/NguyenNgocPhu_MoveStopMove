@@ -6,11 +6,36 @@ public class LosingUICanvas : UICanvas
 {
     #region --- Overrides ---
 
-    protected override void OnInit()
+    public override void Open()
     {
-        base.OnInit();
+        base.Open();
 
+        OnOpenScreen();
+    }
+
+    #endregion
+
+    #region --- Methods ---
+
+    public void OnOpenScreen()
+    {
         PoolManager.Instance.CollectAll();
+
+        GameManager.Instance.ChangeState(EGameStates.Losing);
+    }
+
+    public void OnReset()
+    {
+        GameManager.Instance.ChangeState(EGameStates.GamePlay);
+
+        UIManager.Instance.OpenUI<GamePlayUICanvas>();
+    }
+
+    public void OnBacktoHome()
+    {
+        GameManager.Instance.ChangeState(EGameStates.Menu);
+
+        UIManager.Instance.OpenUI<MenuUICanvas>();
     }
 
     #endregion
