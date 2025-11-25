@@ -16,6 +16,8 @@ public class BotStateM : MonoBehaviour, ICharacterStateM
     public string[] LayerTargets { get; set; }
     public bool IsChangeRange { get; set; } = true;
     public bool IsDelayAttack { get; set; } = false;
+    public bool IsDelayDecay { get; set; } = false;
+    public bool IsDead { get; set; } = false;
     #endregion
 
     #endregion

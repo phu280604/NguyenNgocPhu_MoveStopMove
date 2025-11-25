@@ -15,6 +15,8 @@ public class PlayerStateM : MonoBehaviour, ICharacterStateM
     public string[] LayerTargets { get; set; }
     public bool IsDelayAttack { get; set; } = false;
     public bool IsChangeRange { get; set; } = true;
+    public bool IsDelayDecay { get; set; } = false;
+    public bool IsDead { get; set; } = false;
     #endregion
 
     #endregion

@@ -1974,6 +1974,10 @@ PrefabInstance:
       value: Equiped
       objectReference: {fileID: 0}
     - target: {fileID: 4165448443099612735, guid: 79336df9255031f4cbe2b90097b5743b, type: 3}
+      propertyPath: m_fontSize
+      value: 66.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165448443099612735, guid: 79336df9255031f4cbe2b90097b5743b, type: 3}
       propertyPath: m_fontColor.b
       value: 0.78113204
       objectReference: {fileID: 0}

@@ -14,6 +14,10 @@ public abstract class CharacterC : GameUnit
     #region --- Methods ---
 
     public abstract void OnInit();
+    public virtual void OnDead()
+    {
+        StateM.IsDead = true;
+    }
     protected abstract void CheckState();
     protected abstract void OnBuildRangeAttack();
 

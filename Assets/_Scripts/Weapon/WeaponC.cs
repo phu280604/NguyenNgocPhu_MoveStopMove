@@ -31,7 +31,7 @@ public class WeaponC : GameUnit
 
             StateM.HasHit = true;
 
-            other.gameObject.GetComponent<GameUnit>().OnDespawn();
+            charC.OnDead();
 
             onAfterEliminating?.Invoke();
             AfterGetHit(charC);

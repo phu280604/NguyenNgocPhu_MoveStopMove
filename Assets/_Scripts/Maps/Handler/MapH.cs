@@ -58,7 +58,6 @@ public class MapH : MonoBehaviour
     public void SpawnUnit<T>(EPoolType poolType, Vector3 spawnPos, Action<T> onAction = null) where T : GameUnit
     {
         spawnPos.y = 0;
-        Debug.Log(spawnPos);
 
         T unit = PoolManager.Instance.Spawn<T>(
                 poolType,

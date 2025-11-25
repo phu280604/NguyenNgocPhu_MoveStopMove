@@ -14,6 +14,7 @@ public interface ICharacterStateM
     public string[] LayerTargets { get; set; }
     public bool IsChangeRange { get; set; }
     public bool IsDelayAttack { get; set; }
+    public bool IsDead { get; set; }
 
     #endregion
 }
