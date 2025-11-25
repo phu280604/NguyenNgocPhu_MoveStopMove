@@ -33,6 +33,9 @@ public class PlayerC : CharacterC
         if (_stateM.Target != null && _keyState == EState.Idle)
             _keyState = EState.Attack;
 
+        if(_stateM.IsDead)
+            _keyState = EState.Dead;
+
         if (_curState.KeyState != _keyState)
             _stateManager.SwitchState(_keyState, ref _curState);
     }
@@ -53,6 +56,13 @@ public class PlayerC : CharacterC
             _stateM.LayerTargets,
             this
         );
+    }
+
+    public override void OnDead()
+    {
+        _stateM.OnHideCollider();
+
+        base.OnDead(); 
     }
     #endregion
 
@@ -79,6 +89,11 @@ public class PlayerC : CharacterC
     private void FixedUpdate()
     {
         OnBuildRangeAttack();
+    }
+
+    private void OnDisable()
+    {
+        OnHandleAfterDead();
     }
 
     #endregion
@@ -115,6 +130,16 @@ public class PlayerC : CharacterC
     }
     #endregion
 
+    #region -- Handle reset --
+
+    private void OnHandleAfterDead()
+    {
+        UIManager.Instance.OpenUI<LosingUICanvas>();
+        _stateM.OnReset();
+    }
+
+    #endregion
+
     #endregion
 
     #region --- Properties ---
@@ -135,7 +160,6 @@ public class PlayerC : CharacterC
     [SerializeField] private PlayerStatsM _statsM;
     [SerializeField] private PlayerStateM _stateM;
 
-    private Timer _delayAttack;
     #endregion
 
     #region -- State machine --

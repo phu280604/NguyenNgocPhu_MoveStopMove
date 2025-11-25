@@ -277,6 +277,7 @@ MonoBehaviour:
   - {fileID: 415545244194557333, guid: e5fc2dcc0de8ca94aa2121640f7f55e9, type: 3}
   - {fileID: 6025594932133906232, guid: df7dec9c38f48064993f714f6f142b3d, type: 3}
   - {fileID: 1216838236829279910, guid: 2bbd2d9b17f258f47983a9a04fb2292f, type: 3}
+  - {fileID: -6702011124912206162, guid: be6298a16346f7b4eacd8681c9ef4307, type: 3}
   CanvasParentTF: {fileID: 2090475837}
 --- !u!1 &633493873
 GameObject:

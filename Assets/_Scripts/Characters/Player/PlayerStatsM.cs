@@ -21,6 +21,14 @@ public class PlayerStatsM : CharacterStatsM
         MaxSpeed += _statsSO.maxMovementSpeed;
     }
 
+    public void OnReset()
+    {
+        CurrentRangeAttack = 0;
+        MaxSpeed = 0;
+
+        CurrentSpeed = 0;
+    }
+
     #endregion
 
     #region --- Properties ---

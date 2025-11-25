@@ -61,6 +61,7 @@ public enum EAnim
 public enum EAnimParams
 {
     IsDelayAttack,
+    IsDead,
 }
 #endregion
 

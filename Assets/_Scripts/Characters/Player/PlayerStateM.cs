@@ -21,19 +21,27 @@ public class PlayerStateM : MonoBehaviour, ICharacterStateM
 
     #endregion
 
-    #region --- Unity methods ---
+    #region --- Methods ---
 
-    private void OnDisable()
+    public void OnReset()
     {
+        _collider.enabled = true;
+
         WeaponType = EPoolType.AxeProjectile;
 
         Target = null;
 
         IsDelayAttack = false;
         IsChangeRange = true;
+        IsDead = false;
 
         Direction = Vector3.zero;
         LastestDirection = Vector3.zero;
+    }
+
+    public void OnHideCollider()
+    {
+        _collider.enabled = false;
     }
 
     #endregion
@@ -46,6 +54,8 @@ public class PlayerStateM : MonoBehaviour, ICharacterStateM
     #endregion
 
     #region --- Fields ---
+
+    [SerializeField] private Collider _collider;
 
     [SerializeField] private Transform _atkRangePos;
     [SerializeField] private Transform _spawnPos;

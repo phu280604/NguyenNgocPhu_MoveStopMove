@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 6257970377850145322}
   - component: {fileID: 568628081400297437}
   - component: {fileID: 2437046500396843883}
+  - component: {fileID: -6702011124912206162}
   m_Layer: 0
   m_Name: LosingScreen
   m_TagString: Untagged
@@ -425,6 +426,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-6702011124912206162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703201575949696680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c688cf794510ebd43848f7a15cf4778d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDestroyOnClose: 0
+  IsHandlingRabbitEars: 0
+  IsWidescreenProcessing: 0
+  popups: []
 --- !u!1 &3415579080786709137
 GameObject:
   m_ObjectHideFlags: 0

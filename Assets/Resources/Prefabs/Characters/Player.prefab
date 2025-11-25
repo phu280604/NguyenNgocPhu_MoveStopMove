@@ -1515,6 +1515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f931fd8890e3a4e478415bc15b1b45cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 1945105379185189388}
   _atkRangePos: {fileID: 5052914622910947453}
   _spawnPos: {fileID: 1574987404437244863}
 --- !u!1 &4909469272245717009
