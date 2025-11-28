@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e23eac9e6431c04dabce69c53ec0b09, type: 3}
   m_Name: AxeStats
   m_EditorClassIdentifier: 
-  speed: 5
-  rotateSpeed: 3
+  speed: 4
+  rotateSpeed: 6
   disableTime: 1.5

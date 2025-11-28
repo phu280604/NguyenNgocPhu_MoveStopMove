@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AxeH : IWeaponHandler
 {
+    #region --- Methods ---
+
     public Vector3 OnMove(Vector3 curPos, Vector3 targetPos, float speed)
     {
         targetPos.y = 0;
@@ -15,4 +17,6 @@ public class AxeH : IWeaponHandler
     {
         weaponRot.Rotate(Vector3.up * speed);
     }
+
+    #endregion
 }

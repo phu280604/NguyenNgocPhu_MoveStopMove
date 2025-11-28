@@ -24,6 +24,9 @@ public abstract class CharacterVisualC : MonoBehaviour
 
             // Hat.
             case EItemType.Hat:
+                if (HasOtherItemFromSet(id, itemType))
+                    return;
+
                 ItemHat hat = _itemConfig.GetItemById<ItemHat>(id, itemType);
                 _itemData = hat;
                 if (hat != null)
@@ -36,6 +39,9 @@ public abstract class CharacterVisualC : MonoBehaviour
 
             // Pant.
             case EItemType.Pant:
+                if (HasOtherItemFromSet(id, itemType))
+                    return;
+
                 ItemPant pant = _itemConfig.GetItemById<ItemPant>(id, itemType);
                 _itemData = pant;
                 if (pant != null)
@@ -77,6 +83,26 @@ public abstract class CharacterVisualC : MonoBehaviour
             _statsM.OnInitItemEffect(_itemData.effectValue, _itemData.itemEffect);
     }
 
+    private bool HasOtherItemFromSet(int id, EItemType itemType)
+    {
+        if(_itemConfig.GetIdFirstItem(itemType) != id || idSetSkin == 0) return false;
+
+        switch (itemType)
+        {
+            case EItemType.Hat:
+                if (_itemConfig.GetItemById<ItemSetSkin>(idSetSkin, EItemType.Set).hat.itemState != EItemState.None)
+                    return true;
+                break;
+
+            case EItemType.Pant:
+                if (_itemConfig.GetItemById<ItemSetSkin>(idSetSkin, EItemType.Set).pant.itemState != EItemState.None)
+                    return true;
+                break;
+        }
+
+        return false;
+    }
+
     protected void SetTransform(Transform transform, Vector3 offset, Vector3 rotation, Vector3 scale)
     {
         transform.localScale = scale;
@@ -110,6 +136,8 @@ public abstract class CharacterVisualC : MonoBehaviour
 
     [Header("Model")]
     [SerializeField] protected CharacterStatsM _statsM;
+
+    protected int idSetSkin;
 
     #endregion
 }

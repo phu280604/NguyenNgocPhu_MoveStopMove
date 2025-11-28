@@ -37,7 +37,7 @@ public class GamePlayUICanvas : UICanvas, IObserver<object>
 
     private void OnEnable()
     {
-        _subject.NotifyObservers(EUIGamePlayKey.TextCoins, LevelManager.Instance.Coins);
+        _subject.NotifyObservers(EUIGamePlayKey.TextCoins, GameplayManager.Instance.Coins);
     }
 
     #endregion

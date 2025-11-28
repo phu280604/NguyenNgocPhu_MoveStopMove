@@ -16,6 +16,8 @@ namespace FSM.Player
 
         public override void EnterState()
         {
+            _controller.Animator.speed = RESET_SPEED;
+
             _isStopping = _controller.StatsM.CurrentSpeed <= 0f;
 
             ChangeAnim();
@@ -86,6 +88,8 @@ namespace FSM.Player
 
         private float _acceleration;
         private float _maxSpeed;
+
+        private const float RESET_SPEED = 1f;
 
         private bool _isStopping;
 

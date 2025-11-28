@@ -16,6 +16,8 @@ namespace FSM.Bot
 
         public override void EnterState()
         {
+            _controller.AudioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.Dead);
+
             OnChangeAnimation();
         }
 

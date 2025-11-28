@@ -20,6 +20,8 @@ public class VictoryUICanvas : UICanvas
     public void OnOpenScreen()
     {
         PoolManager.Instance.CollectAll();
+
+        GameManager.Instance.AudioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.Victory);
     }
 
     public void OnNextLevel()

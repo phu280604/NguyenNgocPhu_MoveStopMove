@@ -3,8 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TabColorC : MonoBehaviour
+public class TabC : MonoBehaviour, IAudioEvent
 {
+    #region --- Overrides ---
+
+    public void OnAudioAction()
+    {
+        GameManager.Instance.AudioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.TabClick);
+    }
+
+    #endregion
+
     #region --- Methods ---
 
     public void OnInit(bool isToggled)

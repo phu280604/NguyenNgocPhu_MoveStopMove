@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Subject<TKey, TData> : MonoBehaviour
+public class Subject<TKey, TData> : MonoBehaviour 
 {
     #region --- Methods ---
 

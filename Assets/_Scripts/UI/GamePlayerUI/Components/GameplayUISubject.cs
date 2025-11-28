@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlaySubject : Subject<EUIGamePlayKey, object>
+public class GameplayUISubject : Subject<EUIGamePlayKey, object>
 {
     
 }

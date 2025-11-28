@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9168bc916d3e4694ca8d5edb161778bd, type: 3}
   m_Name: BoomerangStats
   m_EditorClassIdentifier: 
-  speed: 5
-  rotateSpeed: 5
+  speed: 4
+  rotateSpeed: 8
   disableTime: 2.5
   moveBackTime: 1.5

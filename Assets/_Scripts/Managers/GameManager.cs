@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
 
     public void OnInit()
     {
-        LevelManager.Instance.OnInit(true);
+        GameplayManager.Instance.OnInit(true);
         UIManager.Instance.OpenUI<MenuUICanvas>();
 
         ChangeState(EGameStates.Menu);
@@ -71,7 +71,7 @@ public class GameManager : Singleton<GameManager>
         _camShop.SetActive(false);
 
         UIManager.Instance.OpenUI<GamePlayUICanvas>();
-        LevelManager.Instance.OnInit();
+        GameplayManager.Instance.OnInit();
     }
 
     private void LosingStateTriggered()
@@ -86,9 +86,17 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
+    #region --- Properties ---
+
+    public Subject<EEventKey, object> AudioSubject => _audioSubject;
+
+    #endregion
+
     #region --- Fields ---
 
     private EGameStates _gameState = EGameStates.Menu;
+
+    [SerializeField] private Subject<EEventKey, object> _audioSubject;
 
     [Header("Unity components")]
     [SerializeField] private GameObject _camGamePlay;

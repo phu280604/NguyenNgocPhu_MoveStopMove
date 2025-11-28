@@ -15,4 +15,4 @@ MonoBehaviour:
   _levelData:
     levelId: 1
     maxEnemiesGroundedInTime: 4
-    maxEnemiesCount: 20
+    maxEnemiesCount: 10

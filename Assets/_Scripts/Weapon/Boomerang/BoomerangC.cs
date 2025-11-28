@@ -5,23 +5,48 @@ using UnityEngine;
 
 public class BoomerangC : WeaponC
 {
+    #region --- Overrides ---
+
+    protected override void OnMove()
+    {
+        if (!_stateM.HasTarget && _stateM.TargetPos != null)
+        {
+            _stateM.MoveDirection = (_stateM.TargetPos - transform.position);
+            _stateM.HasTarget = true;
+        }
+
+        _moveBack.OnCountDown(Time.deltaTime);
+        transform.position = _handler.OnMove(transform.position, _stateM.MoveDirection, Time.deltaTime * _statsM.speed);
+    }
+
+    protected override void OnRotation()
+    {
+        Transform curTrans = transform;
+        _handler.OnRotation(ref curTrans, _statsM.rotateSpeed);
+    }
+
+    #endregion
+
     #region --- Unity methods ---
 
     private void Awake()
     {
         _handler = new BoomerangH();
 
-        _moveBack = new Timer(_stats.moveBackTime, () => { _state.MoveDirection *= -1; });
+        _moveBack = new Timer(_statsM.moveBackTime, () => { _stateM.MoveDirection *= -1; });
 
-        StateM = _state;
-        StatsSO = _stats;
+        StateM = _stateM;
+        StatsSO = _statsM;
+
+        if (audioSubject != null)
+            audioSubject.AddObserver(EEventKey.Audio, weaponObserver);
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        _state.LastestPosition = transform.position;
+        _stateM.LastestPosition = transform.position;
     }
 
     protected override void OnDisable()
@@ -30,39 +55,19 @@ public class BoomerangC : WeaponC
 
         _moveBack.OnReset();
 
-        _state.IsReturning = false;
-        _state.MoveDirection = Vector3.zero;
-    }
-
-    private void Update()
-    {
-        if(charCtrl != null)
-        {
-            if(!_state.HasTarget && _state.TargetPos != null)
-            {
-                _state.MoveDirection = (_state.TargetPos - transform.position);
-                _state.HasTarget = true;
-            }
-
-            _moveBack.OnCountDown(Time.deltaTime);
-
-            transform.position = _handler.OnMove(transform.position, _state.MoveDirection, Time.deltaTime * _stats.speed);
-
-            Transform curTrans = transform;
-            _handler.OnRotation(ref curTrans, _stats.rotateSpeed);
-        }
+        _stateM.IsReturning = false;
+        _stateM.MoveDirection = Vector3.zero;
     }
 
     #endregion
 
     #region --- Fields ---
 
-    private BoomerangH _handler;
-
     private Timer _moveBack;
 
-    [SerializeField] private BoomerangStateM _state;
-    [SerializeField] private BoomerangStatsSO _stats;
+    [Header("Model components")]
+    [SerializeField] private BoomerangStateM _stateM;
+    [SerializeField] private BoomerangStatsSO _statsM;
 
     #endregion
 }

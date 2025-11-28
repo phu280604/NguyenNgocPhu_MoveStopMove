@@ -34,9 +34,9 @@ public class ShopButtonC : MonoBehaviour, IObserver<object>
         switch (_itemState)
         {
             case EItemState.Locked:
-                if (_coins <= LevelManager.Instance.Coins && LevelManager.Instance.Coins != 0)
+                if (_coins <= GameplayManager.Instance.Coins && GameplayManager.Instance.Coins != 0)
                 {
-                    LevelManager.Instance.SetCoin(-_coins);
+                    GameplayManager.Instance.SetCoin(-_coins);
 
                     _subject.NotifyObservers(EUIKey.Button, (int)_itemState + 1);
                 }

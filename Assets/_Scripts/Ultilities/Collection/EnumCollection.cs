@@ -78,6 +78,8 @@ public enum EPoolType
     BoomerangProjectile,
     Item,
     Maps,
+    HammerProjectile,
+    KnifeProjectile,
 }
 
 #endregion
@@ -119,6 +121,13 @@ public enum EItemState
 
 #region -- Enum KeyObserver --
 
+public enum EEventKey
+{
+    Map,
+    Audio,
+    Particle
+}
+
 public enum EUIKey
 {
     Tab = 0,
@@ -130,15 +139,22 @@ public enum EUIKey
     ItemEffect = 6,
 }
 
+public enum EAudioKey
+{
+    ButtonClick,
+    TabClick,
+    ItemClick,
+    HitObject,
+    ThrowObject,
+    Dead,
+    Victory,
+    Lose
+}
+
 public enum EUIGamePlayKey
 {
     TextCoins,
     EnemiesRemaining,
-}
-
-public enum ELevelEventKey
-{
-    Map
 }
 
 public enum EMapKey

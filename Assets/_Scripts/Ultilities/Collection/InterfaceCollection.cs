@@ -29,3 +29,12 @@ public interface IWeaponHandler
     public void OnRotation(ref Transform weaponRot, float speed);
 }
 #endregion
+
+#region --- Audio ---
+
+public interface IAudioEvent
+{
+    public void OnAudioAction();
+}
+
+#endregion

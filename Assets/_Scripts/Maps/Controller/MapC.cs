@@ -3,21 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapC : GameUnit, IObserver<EMapKey>
+public class MapC : GameUnit, IObserver<object>
 {
     #region --- Overrides ---
 
-    public void OnNotify(EMapKey data)
+    public void OnNotify(object data)
     {
-        switch (data)
+        if(data is EMapKey d)
         {
-            case EMapKey.RespawnBot:
-                RespawnBot();
-                break;
-            case EMapKey.NextLevel:
-                if(CheckEnemiesCount())
-                    NextLevel();
-                break;
+            switch (data)
+            {
+                case EMapKey.RespawnBot:
+                    RespawnBot();
+                    break;
+                case EMapKey.NextLevel:
+                    if (CheckEnemiesCount())
+                        NextLevel();
+                    break;
+            }
         }
     }
 
@@ -47,7 +50,7 @@ public class MapC : GameUnit, IObserver<EMapKey>
         // Handle unit.
         OnHandleSpawnUnit();
 
-        _subject.AddObserver(ELevelEventKey.Map, this);
+        GameplayManager.Instance.GameplaySubject.AddObserver(EEventKey.Map, this);
     }
     #endregion
 
@@ -74,7 +77,6 @@ public class MapC : GameUnit, IObserver<EMapKey>
                 if (d == null) return;
 
                 d.gameObject.name = StringCollection.PLAYER_NAME;
-                d.MapSubject = _subject;
             }
         );
 
@@ -87,7 +89,6 @@ public class MapC : GameUnit, IObserver<EMapKey>
                     if (d == null) return;
 
                     d.OnInit();
-                    d.MapSubject = _subject;
 
                     _model.CurrentBotCount += 1;
                     d.gameObject.name = StringCollection.BOT_NAME + $" #{_model.CurrentBotCount}";
@@ -108,7 +109,6 @@ public class MapC : GameUnit, IObserver<EMapKey>
                 if(d == null) return;
 
                 d.OnInit();
-                d.MapSubject = _subject;
 
                 _model.CurrentBotCount += 1;
                 d.gameObject.name = StringCollection.BOT_NAME + $" #{_model.CurrentBotCount}";
@@ -160,7 +160,7 @@ public class MapC : GameUnit, IObserver<EMapKey>
             newLevelId = _model.MapSOs[0].LevelId;
         }
 
-        LevelManager.Instance.OnNextLevel(newLevelId);
+        GameplayManager.Instance.OnNextLevel(newLevelId);
     }
     #endregion
 
@@ -173,9 +173,6 @@ public class MapC : GameUnit, IObserver<EMapKey>
 
     [Header("Model components")]
     [SerializeField] private MapM _model;
-
-    [Header("Observer components")]
-    [SerializeField] private Subject<ELevelEventKey, EMapKey> _subject;
 
     #endregion
 }

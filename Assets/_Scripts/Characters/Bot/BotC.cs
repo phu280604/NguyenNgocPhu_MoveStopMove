@@ -14,8 +14,8 @@ public class BotC : CharacterC
         if (_stateManager == null)
             _stateManager = new BotStateManager(this);
 
-        _keyState = EState.Idle;
         _curState = null;
+        _keyState = EState.Idle;
         _stateManager.GetState(EState.Idle).EnterState();
 
         _curState = _stateManager.GetState(EState.Idle);
@@ -66,7 +66,6 @@ public class BotC : CharacterC
             this
         );
     }
-
     public override void OnDead()
     {
         _stateM.OnHideCollider();
@@ -91,6 +90,11 @@ public class BotC : CharacterC
     private void FixedUpdate()
     {
         OnBuildRangeAttack();
+    }
+
+    private void OnDisable()
+    {
+        OnHandleAfterDead();
     }
 
     #endregion
@@ -131,7 +135,7 @@ public class BotC : CharacterC
     #region --- Properties ---
 
     public BotStatsM StatsM => _statsM;
-    public Subject<ELevelEventKey, EMapKey> MapSubject { get; set; }
+    public Subject<EEventKey, object> Subject => GameplayManager.Instance.GameplaySubject;
 
     #endregion
 

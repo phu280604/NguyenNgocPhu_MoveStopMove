@@ -51,7 +51,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 02b805848b914c542a1585ba88441869, type: 2}
     mesh: {fileID: 4300000, guid: 90389cac50942cb4ca38583e6531094a, type: 3}
     icon: {fileID: 21300000, guid: b6553b8f3495a9f4c8c17caf3cce489e, type: 3}
-    weaponType: 4
+    weaponType: 8
     offset: {x: 0.025, y: 0.12, z: 0.025}
     rotation: {x: 45, y: -19, z: -26}
     scale: {x: 32, y: 32, z: 32}
@@ -65,7 +65,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 8078bbccff5e78f45b291ea76ca6cd48, type: 2}
     mesh: {fileID: 4300000, guid: ecd6cb62ed8350e498f9e25d15d9caa3, type: 3}
     icon: {fileID: 21300000, guid: bb263deeed073a64698ce52dfba30bbd, type: 3}
-    weaponType: 4
+    weaponType: 9
     offset: {x: -0.014, y: 0, z: -0.121}
     rotation: {x: 35, y: -25, z: -29}
     scale: {x: 32, y: 32, z: 32}
@@ -236,9 +236,7 @@ MonoBehaviour:
     cost: 150
     itemState: 1
     materials:
-    - {fileID: 2100000, guid: c3ef55b2da12f9d4f93ddbb22c5f8fdd, type: 2}
     - {fileID: 2100000, guid: c64682cff4f537348959568b35b5a15c, type: 2}
-    - {fileID: 2100000, guid: 489588ca575dc6a40b5838803fa762c0, type: 2}
     mesh: {fileID: -4538140524563738714, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
     icon: {fileID: 21300000, guid: 916eb971e2dc28b419a242fa6950df78, type: 3}
     weapon:

@@ -16,6 +16,9 @@ namespace FSM.Player
 
         public override void EnterState()
         {
+            _controller.Animator.speed = DEAD_SPEED;
+            _controller.AudioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.Dead);
+
             OnChangeAnimation();
         }
 
@@ -52,6 +55,8 @@ namespace FSM.Player
         #endregion
 
         #region --- Fields ---
+
+        private const float DEAD_SPEED = 0.7f;
 
         private PlayerStateM _stateM;
 

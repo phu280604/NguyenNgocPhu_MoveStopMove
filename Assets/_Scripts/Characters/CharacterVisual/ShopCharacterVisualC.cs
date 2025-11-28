@@ -111,6 +111,8 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
 
             // Hat.
             case EItemType.Hat:
+                if (HasOtherItemFromSet(id, itemType)) return;
+
                 ItemHat hat = _subject.ItemDataConfig.GetItemById<ItemHat>(id, itemType);
                 if (hat != null)
                 {
@@ -125,6 +127,8 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
 
             // Pant.
             case EItemType.Pant:
+                if (HasOtherItemFromSet(id, itemType)) return;
+
                 ItemPant pant = _subject.ItemDataConfig.GetItemById<ItemPant>(id, itemType);
                 if (pant != null)
                 {
@@ -166,8 +170,11 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
             // Set.
             case EItemType.Set:
                 ItemSetSkin setSkin = _subject.ItemDataConfig.GetItemById<ItemSetSkin>(id, itemType);
+                    
                 if (setSkin != null)
                 {
+                    idSetSkin = setSkin.id;
+
                     _bodyMeshRenderer.materials = setSkin.materials.ToArray();
                     SetSkin<ItemWeapon>(setSkin.weapon, EItemType.Weapon);
                     SetSkin<ItemHat>(setSkin.hat, EItemType.Hat);
@@ -236,6 +243,26 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
         transform.localPosition = offset;
     }
 
+    private bool HasOtherItemFromSet(int id, EItemType itemType)
+    {
+        if (_subject.ItemDataConfig.GetIdFirstItem(itemType) != id || idSetSkin == 0) return false;
+
+        switch (itemType)
+        {
+            case EItemType.Hat:
+                if (_subject.ItemDataConfig.GetItemById<ItemSetSkin>(idSetSkin, EItemType.Set).hat.itemState != EItemState.None)
+                    return true;
+                break;
+
+            case EItemType.Pant:
+                if (_subject.ItemDataConfig.GetItemById<ItemSetSkin>(idSetSkin, EItemType.Set).pant.itemState != EItemState.None)
+                    return true;
+                break;
+        }
+
+        return false;
+    }
+
     #endregion
 
     #region --- Fields ---
@@ -260,6 +287,8 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
     [SerializeField] private ShopSubject _subject;
 
     [SerializeField] private VisualData _visualData = new VisualData();
+
+    private int idSetSkin;
 
     #endregion
 }

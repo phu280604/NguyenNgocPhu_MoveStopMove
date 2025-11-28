@@ -117,10 +117,10 @@ public class PlayerC : CharacterC
 
     public void GetCoinDrop(int coins)
     {
-        LevelManager.Instance.SetCoin(coins);
+        GameplayManager.Instance.SetCoin(coins);
         if(UIManager.Instance.BackTopUI is GamePlayUICanvas ui)
         {
-            ui.Subject.NotifyObservers(EUIGamePlayKey.TextCoins, LevelManager.Instance.Coins);
+            ui.Subject.NotifyObservers(EUIGamePlayKey.TextCoins, GameplayManager.Instance.Coins);
         }
     }
     #endregion
@@ -142,7 +142,7 @@ public class PlayerC : CharacterC
 
     public PlayerStatsM StatsM => _statsM;
 
-    public Subject<ELevelEventKey, EMapKey> MapSubject { get; set; }
+    public Subject<EEventKey, object> Subject => GameplayManager.Instance.GameplaySubject;
 
     #endregion
 

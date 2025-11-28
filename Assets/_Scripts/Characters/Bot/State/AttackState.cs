@@ -71,7 +71,7 @@ namespace FSM.Bot
 
                 _controller.StatsM.OnUpdateStatsAfterEliminating();
 
-                _controller.MapSubject.NotifyObservers(ELevelEventKey.Map, EMapKey.RespawnBot);
+                _controller.Subject.NotifyObservers(EEventKey.Map, EMapKey.RespawnBot);
 
                 _stateM.IsChangeRange = true;
             });

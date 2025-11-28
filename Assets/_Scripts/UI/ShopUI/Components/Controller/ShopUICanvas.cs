@@ -91,7 +91,7 @@ public class ShopUICanvas : UICanvas, IObserver<object>
 
     private void ChangeCoins()
     {
-        _txtCoins.text = LevelManager.Instance.Coins.ToString();
+        _txtCoins.text = GameplayManager.Instance.Coins.ToString();
     }
 
     #endregion
@@ -101,7 +101,7 @@ public class ShopUICanvas : UICanvas, IObserver<object>
     [SerializeField] private TextMeshProUGUI _txtCoins;
     [SerializeField] private TextMeshProUGUI _txtEffect;
 
-    [SerializeField] private List<TabColorC> _tabItems = new List<TabColorC>();
+    [SerializeField] private List<TabC> _tabItems = new List<TabC>();
     private Dictionary<EItemState, ShopButtonC> _buttonItems = new Dictionary<EItemState, ShopButtonC>();
 
     [SerializeField] private ShopSubject _subject;

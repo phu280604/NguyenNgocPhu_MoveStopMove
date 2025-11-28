@@ -5,40 +5,47 @@ using UnityEngine;
 
 public class AxeC : WeaponC
 {
+    #region --- Overrides ---
+
+    protected override void OnMove()
+    {
+        if (!_stateM.HasTarget && _stateM.TargetPos != null)
+        {
+            _stateM.MoveDirection = (_stateM.TargetPos - transform.position).normalized;
+            _stateM.HasTarget = true;
+        }
+
+        transform.position = _handler.OnMove(transform.position, _stateM.MoveDirection, Time.deltaTime * _statsM.speed);
+    }
+
+    protected override void OnRotation()
+    {
+        Transform curTrans = transform;
+        _handler.OnRotation(ref curTrans, _statsM.rotateSpeed);
+    }
+
+    #endregion
+
     #region --- Unity methods ---
 
     private void Awake()
     {
         _handler = new AxeH();
+
         StateM = _stateM;
-        StatsSO = _stats;
-    }
+        StatsSO = _statsM;
 
-    private void Update()
-    {
-        if(charCtrl != null)
-        {
-            if(!_stateM.HasTarget && _stateM.TargetPos != null)
-            {
-                _stateM.MoveDirection = (_stateM.TargetPos - transform.position).normalized;
-                _stateM.HasTarget = true;
-            }
-            
-            transform.position = _handler.OnMove(transform.position, _stateM.MoveDirection, Time.deltaTime * _stats.speed);
-
-            Transform curTrans = transform;
-            _handler.OnRotation(ref curTrans, _stats.rotateSpeed);
-        }
+        if (audioSubject != null)
+            audioSubject.AddObserver(EEventKey.Audio, weaponObserver);
     }
 
     #endregion
 
     #region --- Fields ---
 
-    private AxeH _handler;
-
+    [Header("Model components")]
     [SerializeField] private AxeStateM _stateM;
-    [SerializeField] private AxeStatsSO _stats;
+    [SerializeField] private AxeStatsSO _statsM;
 
     #endregion
 }

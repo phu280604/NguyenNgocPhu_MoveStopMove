@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : Singleton<LevelManager>
+public class GameplayManager : Singleton<GameplayManager>
 {
     #region --- Methods ---
 
@@ -40,8 +40,6 @@ public class LevelManager : Singleton<LevelManager>
             SaveDataManager.Instance.Save<LevelSaveData>(_levelData, StringCollection.LEVEL_DATA);
         }
     }
-
-
 
     public void OnNextLevel(int nextLevelId)
     {
@@ -101,6 +99,7 @@ public class LevelManager : Singleton<LevelManager>
 
     #region --- Properties ---
 
+    public Subject<EEventKey, object> GameplaySubject => GameManager.Instance.AudioSubject;
     public int Coins => _levelData.coins;
 
     #endregion

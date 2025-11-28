@@ -57,6 +57,7 @@ public class PlayerVisualC : CharacterVisualC
             case EItemType.Set:
                 ItemSetSkin setSkin = _itemConfig.GetItemById<ItemSetSkin>(id, itemType);
                 _itemData = setSkin;
+                idSetSkin = _itemData.id;
                 if (setSkin != null)
                 {
                     _bodyMeshRenderer.materials = setSkin.materials.ToArray();

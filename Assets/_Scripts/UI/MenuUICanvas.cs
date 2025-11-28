@@ -40,7 +40,7 @@ public class MenuUICanvas : UICanvas
 
     private void ChangeCoin()
     {
-        _txtCoin.text = LevelManager.Instance.Coins.ToString();
+        _txtCoin.text = GameplayManager.Instance.Coins.ToString();
     }
 
     #endregion

@@ -1027,7 +1027,7 @@ GameObject:
   - component: {fileID: 611589821593168264}
   - component: {fileID: 1254595300067145184}
   - component: {fileID: 6025594932133906232}
-  - component: {fileID: 6350727217528675110}
+  - component: {fileID: 281410099228034257}
   m_Layer: 0
   m_Name: ShopScreen
   m_TagString: Untagged
@@ -1141,8 +1141,8 @@ MonoBehaviour:
   - {fileID: 9032818878004301762}
   - {fileID: 2419659910933873481}
   - {fileID: 7225295292345183119}
-  _subject: {fileID: 6350727217528675110}
---- !u!114 &6350727217528675110
+  _subject: {fileID: 281410099228034257}
+--- !u!114 &281410099228034257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemTransform: {fileID: 3335778440183950293}
   _itemToggleGroup: {fileID: 788518903351728489}
-  _subject: {fileID: 6350727217528675110}
+  _subject: {fileID: 281410099228034257}
 --- !u!1 &8725572284485567254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,7 +1710,7 @@ PrefabInstance:
     - target: {fileID: 1411782745911414975, guid: be3c85063ba567646bf093eb97c79487, type: 3}
       propertyPath: _subject
       value: 
-      objectReference: {fileID: 6350727217528675110}
+      objectReference: {fileID: 281410099228034257}
     - target: {fileID: 2151840364972799708, guid: be3c85063ba567646bf093eb97c79487, type: 3}
       propertyPath: m_Name
       value: WeaponTab
@@ -1835,7 +1835,7 @@ PrefabInstance:
     - target: {fileID: 1411782745911414975, guid: be3c85063ba567646bf093eb97c79487, type: 3}
       propertyPath: _subject
       value: 
-      objectReference: {fileID: 6350727217528675110}
+      objectReference: {fileID: 281410099228034257}
     - target: {fileID: 1411782745911414975, guid: be3c85063ba567646bf093eb97c79487, type: 3}
       propertyPath: _itemType
       value: 1
@@ -2165,7 +2165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 0}
   _itemState: 3
-  _subject: {fileID: 6350727217528675110}
+  _subject: {fileID: 281410099228034257}
 --- !u!1001 &4527235339356927404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2257,7 +2257,7 @@ PrefabInstance:
     - target: {fileID: 1411782745911414975, guid: be3c85063ba567646bf093eb97c79487, type: 3}
       propertyPath: _subject
       value: 
-      objectReference: {fileID: 6350727217528675110}
+      objectReference: {fileID: 281410099228034257}
     - target: {fileID: 1411782745911414975, guid: be3c85063ba567646bf093eb97c79487, type: 3}
       propertyPath: _itemType
       value: 3
@@ -2692,7 +2692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 8593886109738457398}
   _itemState: 1
-  _subject: {fileID: 6350727217528675110}
+  _subject: {fileID: 281410099228034257}
 --- !u!224 &1114505605605481204 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4754319451182859773, guid: 79336df9255031f4cbe2b90097b5743b, type: 3}
@@ -2973,7 +2973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 0}
   _itemState: 2
-  _subject: {fileID: 6350727217528675110}
+  _subject: {fileID: 281410099228034257}
 --- !u!1001 &8259863777880876838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3242,7 +3242,7 @@ PrefabInstance:
     - target: {fileID: 1411782745911414975, guid: be3c85063ba567646bf093eb97c79487, type: 3}
       propertyPath: _subject
       value: 
-      objectReference: {fileID: 6350727217528675110}
+      objectReference: {fileID: 281410099228034257}
     - target: {fileID: 1411782745911414975, guid: be3c85063ba567646bf093eb97c79487, type: 3}
       propertyPath: _itemType
       value: 2
