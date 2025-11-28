@@ -242,7 +242,6 @@ public class ShopCharacterVisualC : GameUnit, IObserver<object>
         transform.localEulerAngles = rotation;
         transform.localPosition = offset;
     }
-
     private bool HasOtherItemFromSet(int id, EItemType itemType)
     {
         if (_subject.ItemDataConfig.GetIdFirstItem(itemType) != id || idSetSkin == 0) return false;
