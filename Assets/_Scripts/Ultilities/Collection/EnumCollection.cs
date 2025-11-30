@@ -80,6 +80,7 @@ public enum EPoolType
     Maps,
     HammerProjectile,
     KnifeProjectile,
+    BloodParticle,
 }
 
 #endregion
@@ -149,6 +150,11 @@ public enum EAudioKey
     Dead,
     Victory,
     Lose
+}
+
+public enum EParticle
+{
+    BloodParticle,
 }
 
 public enum EUIGamePlayKey

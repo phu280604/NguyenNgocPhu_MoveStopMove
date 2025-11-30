@@ -40,7 +40,10 @@ public abstract class WeaponC : GameUnit
 
             OnHideWeapon();
             OnCallAudio();
-            OnSpawnParticle();
+            OnSpawnParticle(
+                other.ClosestPoint(transform.position), 
+                Quaternion.LookRotation(Vector3.up)
+            );
 
             charC.OnDead();
 
@@ -69,9 +72,12 @@ public abstract class WeaponC : GameUnit
         audioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.HitObject);
     }
 
-    protected void OnSpawnParticle()
+    protected void OnSpawnParticle(Vector3 pos, Quaternion rot)
     {
-        // TODO: Spawn particle;
+        GameManager.Instance.GameSubject.NotifyObservers(
+            EEventKey.Particle,
+            new ParticleData(EParticle.BloodParticle, pos, rot)
+        );
     }
 
     private int AfterGetHit(CharacterC charC)

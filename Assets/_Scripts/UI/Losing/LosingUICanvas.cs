@@ -21,7 +21,7 @@ public class LosingUICanvas : UICanvas
     {
         PoolManager.Instance.CollectAll();
 
-        GameManager.Instance.AudioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.Lose);
+        GameManager.Instance.GameSubject.NotifyObservers(EEventKey.Audio, EAudioKey.Lose);
     }
 
     public void OnReset()

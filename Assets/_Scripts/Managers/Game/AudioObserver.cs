@@ -121,7 +121,7 @@ public class AudioObserver : MonoBehaviour, IObserver<object>
     private void Awake()
     {
         if(_isConnectingtoAudioSubject)
-            GameManager.Instance.AudioSubject.AddObserver(EEventKey.Audio, this);
+            GameManager.Instance.GameSubject.AddObserver(EEventKey.Audio, this);
     }
 
     #endregion

@@ -8,7 +8,7 @@ public class ButtonC : MonoBehaviour, IAudioEvent
 
     public void OnAudioAction()
     {
-        GameManager.Instance.AudioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.ButtonClick);
+        GameManager.Instance.GameSubject.NotifyObservers(EEventKey.Audio, EAudioKey.ButtonClick);
     }
 
     #endregion

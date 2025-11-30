@@ -24,3 +24,26 @@ public class LevelData
 }
 
 #endregion
+
+#region --- Particle ---
+
+[System.Serializable]
+public class ParticleData
+{
+    public ParticleData(EParticle particleType, Vector3 position, Quaternion rotation)
+    {
+        this.particleType = particleType;
+        this.position = position;
+        this.rotation = rotation;
+    }
+
+    #region --- Fields ---
+
+    public EParticle particleType;
+    public Vector3 position;
+    public Quaternion rotation;
+
+    #endregion
+}
+
+#endregion

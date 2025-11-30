@@ -88,7 +88,7 @@ public class GameManager : Singleton<GameManager>
 
     #region --- Properties ---
 
-    public Subject<EEventKey, object> AudioSubject => _audioSubject;
+    public Subject<EEventKey, object> GameSubject => _gameSubject;
 
     #endregion
 
@@ -96,7 +96,7 @@ public class GameManager : Singleton<GameManager>
 
     private EGameStates _gameState = EGameStates.Menu;
 
-    [SerializeField] private Subject<EEventKey, object> _audioSubject;
+    [SerializeField] private Subject<EEventKey, object> _gameSubject;
 
     [Header("Unity components")]
     [SerializeField] private GameObject _camGamePlay;

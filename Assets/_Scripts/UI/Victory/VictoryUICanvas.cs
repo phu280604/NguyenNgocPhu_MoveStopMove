@@ -21,7 +21,7 @@ public class VictoryUICanvas : UICanvas
     {
         PoolManager.Instance.CollectAll();
 
-        GameManager.Instance.AudioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.Victory);
+        GameManager.Instance.GameSubject.NotifyObservers(EEventKey.Audio, EAudioKey.Victory);
     }
 
     public void OnNextLevel()

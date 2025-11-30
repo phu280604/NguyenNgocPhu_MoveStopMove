@@ -9,7 +9,7 @@ public class TabC : MonoBehaviour, IAudioEvent
 
     public void OnAudioAction()
     {
-        GameManager.Instance.AudioSubject.NotifyObservers(EEventKey.Audio, EAudioKey.TabClick);
+        GameManager.Instance.GameSubject.NotifyObservers(EEventKey.Audio, EAudioKey.TabClick);
     }
 
     #endregion

@@ -99,7 +99,7 @@ public class GameplayManager : Singleton<GameplayManager>
 
     #region --- Properties ---
 
-    public Subject<EEventKey, object> GameplaySubject => GameManager.Instance.AudioSubject;
+    public Subject<EEventKey, object> GameplaySubject => GameManager.Instance.GameSubject;
     public int Coins => _levelData.coins;
 
     #endregion
